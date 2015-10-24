@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B4E1E141BDB6C9B00D54B88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E131BDB6C9B00D54B88 /* main.m */; };
+		5B4E1E171BDB6C9B00D54B88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E161BDB6C9B00D54B88 /* AppDelegate.m */; };
+		5B4E1E1A1BDB6C9B00D54B88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E191BDB6C9B00D54B88 /* ViewController.m */; };
+		5B4E1E1D1BDB6C9B00D54B88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4E1E1B1BDB6C9B00D54B88 /* Main.storyboard */; };
+		5B4E1E1F1BDB6C9B00D54B88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4E1E1E1BDB6C9B00D54B88 /* Assets.xcassets */; };
+		5B4E1E221BDB6C9B00D54B88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4E1E201BDB6C9B00D54B88 /* LaunchScreen.storyboard */; };
+		5B4E1E2D1BDB6C9B00D54B88 /* HappyAtHomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E2C1BDB6C9B00D54B88 /* HappyAtHomeTests.m */; };
+		5B4E1E381BDB6C9C00D54B88 /* HappyAtHomeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E371BDB6C9C00D54B88 /* HappyAtHomeUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5B4E1E291BDB6C9B00D54B88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B4E1E071BDB6C9B00D54B88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B4E1E0E1BDB6C9B00D54B88;
+			remoteInfo = HappyAtHome;
+		};
+		5B4E1E341BDB6C9C00D54B88 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B4E1E071BDB6C9B00D54B88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B4E1E0E1BDB6C9B00D54B88;
+			remoteInfo = HappyAtHome;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5B4E1E0F1BDB6C9B00D54B88 /* HappyAtHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyAtHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B4E1E131BDB6C9B00D54B88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5B4E1E151BDB6C9B00D54B88 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5B4E1E161BDB6C9B00D54B88 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5B4E1E181BDB6C9B00D54B88 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5B4E1E191BDB6C9B00D54B88 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5B4E1E1C1BDB6C9B00D54B88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5B4E1E1E1BDB6C9B00D54B88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B4E1E211BDB6C9B00D54B88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5B4E1E231BDB6C9B00D54B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B4E1E281BDB6C9B00D54B88 /* HappyAtHomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyAtHomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B4E1E2C1BDB6C9B00D54B88 /* HappyAtHomeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyAtHomeTests.m; sourceTree = "<group>"; };
+		5B4E1E2E1BDB6C9B00D54B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B4E1E331BDB6C9C00D54B88 /* HappyAtHomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyAtHomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B4E1E371BDB6C9C00D54B88 /* HappyAtHomeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyAtHomeUITests.m; sourceTree = "<group>"; };
+		5B4E1E391BDB6C9C00D54B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5B4E1E0C1BDB6C9B00D54B88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B4E1E251BDB6C9B00D54B88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B4E1E301BDB6C9C00D54B88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5B4E1E061BDB6C9B00D54B88 = {
+			isa = PBXGroup;
+			children = (
+				5B4E1E111BDB6C9B00D54B88 /* HappyAtHome */,
+				5B4E1E2B1BDB6C9B00D54B88 /* HappyAtHomeTests */,
+				5B4E1E361BDB6C9C00D54B88 /* HappyAtHomeUITests */,
+				5B4E1E101BDB6C9B00D54B88 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5B4E1E101BDB6C9B00D54B88 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B4E1E0F1BDB6C9B00D54B88 /* HappyAtHome.app */,
+				5B4E1E281BDB6C9B00D54B88 /* HappyAtHomeTests.xctest */,
+				5B4E1E331BDB6C9C00D54B88 /* HappyAtHomeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B4E1E111BDB6C9B00D54B88 /* HappyAtHome */ = {
+			isa = PBXGroup;
+			children = (
+				5B4E1E151BDB6C9B00D54B88 /* AppDelegate.h */,
+				5B4E1E161BDB6C9B00D54B88 /* AppDelegate.m */,
+				5B4E1E181BDB6C9B00D54B88 /* ViewController.h */,
+				5B4E1E191BDB6C9B00D54B88 /* ViewController.m */,
+				5B4E1E1B1BDB6C9B00D54B88 /* Main.storyboard */,
+				5B4E1E1E1BDB6C9B00D54B88 /* Assets.xcassets */,
+				5B4E1E201BDB6C9B00D54B88 /* LaunchScreen.storyboard */,
+				5B4E1E231BDB6C9B00D54B88 /* Info.plist */,
+				5B4E1E121BDB6C9B00D54B88 /* Supporting Files */,
+			);
+			path = HappyAtHome;
+			sourceTree = "<group>";
+		};
+		5B4E1E121BDB6C9B00D54B88 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B4E1E131BDB6C9B00D54B88 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5B4E1E2B1BDB6C9B00D54B88 /* HappyAtHomeTests */ = {
+			isa = PBXGroup;
+			children = (
+				5B4E1E2C1BDB6C9B00D54B88 /* HappyAtHomeTests.m */,
+				5B4E1E2E1BDB6C9B00D54B88 /* Info.plist */,
+			);
+			path = HappyAtHomeTests;
+			sourceTree = "<group>";
+		};
+		5B4E1E361BDB6C9C00D54B88 /* HappyAtHomeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5B4E1E371BDB6C9C00D54B88 /* HappyAtHomeUITests.m */,
+				5B4E1E391BDB6C9C00D54B88 /* Info.plist */,
+			);
+			path = HappyAtHomeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5B4E1E0E1BDB6C9B00D54B88 /* HappyAtHome */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B4E1E3C1BDB6C9C00D54B88 /* Build configuration list for PBXNativeTarget "HappyAtHome" */;
+			buildPhases = (
+				5B4E1E0B1BDB6C9B00D54B88 /* Sources */,
+				5B4E1E0C1BDB6C9B00D54B88 /* Frameworks */,
+				5B4E1E0D1BDB6C9B00D54B88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HappyAtHome;
+			productName = HappyAtHome;
+			productReference = 5B4E1E0F1BDB6C9B00D54B88 /* HappyAtHome.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B4E1E271BDB6C9B00D54B88 /* HappyAtHomeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B4E1E3F1BDB6C9C00D54B88 /* Build configuration list for PBXNativeTarget "HappyAtHomeTests" */;
+			buildPhases = (
+				5B4E1E241BDB6C9B00D54B88 /* Sources */,
+				5B4E1E251BDB6C9B00D54B88 /* Frameworks */,
+				5B4E1E261BDB6C9B00D54B88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B4E1E2A1BDB6C9B00D54B88 /* PBXTargetDependency */,
+			);
+			name = HappyAtHomeTests;
+			productName = HappyAtHomeTests;
+			productReference = 5B4E1E281BDB6C9B00D54B88 /* HappyAtHomeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5B4E1E321BDB6C9C00D54B88 /* HappyAtHomeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B4E1E421BDB6C9C00D54B88 /* Build configuration list for PBXNativeTarget "HappyAtHomeUITests" */;
+			buildPhases = (
+				5B4E1E2F1BDB6C9C00D54B88 /* Sources */,
+				5B4E1E301BDB6C9C00D54B88 /* Frameworks */,
+				5B4E1E311BDB6C9C00D54B88 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B4E1E351BDB6C9C00D54B88 /* PBXTargetDependency */,
+			);
+			name = HappyAtHomeUITests;
+			productName = HappyAtHomeUITests;
+			productReference = 5B4E1E331BDB6C9C00D54B88 /* HappyAtHomeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B4E1E071BDB6C9B00D54B88 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = yuwenhui;
+				TargetAttributes = {
+					5B4E1E0E1BDB6C9B00D54B88 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					5B4E1E271BDB6C9B00D54B88 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 5B4E1E0E1BDB6C9B00D54B88;
+					};
+					5B4E1E321BDB6C9C00D54B88 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 5B4E1E0E1BDB6C9B00D54B88;
+					};
+				};
+			};
+			buildConfigurationList = 5B4E1E0A1BDB6C9B00D54B88 /* Build configuration list for PBXProject "HappyAtHome" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5B4E1E061BDB6C9B00D54B88;
+			productRefGroup = 5B4E1E101BDB6C9B00D54B88 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B4E1E0E1BDB6C9B00D54B88 /* HappyAtHome */,
+				5B4E1E271BDB6C9B00D54B88 /* HappyAtHomeTests */,
+				5B4E1E321BDB6C9C00D54B88 /* HappyAtHomeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B4E1E0D1BDB6C9B00D54B88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B4E1E221BDB6C9B00D54B88 /* LaunchScreen.storyboard in Resources */,
+				5B4E1E1F1BDB6C9B00D54B88 /* Assets.xcassets in Resources */,
+				5B4E1E1D1BDB6C9B00D54B88 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B4E1E261BDB6C9B00D54B88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B4E1E311BDB6C9C00D54B88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B4E1E0B1BDB6C9B00D54B88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B4E1E1A1BDB6C9B00D54B88 /* ViewController.m in Sources */,
+				5B4E1E171BDB6C9B00D54B88 /* AppDelegate.m in Sources */,
+				5B4E1E141BDB6C9B00D54B88 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B4E1E241BDB6C9B00D54B88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B4E1E2D1BDB6C9B00D54B88 /* HappyAtHomeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B4E1E2F1BDB6C9C00D54B88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B4E1E381BDB6C9C00D54B88 /* HappyAtHomeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5B4E1E2A1BDB6C9B00D54B88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B4E1E0E1BDB6C9B00D54B88 /* HappyAtHome */;
+			targetProxy = 5B4E1E291BDB6C9B00D54B88 /* PBXContainerItemProxy */;
+		};
+		5B4E1E351BDB6C9C00D54B88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B4E1E0E1BDB6C9B00D54B88 /* HappyAtHome */;
+			targetProxy = 5B4E1E341BDB6C9C00D54B88 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5B4E1E1B1BDB6C9B00D54B88 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B4E1E1C1BDB6C9B00D54B88 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5B4E1E201BDB6C9B00D54B88 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B4E1E211BDB6C9B00D54B88 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5B4E1E3A1BDB6C9C00D54B88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5B4E1E3B1BDB6C9C00D54B88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5B4E1E3D1BDB6C9C00D54B88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HappyAtHome/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SmartCityButler.HappyAtHome;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5B4E1E3E1BDB6C9C00D54B88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HappyAtHome/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SmartCityButler.HappyAtHome;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5B4E1E401BDB6C9C00D54B88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HappyAtHomeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SmartCityButler.HappyAtHomeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HappyAtHome.app/HappyAtHome";
+			};
+			name = Debug;
+		};
+		5B4E1E411BDB6C9C00D54B88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HappyAtHomeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SmartCityButler.HappyAtHomeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HappyAtHome.app/HappyAtHome";
+			};
+			name = Release;
+		};
+		5B4E1E431BDB6C9C00D54B88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = HappyAtHomeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SmartCityButler.HappyAtHomeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HappyAtHome;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		5B4E1E441BDB6C9C00D54B88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = HappyAtHomeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SmartCityButler.HappyAtHomeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HappyAtHome;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B4E1E0A1BDB6C9B00D54B88 /* Build configuration list for PBXProject "HappyAtHome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B4E1E3A1BDB6C9C00D54B88 /* Debug */,
+				5B4E1E3B1BDB6C9C00D54B88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B4E1E3C1BDB6C9C00D54B88 /* Build configuration list for PBXNativeTarget "HappyAtHome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B4E1E3D1BDB6C9C00D54B88 /* Debug */,
+				5B4E1E3E1BDB6C9C00D54B88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5B4E1E3F1BDB6C9C00D54B88 /* Build configuration list for PBXNativeTarget "HappyAtHomeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B4E1E401BDB6C9C00D54B88 /* Debug */,
+				5B4E1E411BDB6C9C00D54B88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5B4E1E421BDB6C9C00D54B88 /* Build configuration list for PBXNativeTarget "HappyAtHomeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B4E1E431BDB6C9C00D54B88 /* Debug */,
+				5B4E1E441BDB6C9C00D54B88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5B4E1E071BDB6C9B00D54B88 /* Project object */;
+}
