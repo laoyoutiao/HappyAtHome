@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5B458E3D1BE4982900D4CB6A /* PersonOpetionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B458E3C1BE4982900D4CB6A /* PersonOpetionTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5B458E401BE4986D00D4CB6A /* PersonOpetionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B458E3F1BE4986D00D4CB6A /* PersonOpetionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B458E461BE4A83A00D4CB6A /* PersonDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B458E451BE4A83A00D4CB6A /* PersonDataViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5B49B6AC1BE9D8600091A7EA /* PersonOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B49B6AB1BE9D8600091A7EA /* PersonOrderViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5B49B6AF1BE9D86D0091A7EA /* PersonDataChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B49B6AE1BE9D86D0091A7EA /* PersonDataChangeViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5B49B6B21BE9D8790091A7EA /* PersonOpetionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B49B6B11BE9D8790091A7EA /* PersonOpetionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5B49B6B51BE9D8A10091A7EA /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B49B6B41BE9D8A10091A7EA /* UIColor+Hex.m */; settings = {ASSET_TAGS = (); }; };
+		5B49B6B71BE9FBCB0091A7EA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B49B6B61BE9FBCB0091A7EA /* MapKit.framework */; };
 		5B4E1E141BDB6C9B00D54B88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E131BDB6C9B00D54B88 /* main.m */; };
 		5B4E1E171BDB6C9B00D54B88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E161BDB6C9B00D54B88 /* AppDelegate.m */; };
 		5B4E1E1D1BDB6C9B00D54B88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4E1E1B1BDB6C9B00D54B88 /* Main.storyboard */; };
@@ -17,7 +21,6 @@
 		5B4E1E221BDB6C9B00D54B88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B4E1E201BDB6C9B00D54B88 /* LaunchScreen.storyboard */; };
 		5B4E1E2D1BDB6C9B00D54B88 /* HappyAtHomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E2C1BDB6C9B00D54B88 /* HappyAtHomeTests.m */; };
 		5B4E1E381BDB6C9C00D54B88 /* HappyAtHomeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E371BDB6C9C00D54B88 /* HappyAtHomeUITests.m */; };
-		5B4FC0D01BE7157C00AFEACA /* PersonDataChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4FC0CF1BE7157C00AFEACA /* PersonDataChangeViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B6890491BE305D70089A728 /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6890481BE305D70089A728 /* PersonCenterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B68904C1BE309F80089A728 /* PersonCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68904B1BE309F80089A728 /* PersonCenterTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		5B68904F1BE317CD0089A728 /* PersonCenterHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68904E1BE317CD0089A728 /* PersonCenterHeadTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -52,10 +55,17 @@
 /* Begin PBXFileReference section */
 		5B458E3B1BE4982900D4CB6A /* PersonOpetionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonOpetionTableViewCell.h; path = Controller/PersonOpetionTableViewCell.h; sourceTree = "<group>"; };
 		5B458E3C1BE4982900D4CB6A /* PersonOpetionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonOpetionTableViewCell.m; path = Controller/PersonOpetionTableViewCell.m; sourceTree = "<group>"; };
-		5B458E3E1BE4986D00D4CB6A /* PersonOpetionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonOpetionViewController.h; sourceTree = "<group>"; };
-		5B458E3F1BE4986D00D4CB6A /* PersonOpetionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonOpetionViewController.m; sourceTree = "<group>"; };
 		5B458E441BE4A83A00D4CB6A /* PersonDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonDataViewController.h; path = Controller/PersonDataViewController.h; sourceTree = "<group>"; };
 		5B458E451BE4A83A00D4CB6A /* PersonDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonDataViewController.m; path = Controller/PersonDataViewController.m; sourceTree = "<group>"; };
+		5B49B6AA1BE9D8600091A7EA /* PersonOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonOrderViewController.h; path = Controller/PersonOrderViewController.h; sourceTree = "<group>"; };
+		5B49B6AB1BE9D8600091A7EA /* PersonOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonOrderViewController.m; path = Controller/PersonOrderViewController.m; sourceTree = "<group>"; };
+		5B49B6AD1BE9D86D0091A7EA /* PersonDataChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonDataChangeViewController.h; path = Controller/PersonDataChangeViewController.h; sourceTree = "<group>"; };
+		5B49B6AE1BE9D86D0091A7EA /* PersonDataChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonDataChangeViewController.m; path = Controller/PersonDataChangeViewController.m; sourceTree = "<group>"; };
+		5B49B6B01BE9D8790091A7EA /* PersonOpetionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonOpetionViewController.h; path = Controller/PersonOpetionViewController.h; sourceTree = "<group>"; };
+		5B49B6B11BE9D8790091A7EA /* PersonOpetionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonOpetionViewController.m; path = Controller/PersonOpetionViewController.m; sourceTree = "<group>"; };
+		5B49B6B31BE9D8A10091A7EA /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Hex.h"; path = "Category/UIColor+Hex.h"; sourceTree = "<group>"; };
+		5B49B6B41BE9D8A10091A7EA /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Hex.m"; path = "Category/UIColor+Hex.m"; sourceTree = "<group>"; };
+		5B49B6B61BE9FBCB0091A7EA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5B4E1E0F1BDB6C9B00D54B88 /* HappyAtHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyAtHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4E1E131BDB6C9B00D54B88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5B4E1E151BDB6C9B00D54B88 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,8 +80,6 @@
 		5B4E1E331BDB6C9C00D54B88 /* HappyAtHomeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyAtHomeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4E1E371BDB6C9C00D54B88 /* HappyAtHomeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyAtHomeUITests.m; sourceTree = "<group>"; };
 		5B4E1E391BDB6C9C00D54B88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B4FC0CE1BE7157C00AFEACA /* PersonDataChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDataChangeViewController.h; sourceTree = "<group>"; };
-		5B4FC0CF1BE7157C00AFEACA /* PersonDataChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDataChangeViewController.m; sourceTree = "<group>"; };
 		5B6890471BE305D70089A728 /* PersonCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonCenterViewController.h; path = Controller/PersonCenterViewController.h; sourceTree = "<group>"; };
 		5B6890481BE305D70089A728 /* PersonCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonCenterViewController.m; path = Controller/PersonCenterViewController.m; sourceTree = "<group>"; };
 		5B68904A1BE309F80089A728 /* PersonCenterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonCenterTableViewCell.h; path = Controller/PersonCenterTableViewCell.h; sourceTree = "<group>"; };
@@ -94,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B49B6B71BE9FBCB0091A7EA /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +132,7 @@
 				5B68904B1BE309F80089A728 /* PersonCenterTableViewCell.m */,
 				5B68904D1BE317CD0089A728 /* PersonCenterHeadTableViewCell.h */,
 				5B68904E1BE317CD0089A728 /* PersonCenterHeadTableViewCell.m */,
+				5B8DBA371BE84D0400641E86 /* PersonOrder */,
 				5B458E431BE4A81300D4CB6A /* PersonData */,
 				5B458E421BE4A65100D4CB6A /* Opetion */,
 			);
@@ -132,10 +142,10 @@
 		5B458E421BE4A65100D4CB6A /* Opetion */ = {
 			isa = PBXGroup;
 			children = (
+				5B49B6B01BE9D8790091A7EA /* PersonOpetionViewController.h */,
+				5B49B6B11BE9D8790091A7EA /* PersonOpetionViewController.m */,
 				5B458E3B1BE4982900D4CB6A /* PersonOpetionTableViewCell.h */,
 				5B458E3C1BE4982900D4CB6A /* PersonOpetionTableViewCell.m */,
-				5B458E3E1BE4986D00D4CB6A /* PersonOpetionViewController.h */,
-				5B458E3F1BE4986D00D4CB6A /* PersonOpetionViewController.m */,
 			);
 			name = Opetion;
 			sourceTree = "<group>";
@@ -143,17 +153,35 @@
 		5B458E431BE4A81300D4CB6A /* PersonData */ = {
 			isa = PBXGroup;
 			children = (
+				5B49B6AD1BE9D86D0091A7EA /* PersonDataChangeViewController.h */,
+				5B49B6AE1BE9D86D0091A7EA /* PersonDataChangeViewController.m */,
 				5B458E441BE4A83A00D4CB6A /* PersonDataViewController.h */,
 				5B458E451BE4A83A00D4CB6A /* PersonDataViewController.m */,
-				5B4FC0CE1BE7157C00AFEACA /* PersonDataChangeViewController.h */,
-				5B4FC0CF1BE7157C00AFEACA /* PersonDataChangeViewController.m */,
 			);
 			name = PersonData;
+			sourceTree = "<group>";
+		};
+		5B49B6A81BE9D7C30091A7EA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				5B49B6A91BE9D7E50091A7EA /* UIColor */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		5B49B6A91BE9D7E50091A7EA /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				5B49B6B31BE9D8A10091A7EA /* UIColor+Hex.h */,
+				5B49B6B41BE9D8A10091A7EA /* UIColor+Hex.m */,
+			);
+			name = UIColor;
 			sourceTree = "<group>";
 		};
 		5B4E1E061BDB6C9B00D54B88 = {
 			isa = PBXGroup;
 			children = (
+				5B49B6B61BE9FBCB0091A7EA /* MapKit.framework */,
 				5B6890501BE341AA0089A728 /* 未命名文件夹 */,
 				5B4E1E111BDB6C9B00D54B88 /* HappyAtHome */,
 				5B4E1E2B1BDB6C9B00D54B88 /* HappyAtHomeTests */,
@@ -175,6 +203,7 @@
 		5B4E1E111BDB6C9B00D54B88 /* HappyAtHome */ = {
 			isa = PBXGroup;
 			children = (
+				5B49B6A81BE9D7C30091A7EA /* Category */,
 				5B6890461BE3018B0089A728 /* ThirdParty */,
 				5B6890451BE301850089A728 /* Model */,
 				5B6890441BE3015E0089A728 /* Controller */,
@@ -183,7 +212,6 @@
 				5B4E1E161BDB6C9B00D54B88 /* AppDelegate.m */,
 				5B4E1E1E1BDB6C9B00D54B88 /* Assets.xcassets */,
 				5B4E1E201BDB6C9B00D54B88 /* LaunchScreen.storyboard */,
-				5B4E1E231BDB6C9B00D54B88 /* Info.plist */,
 				5B4E1E121BDB6C9B00D54B88 /* Supporting Files */,
 			);
 			path = HappyAtHome;
@@ -192,6 +220,7 @@
 		5B4E1E121BDB6C9B00D54B88 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5B4E1E231BDB6C9B00D54B88 /* Info.plist */,
 				5B4E1E131BDB6C9B00D54B88 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -262,6 +291,15 @@
 			path = "HappyAtHome/未命名文件夹";
 			sourceTree = "<group>";
 		};
+		5B8DBA371BE84D0400641E86 /* PersonOrder */ = {
+			isa = PBXGroup;
+			children = (
+				5B49B6AA1BE9D8600091A7EA /* PersonOrderViewController.h */,
+				5B49B6AB1BE9D8600091A7EA /* PersonOrderViewController.m */,
+			);
+			name = PersonOrder;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -329,6 +367,14 @@
 				TargetAttributes = {
 					5B4E1E0E1BDB6C9B00D54B88 = {
 						CreatedOnToolsVersion = 7.0.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					5B4E1E271BDB6C9B00D54B88 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -402,13 +448,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B4E1E171BDB6C9B00D54B88 /* AppDelegate.m in Sources */,
-				5B4FC0D01BE7157C00AFEACA /* PersonDataChangeViewController.m in Sources */,
 				5B458E3D1BE4982900D4CB6A /* PersonOpetionTableViewCell.m in Sources */,
+				5B49B6B21BE9D8790091A7EA /* PersonOpetionViewController.m in Sources */,
 				5B68904C1BE309F80089A728 /* PersonCenterTableViewCell.m in Sources */,
-				5B458E401BE4986D00D4CB6A /* PersonOpetionViewController.m in Sources */,
 				5B6890491BE305D70089A728 /* PersonCenterViewController.m in Sources */,
 				5B458E461BE4A83A00D4CB6A /* PersonDataViewController.m in Sources */,
+				5B49B6AF1BE9D86D0091A7EA /* PersonDataChangeViewController.m in Sources */,
 				5B68904F1BE317CD0089A728 /* PersonCenterHeadTableViewCell.m in Sources */,
+				5B49B6B51BE9D8A10091A7EA /* UIColor+Hex.m in Sources */,
+				5B49B6AC1BE9D8600091A7EA /* PersonOrderViewController.m in Sources */,
 				5B4E1E141BDB6C9B00D54B88 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

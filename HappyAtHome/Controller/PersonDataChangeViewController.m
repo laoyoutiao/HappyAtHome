@@ -11,16 +11,35 @@
 @interface PersonDataChangeViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *TitleArray;
+@property (assign, nonatomic) ViewType ViewType;
+
+// ViewTypeArea
 @property (strong, nonatomic) NSArray *AreaArray;
+
+// ViewTypeSex
 @property (strong, nonatomic) NSArray *SexArray;
 
+// ViewTypeSign
+@property (assign, nonatomic) NSInteger wordcount;
+@property (strong, nonatomic) NSTimer   *time1;
 @end
 
 @implementation PersonDataChangeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self SetNavigation];
+    [self SetFixedData];
+    
+//    NSTimer *timer =  [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+    _time1 =  [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_time1 forMode:NSRunLoopCommonModes];
     // Do any additional setup after loading the view.
+}
+
+- (void)tick
+{
+    NSLog(@"1");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,22 +54,49 @@
 
 - (void)SetFixedData
 {
-    _TitleArray = [[NSArray alloc] initWithObjects:@"头像",@"账号",@"性别",@"呢称",@"积分",@"我的地址",@"个性签名",@"地区", nil];
+    _SexArray = @[@"男",@"女"];
+    switch (_ViewType) {
+        case 0:
+            _TitleArray = _AreaArray;
+            break;
+            
+        case 1:
+            _TitleArray = _SexArray;
+            break;
+            
+        default:
+            break;
+    }
 }
 
-- (void)TypeOfTableView:(ViewType *)viewType
+- (void)TypeOfTableView:(ViewType)viewType
 {
-    
+    _ViewType = viewType;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    if (_ViewType == 0 || _ViewType == 1) {
+        return 40;
+    }else
+    {
+        return 100;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_TitleArray count];
+    if (_ViewType == 0 || _ViewType == 1) {
+        return [_TitleArray count];
+    }else
+    {
+        return 1;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,7 +105,17 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
-    cell.textLabel.text = [_TitleArray objectAtIndex:indexPath.row];
+    if (_ViewType == 0 || _ViewType == 1) {
+        cell.textLabel.text = [_TitleArray objectAtIndex:indexPath.row];
+    }else if (_ViewType == 2)
+    {
+        UITextView *textview = [[UITextView alloc] initWithFrame:CGRectMake(0, 10, cell.frame.size.width, 70)];
+        [cell addSubview:textview];
+        tableView.scrollEnabled = NO;
+        UILabel *textlabel = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width - 45, 80, 40, 20)];
+        textlabel.text = @"32";
+        [cell addSubview:textlabel];
+    }
     return cell;
 }
 

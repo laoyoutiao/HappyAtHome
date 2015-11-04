@@ -86,9 +86,20 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     PersonDataChangeViewController *persondatachangeview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonDataChangeViewController"];
-    switch (indexPath.row) {
-        case 5:
+    switch (indexPath.row + indexPath.section * 5) {
+        case 2:
+            [persondatachangeview TypeOfTableView:ViewTypeSex];
+            [self.navigationController pushViewController:persondatachangeview animated:YES];
+            break;
             
+        case 6:
+            [persondatachangeview TypeOfTableView:ViewTypeSign];
+            [self.navigationController pushViewController:persondatachangeview animated:YES];
+            break;
+            
+        case 7:
+            [persondatachangeview TypeOfTableView:ViewTypeArea];
+            [self.navigationController pushViewController:persondatachangeview animated:YES];
             break;
             
         default:

@@ -11,6 +11,8 @@
 #import "PersonCenterHeadTableViewCell.h"
 #import "PersonOpetionViewController.h"
 #import "PersonDataViewController.h"
+#import "PersonOrderViewController.h"
+#import "UIColor+Hex.h"
 
 @interface PersonCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *PersonCenterTableView;
@@ -37,7 +39,7 @@
 
 - (void)SetNavigation
 {
-    self.navigationController.navigationBar.barTintColor = [UIColor purpleColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:0xF37B9F];
     [self.navigationController.navigationBar setTitleTextAttributes:
     @{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
@@ -109,6 +111,10 @@
             [self pushPersonDataView];
             break;
             
+        case 2:
+            [self pushPersonOrderView];
+            break;
+            
         default:
             break;
     }
@@ -118,7 +124,12 @@
 {
     PersonDataViewController *persondataview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonDataViewController"];
     [self.navigationController pushViewController:persondataview animated:YES];
+}
 
+- (void)pushPersonOrderView
+{
+    PersonOrderViewController *personorderview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonOrderViewController"];
+    [self.navigationController pushViewController:personorderview animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

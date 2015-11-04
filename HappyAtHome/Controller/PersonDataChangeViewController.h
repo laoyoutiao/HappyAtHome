@@ -15,5 +15,5 @@ typedef NS_ENUM(NSInteger, ViewType) {
 };
 
 @interface PersonDataChangeViewController : UIViewController
-
+- (void)TypeOfTableView:(ViewType)viewType;
 @end
