@@ -18,9 +18,11 @@ typedef NS_ENUM(NSInteger, TypeBtn)
 
 @interface PersonOrderViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *TitleButtonView;
+@property (weak, nonatomic) IBOutlet UITableView *TableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *TitleButtonViewTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *TableViewTop;
-@property (strong, nonatomic) UIButton *waitBtn;
+@property (strong, nonatomic) NSArray *DataArray;
+@property (strong, nonatomic) UIButton *WaitBtn;
 @property (strong, nonatomic) UIButton *SendBtn;
 @property (strong, nonatomic) UIButton *GiveBtn;
 @end
@@ -31,7 +33,7 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     [super viewDidLoad];
     [self SetNavigation];
     [self SetFixedData];
-    
+    [self SetTitleView];
     // Do any additional setup after loading the view.
 }
 
@@ -41,6 +43,12 @@ typedef NS_ENUM(NSInteger, TypeBtn)
 }
 
 - (void)SetFixedData
+{
+    //默认 发货
+    
+}
+
+- (void)SetTitleView
 {
     _TitleButtonView.layer.masksToBounds = YES;
     _TitleButtonView.layer.cornerRadius = 5;
@@ -58,27 +66,33 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     masklayer.frame = _TitleButtonView.frame;
     [_TitleButtonView.layer addSublayer:masklayer];
     
-    [self SetTypeButtonWithTitle:_waitBtn Type:WaitTypeBtn];
+    _WaitBtn = [[UIButton alloc] init];
+    _SendBtn = [[UIButton alloc] init];
+    _GiveBtn = [[UIButton alloc] init];
+    [self SetTypeButtonWithTitle:_WaitBtn Type:WaitTypeBtn];
     [self SetTypeButtonWithTitle:_SendBtn Type:SendTypeBtn];
     [self SetTypeButtonWithTitle:_GiveBtn Type:GiveTypeBtn];
-    
 }
 
 - (void)SetTypeButtonWithTitle:(UIButton *)btn Type:(TypeBtn)type
 {
     switch (type) {
         case 0:
-            btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, (self.view.frame.size.width - 20) / 3, _TableViewTop.constant - _TitleButtonViewTop.constant)];
+            btn.frame = CGRectMake(0, 0, (self.view.frame.size.width - 20) / 3, _TableViewTop.constant - _TitleButtonViewTop.constant);
+            btn.tag = 100;
+            [btn setTitleColor:[UIColor colorWithHex:0x8ECAFC] forState:UIControlStateNormal];
             [btn setTitle:@"待发货" forState:UIControlStateNormal];
             break;
             
         case 1:
-            btn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 20) / 3, 0, (self.view.frame.size.width - 20) / 3, _TableViewTop.constant - _TitleButtonViewTop.constant)];
+            btn.frame = CGRectMake((self.view.frame.size.width - 20) / 3, 0, (self.view.frame.size.width - 20) / 3, _TableViewTop.constant - _TitleButtonViewTop.constant);
+            btn.tag = 101;
             [btn setTitle:@"派送中" forState:UIControlStateNormal];
             break;
             
         case 2:
-            btn = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width - 20) / 3 * 2, 0, (self.view.frame.size.width - 20) / 3, _TableViewTop.constant - _TitleButtonViewTop.constant)];
+            btn.frame = CGRectMake((self.view.frame.size.width - 20) / 3 * 2, 0, (self.view.frame.size.width - 20) / 3, _TableViewTop.constant - _TitleButtonViewTop.constant);
+            btn.tag = 102;
             [btn setTitle:@"已签收" forState:UIControlStateNormal];
             break;
             
@@ -86,9 +100,38 @@ typedef NS_ENUM(NSInteger, TypeBtn)
             break;
     }
     
-    [_TitleButtonView addSubview:btn];
+    [btn addTarget:self action:@selector(clickTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [_TitleButtonView addSubview:btn];
+}
+
+- (void)clickTitleBtn:(UIButton *)btn
+{
+    [btn setTitleColor:[UIColor colorWithHex:0x8ECAFC] forState:UIControlStateNormal];
+    switch (btn.tag) {
+        case 100:
+            //发货数据
+            [_SendBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [_GiveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            break;
+            
+        case 101:
+            //派送数据
+            [_WaitBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [_GiveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            break;
+            
+        case 102:
+            //完成数据
+            [_SendBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [_WaitBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            break;
+            
+        default:
+            break;
+    }
+    [_TableView reloadData];
 }
 
 - (void)SetNavigation
@@ -96,14 +139,9 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     self.title = @"我的订单";
 }
 
-- (void)SetTitleButton
-{
-    
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [_DataArray count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -122,9 +160,11 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     [cell addSubview:imageview];
     UILabel *ordernumLbl = [[UILabel alloc] initWithFrame:CGRectMake(10 + imageview.frame.size.width, 5, cell.frame.size.width - 10 - imageview.frame.size.width, imageview.frame.size.height / 3)];
     ordernumLbl.text = @"订单编号";
+    ordernumLbl.textColor = [UIColor blueColor];
     [cell addSubview:ordernumLbl];
     UILabel *priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(ordernumLbl.frame.origin.x, 5 + ordernumLbl.frame.origin.y, ordernumLbl.frame.size.width, ordernumLbl.frame.size.height)];
     priceLbl.text = @"价钱";
+    priceLbl.textColor = [UIColor redColor];
     [cell addSubview:ordernumLbl];
     UILabel *timeLbl = [[UILabel alloc] initWithFrame:CGRectMake(ordernumLbl.frame.origin.x, 5 + priceLbl.frame.origin.y, ordernumLbl.frame.size.width, ordernumLbl.frame.size.height)];
     timeLbl.text = @"时间";

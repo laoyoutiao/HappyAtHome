@@ -12,6 +12,7 @@
 #import "PersonOpetionViewController.h"
 #import "PersonDataViewController.h"
 #import "PersonOrderViewController.h"
+#import "PersonCouponsViewController.h"
 #import "UIColor+Hex.h"
 
 @interface PersonCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -115,6 +116,10 @@
             [self pushPersonOrderView];
             break;
             
+        case 3:
+            [self pushPersonCouponsView];
+            break;
+            
         default:
             break;
     }
@@ -130,6 +135,12 @@
 {
     PersonOrderViewController *personorderview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonOrderViewController"];
     [self.navigationController pushViewController:personorderview animated:YES];
+}
+
+- (void)pushPersonCouponsView
+{
+    PersonCouponsViewController *personcouponsview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonCouponsViewController"];
+    [self.navigationController pushViewController:personcouponsview animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
