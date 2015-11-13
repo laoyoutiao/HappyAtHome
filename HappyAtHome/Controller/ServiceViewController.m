@@ -10,6 +10,7 @@
 #import "UIColor+Hex.h"
 #import "ScrollImageItem.h"
 #import "ScrollImageFrame.h"
+#import "ServiceChooseCityViewController.h"
 
 @interface ServiceViewController ()<ScrollImageFrameDelegate>
 @property (weak, nonatomic) IBOutlet UIView *ScrollImageView;
@@ -101,10 +102,16 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    UIBarButtonItem *leftitem = [[UIBarButtonItem alloc] initWithTitle:@"佛山市" style:UIBarButtonItemStylePlain target:self action:nil];
+    UIBarButtonItem *leftitem = [[UIBarButtonItem alloc] initWithTitle:@"佛山市" style:UIBarButtonItemStylePlain target:self action:@selector(ClickChooseCity)];
     leftitem.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = leftitem;
     self.tabBarController.tabBar.tintColor = [UIColor redColor];
+}
+
+- (void)ClickChooseCity
+{
+    ServiceChooseCityViewController *choosecityview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceChooseCityViewController"];
+    [self.navigationController pushViewController:choosecityview animated:YES];
 }
 
 /*

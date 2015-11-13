@@ -13,6 +13,7 @@
 #import "PersonDataViewController.h"
 #import "PersonOrderViewController.h"
 #import "PersonCouponsViewController.h"
+#import "PersonIntegrationViewController.h"
 #import "UIColor+Hex.h"
 
 @interface PersonCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -35,7 +36,7 @@
 - (void)SetFixedData
 {
     _CellTitleArray = [[NSArray alloc] initWithObjects:@"个人资料",@"我的订单",@"我的养老券",@"积分兑换", nil];
-    _CellTitleImageNameArray = [[NSArray alloc] initWithObjects:@"1.png",@"2.png",@"3.png",@"4.png", nil];
+    _CellTitleImageNameArray = [[NSArray alloc] initWithObjects:@"merchant_icon.png",@"my_order.png",@"my_fav.png",@"my_msg.png", nil];
 }
 
 - (void)SetNavigation
@@ -121,6 +122,7 @@
             break;
             
         default:
+            [self pushPersonIntegrationView];
             break;
     }
 }
@@ -141,6 +143,12 @@
 {
     PersonCouponsViewController *personcouponsview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonCouponsViewController"];
     [self.navigationController pushViewController:personcouponsview animated:YES];
+}
+
+- (void)pushPersonIntegrationView
+{
+    PersonIntegrationViewController *personintegrationview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonIntegrationViewController"];
+    [self.navigationController showViewController:personintegrationview sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
