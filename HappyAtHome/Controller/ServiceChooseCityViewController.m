@@ -18,8 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetNavigation];
-    [self SetFixedData];
+    [self setNavigation];
+    [self setFixedData];
     // Do any additional setup after loading the view.
 }
 
@@ -28,12 +28,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)SetFixedData
+- (void)setFixedData
 {
     _OpenArray = [[NSArray alloc] initWithObjects:@"深圳市", @"佛山市", @"广州市", nil];
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];

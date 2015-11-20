@@ -28,8 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetNavigation];
-    [self SetFixedData];
+    [self setNavigation];
+    [self setFixedData];
     
 //    NSTimer *timer =  [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
     _time1 =  [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
@@ -47,12 +47,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.title = @"个人资料";
 }
 
-- (void)SetFixedData
+- (void)setFixedData
 {
     _SexArray = @[@"男",@"女"];
     switch (_ViewType) {
@@ -69,7 +69,7 @@
     }
 }
 
-- (void)TypeOfTableView:(ViewType)viewType
+- (void)typeOfTableView:(ViewType)viewType
 {
     _ViewType = viewType;
 }

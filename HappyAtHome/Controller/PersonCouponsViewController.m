@@ -31,19 +31,19 @@ typedef NS_ENUM(NSInteger, TypeBtn)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetNavigation];
-    [self SetFixedData];
-    [self SetTitleView];
+    [self setNavigation];
+    [self setFixedData];
+    [self setTitleView];
     // Do any additional setup after loading the view.
 }
 
-- (void)SetFixedData
+- (void)setFixedData
 {
     //默认 使用
     
 }
 
-- (void)SetTitleView
+- (void)setTitleView
 {
     _TitleButtonView.layer.masksToBounds = YES;
     _TitleButtonView.layer.cornerRadius = 5;
@@ -64,12 +64,12 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     _UnUseBtn = [[UIButton alloc] init];
     _UseBtn = [[UIButton alloc] init];
     _TimeOutBtn = [[UIButton alloc] init];
-    [self SetTypeButtonWithTitle:_UnUseBtn Type:UnUseTypeBtn];
-    [self SetTypeButtonWithTitle:_UseBtn Type:UseTypeBtn];
-    [self SetTypeButtonWithTitle:_TimeOutBtn Type:TimeOutTypeBtn];
+    [self setTypeButtonWithTitle:_UnUseBtn Type:UnUseTypeBtn];
+    [self setTypeButtonWithTitle:_UseBtn Type:UseTypeBtn];
+    [self setTypeButtonWithTitle:_TimeOutBtn Type:TimeOutTypeBtn];
 }
 
-- (void)SetTypeButtonWithTitle:(UIButton *)btn Type:(TypeBtn)type
+- (void)setTypeButtonWithTitle:(UIButton *)btn Type:(TypeBtn)type
 {
     switch (type) {
         case 0:
@@ -129,7 +129,7 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     [_TableView reloadData];
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.title = @"我的养老券";
 }

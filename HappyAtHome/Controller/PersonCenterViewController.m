@@ -28,18 +28,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self SetFixedData];
-    [self SetNavigation];
+    [self setFixedData];
+    [self setNavigation];
     // Do any additional setup after loading the view.
 }
 
-- (void)SetFixedData
+- (void)setFixedData
 {
     _CellTitleArray = [[NSArray alloc] initWithObjects:@"个人资料",@"我的订单",@"我的养老券",@"积分兑换", nil];
     _CellTitleImageNameArray = [[NSArray alloc] initWithObjects:@"merchant_icon.png",@"my_order.png",@"my_fav.png",@"my_msg.png", nil];
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:0xF37B9F];
     [self.navigationController.navigationBar setTitleTextAttributes:

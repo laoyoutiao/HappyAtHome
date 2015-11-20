@@ -7,19 +7,23 @@
 //
 
 #import "ShopViewController.h"
-#import "UIColor+Hex.h"
 #import "ScrollImageCube.h"
+#import "ShopSortViewController.h"
+#import "MyHeader.h"
 
 @interface ShopViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *ScorllView;
-
+@property (strong, nonatomic) ScrollImageCube *cube;
+@property (strong, nonatomic) NSArray *typeArray;
+@property (strong, nonatomic) NSArray *typeTitleArray;
 @end
 
 @implementation ShopViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetNavigation];
+    [self setNavigation];
+    [self setFixedData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -29,8 +33,16 @@
 
 - (void)setScorll
 {
-    ScrollImageCube *cube = [[ScrollImageCube alloc] initWithFrame:CGRectMake(0, 0, _ScorllView.frame.size.width, _ScorllView.frame.size.height) ImageArray:@[@"service_one.jpg",@"service_two.jpg",@"service_three.jpg",@"service_one.jpg",@"service_two.jpg"]];
-    [_ScorllView addSubview:cube];
+    if (!_cube) {
+        _cube = [[ScrollImageCube alloc] initWithFrame:CGRectMake(0, 0, _ScorllView.frame.size.width, _ScorllView.frame.size.height) ImageArray:@[@"service_one.jpg",@"service_two.jpg",@"service_three.jpg",@"service_one.jpg",@"service_two.jpg"]];
+        [_ScorllView addSubview:_cube];
+    }
+}
+
+- (void)setFixedData
+{
+    _typeArray = [NSArray arrayWithObjects:@"local_sort_main_movie.png",@"local_navi_tuan.png",@"local_sort_main_park.png",@"local_sort_main_food.png", nil];
+    _typeTitleArray = [NSArray arrayWithObjects:@"商品分类",@"购物车",@"我的收藏",@"充值中心", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,13 +50,116 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.title = @"商城";
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:0xF37B9F];
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.tabBarController.tabBar.tintColor = [UIColor redColor];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return (ScreenSize.width - 80) / 4 + 65;
+    }else
+    {
+        return 20;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, ([UIScreen mainScreen].bounds.size.width - 80) / 4 + 80)];
+        for (int i = 0; i < 4; i ++) {
+            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10 + i * (20 + (ScreenSize.width - 80) / 4), 10, (ScreenSize.width - 80) / 4, (ScreenSize.width - 80) / 4)];
+            [button setImage:[UIImage imageNamed:[_typeArray objectAtIndex:i]] forState:UIControlStateNormal];
+            button.layer.masksToBounds = YES;
+            button.layer.cornerRadius = button.frame.size.width / 2;
+            button.tag = TagButton(i);
+            [button addTarget:self action:@selector(clickTypeButton:) forControlEvents:UIControlEventTouchUpInside];
+            [view addSubview:button];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(button.frame.origin.x, 15 + button.frame.size.height, button.frame.size.width, 20)];
+            label.text = [_typeTitleArray objectAtIndex:i];
+            label.font = [UIFont systemFontOfSize:13];
+            label.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:label];
+        }
+        
+        UIView *titleview = [[UIView alloc] initWithFrame:CGRectMake(0, (ScreenSize.width - 80) / 4 + 47, ScreenSize.width, 13)];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 13, 13)];
+        imageview.image = [UIImage imageNamed:@"home_shopping_icon.png"];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 100, 13)];
+        label.text = [_typeTitleArray objectAtIndex:section];
+        label.font = [UIFont systemFontOfSize:11];
+        [titleview addSubview:imageview];
+        [titleview addSubview:label];
+        [view addSubview:titleview];
+        
+        return view;
+    }else
+    {
+        UIView *titleview = [[UIView alloc] initWithFrame:CGRectMake(0, 3.5, ScreenSize.width, 13)];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 13, 13)];
+        imageview.image = [UIImage imageNamed:@"home_shopping_icon.png"];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 100, 13)];
+        label.text = [_typeTitleArray objectAtIndex:section];
+        label.font = [UIFont systemFontOfSize:11];
+        [titleview addSubview:imageview];
+        [titleview addSubview:label];
+        return titleview;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 113;
+}
+
+- (void)clickTypeButton:(UIButton *)btn
+{
+    switch (btn.tag) {
+        case TagButton(0):
+            [self pushShopSortView];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)pushShopSortView
+{
+    ShopSortViewController *shopsortview = [self.storyboard instantiateViewControllerWithIdentifier:@"ShopSortViewController"];
+    [self.navigationController showViewController:shopsortview sender:nil];
 }
 
 /*

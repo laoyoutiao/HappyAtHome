@@ -19,8 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetFixedData];
-    [self SetNavigation];
+    [self setFixedData];
+    [self setNavigation];
     // Do any additional setup after loading the view.
 }
 
@@ -29,12 +29,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)SetFixedData
+- (void)setFixedData
 {
     _TitleArray = [[NSArray alloc] initWithObjects:@"接收通知",@"服务范围",@"投诉与建议",@"版本",@"关于我们", nil];
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.title = @"设置";
 }

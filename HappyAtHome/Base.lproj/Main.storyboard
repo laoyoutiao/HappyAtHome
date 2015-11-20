@@ -24,7 +24,9 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="967-dW-z6s"/>
+                                    <constraint firstAttribute="height" constant="150" id="967-dW-z6s">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="110"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -64,13 +66,13 @@
                                 <exclude reference="FAH-yo-e5r"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="eRp-Kn-xJ7"/>
                                 <exclude reference="E4A-f1-iFX"/>
                                 <exclude reference="EM0-Sj-uFN"/>
                                 <exclude reference="uI5-yA-9lj"/>
                                 <exclude reference="Gg1-5i-BNw"/>
                                 <exclude reference="Mkt-Ts-Vcc"/>
                                 <exclude reference="mX6-X8-UiU"/>
-                                <exclude reference="eRp-Kn-xJ7"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -79,13 +81,13 @@
                                 <include reference="FAH-yo-e5r"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="eRp-Kn-xJ7"/>
                                 <include reference="E4A-f1-iFX"/>
                                 <include reference="EM0-Sj-uFN"/>
                                 <include reference="uI5-yA-9lj"/>
                                 <include reference="Gg1-5i-BNw"/>
                                 <include reference="Mkt-Ts-Vcc"/>
                                 <include reference="mX6-X8-UiU"/>
-                                <include reference="eRp-Kn-xJ7"/>
                             </mask>
                         </variation>
                     </view>
@@ -97,6 +99,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9o-VK-k1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="762" y="-333.75"/>
+        </scene>
+        <!--Shop Sort View Controller-->
+        <scene sceneID="Tqm-Tg-Q0g">
+            <objects>
+                <viewController storyboardIdentifier="ShopSortViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gYt-3h-5E3" customClass="ShopSortViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vGp-l8-I7x"/>
+                        <viewControllerLayoutGuide type="bottom" id="nsf-d3-l5h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A3i-m8-XBC">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGI-69-JaK">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hGI-69-JaK" secondAttribute="trailing" id="NkK-Zy-v37"/>
+                            <constraint firstItem="hGI-69-JaK" firstAttribute="top" secondItem="vGp-l8-I7x" secondAttribute="bottom" id="cuv-iv-LbI"/>
+                            <constraint firstItem="nsf-d3-l5h" firstAttribute="top" secondItem="hGI-69-JaK" secondAttribute="bottom" id="gSJ-Gi-7Uk"/>
+                            <constraint firstItem="hGI-69-JaK" firstAttribute="leading" secondItem="A3i-m8-XBC" secondAttribute="leading" id="uoq-pt-rXj"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="hGI-69-JaK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="NkK-Zy-v37"/>
+                                <exclude reference="cuv-iv-LbI"/>
+                                <exclude reference="uoq-pt-rXj"/>
+                                <exclude reference="gSJ-Gi-7Uk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="hGI-69-JaK"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="NkK-Zy-v37"/>
+                                <include reference="cuv-iv-LbI"/>
+                                <include reference="uoq-pt-rXj"/>
+                                <include reference="gSJ-Gi-7Uk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iH6-Td-vYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1492.5" y="-333.75"/>
         </scene>
         <!--活动-->
         <scene sceneID="sbl-hR-PQx">
@@ -510,7 +565,7 @@
         <!--Activity Detail View Controller-->
         <scene sceneID="nR9-AW-QuQ">
             <objects>
-                <viewController storyboardIdentifier="ActivityDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="taf-Sj-Gb8" customClass="ActivityDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityDetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="taf-Sj-Gb8" customClass="ActivityDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vGB-CR-JUi"/>
                         <viewControllerLayoutGuide type="bottom" id="LFx-4I-4aK"/>
@@ -625,7 +680,7 @@
                                                     </mask>
                                                 </variation>
                                                 <connections>
-                                                    <action selector="ClickBookActivity:" destination="taf-Sj-Gb8" eventType="touchUpInside" id="FYf-uV-Ynt"/>
+                                                    <action selector="clickBookActivity:" destination="taf-Sj-Gb8" eventType="touchUpInside" id="eT5-od-juF"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人数" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLg-54-nNV">

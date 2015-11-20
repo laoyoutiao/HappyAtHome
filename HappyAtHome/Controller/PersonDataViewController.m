@@ -17,8 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetFixedData];
-    [self SetNavigation];
+    [self setFixedData];
+    [self setNavigation];
     // Do any additional setup after loading the view.
 }
 
@@ -27,12 +27,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)SetFixedData
+- (void)setFixedData
 {
     _TitleArray = [[NSArray alloc] initWithObjects:@"头像",@"账号",@"性别",@"呢称",@"积分",@"我的地址",@"个性签名",@"地区", nil];
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.title = @"个人资料";
 }
@@ -88,17 +88,17 @@
     PersonDataChangeViewController *persondatachangeview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonDataChangeViewController"];
     switch (indexPath.row + indexPath.section * 5) {
         case 2:
-            [persondatachangeview TypeOfTableView:ViewTypeSex];
+            [persondatachangeview typeOfTableView:ViewTypeSex];
             [self.navigationController pushViewController:persondatachangeview animated:YES];
             break;
             
         case 6:
-            [persondatachangeview TypeOfTableView:ViewTypeSign];
+            [persondatachangeview typeOfTableView:ViewTypeSign];
             [self.navigationController pushViewController:persondatachangeview animated:YES];
             break;
             
         case 7:
-            [persondatachangeview TypeOfTableView:ViewTypeArea];
+            [persondatachangeview typeOfTableView:ViewTypeArea];
             [self.navigationController pushViewController:persondatachangeview animated:YES];
             break;
             

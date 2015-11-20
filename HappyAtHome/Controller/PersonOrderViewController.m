@@ -31,9 +31,9 @@ typedef NS_ENUM(NSInteger, TypeBtn)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetNavigation];
-    [self SetFixedData];
-    [self SetTitleView];
+    [self setNavigation];
+    [self setFixedData];
+    [self setTitleView];
     // Do any additional setup after loading the view.
 }
 
@@ -42,13 +42,13 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     // Dispose of any resources that can be recreated.
 }
 
-- (void)SetFixedData
+- (void)setFixedData
 {
     //默认 发货
     
 }
 
-- (void)SetTitleView
+- (void)setTitleView
 {
     _TitleButtonView.layer.masksToBounds = YES;
     _TitleButtonView.layer.cornerRadius = 5;
@@ -69,12 +69,12 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     _WaitBtn = [[UIButton alloc] init];
     _SendBtn = [[UIButton alloc] init];
     _GiveBtn = [[UIButton alloc] init];
-    [self SetTypeButtonWithTitle:_WaitBtn Type:WaitTypeBtn];
-    [self SetTypeButtonWithTitle:_SendBtn Type:SendTypeBtn];
-    [self SetTypeButtonWithTitle:_GiveBtn Type:GiveTypeBtn];
+    [self setTypeButtonWithTitle:_WaitBtn Type:WaitTypeBtn];
+    [self setTypeButtonWithTitle:_SendBtn Type:SendTypeBtn];
+    [self setTypeButtonWithTitle:_GiveBtn Type:GiveTypeBtn];
 }
 
-- (void)SetTypeButtonWithTitle:(UIButton *)btn Type:(TypeBtn)type
+- (void)setTypeButtonWithTitle:(UIButton *)btn Type:(TypeBtn)type
 {
     switch (type) {
         case 0:
@@ -134,7 +134,7 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     [_TableView reloadData];
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.title = @"我的订单";
 }

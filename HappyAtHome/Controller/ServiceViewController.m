@@ -25,9 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetNavigation];
-    [self SetFixedData];
-    [self SetHousekeeper];
+    [self setNavigation];
+    [self setFixedData];
+    [self setHousekeeper];
     // Do any additional setup after loading the view.
 }
 
@@ -38,15 +38,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self SetScrollImageView];
+    [self setScrollImageView];
 }
 
-- (void)SetFixedData
+- (void)setFixedData
 {
     _ScrollImageArray = [[NSArray alloc] initWithObjects:@"service_one.jpg", @"service_two.jpg", @"service_three.jpg", nil];
 }
 
-- (void)SetHousekeeper
+- (void)setHousekeeper
 {
     _LiveBtn.layer.masksToBounds = YES;
     _LiveBtn.layer.cornerRadius = 5;
@@ -61,7 +61,7 @@
     _EmergencyBtn.backgroundColor = [UIColor colorWithHex:0xB09DDC];
 }
 
-- (void)SetScrollImageView
+- (void)setScrollImageView
 {
         NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ScrollImageArray count]+2];
         if ([_ScrollImageArray count] > 1)
@@ -96,19 +96,19 @@
         [_ScrollImageView addSubview:bannerView];
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:0xF37B9F];
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    UIBarButtonItem *leftitem = [[UIBarButtonItem alloc] initWithTitle:@"佛山市" style:UIBarButtonItemStylePlain target:self action:@selector(ClickChooseCity)];
+    UIBarButtonItem *leftitem = [[UIBarButtonItem alloc] initWithTitle:@"佛山市" style:UIBarButtonItemStylePlain target:self action:@selector(clickChooseCity)];
     leftitem.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = leftitem;
     self.tabBarController.tabBar.tintColor = [UIColor redColor];
 }
 
-- (void)ClickChooseCity
+- (void)clickChooseCity
 {
     ServiceChooseCityViewController *choosecityview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceChooseCityViewController"];
     [self.navigationController pushViewController:choosecityview animated:YES];

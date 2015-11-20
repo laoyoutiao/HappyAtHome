@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetNavigation];
+    [self setNavigation];
     // Do any additional setup after loading the view.
 }
 
@@ -28,7 +28,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.title = @"活动";
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:0xF37B9F];

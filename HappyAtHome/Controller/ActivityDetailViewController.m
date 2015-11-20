@@ -25,7 +25,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)ClickBookActivity:(id)sender {
+- (IBAction)clickBookActivity:(id)sender {
     ActivityBookViewController *activitybookview = [self.storyboard instantiateViewControllerWithIdentifier:@"ActivityBookViewController"];
     [self.navigationController showViewController:activitybookview sender:nil];
 }

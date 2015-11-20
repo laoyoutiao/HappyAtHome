@@ -18,8 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self SetNavigation];
-    [self SetTableView];
+    [self setNavigation];
+    [self setTableView];
     // Do any additional setup after loading the view.
 }
 
@@ -28,12 +28,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)SetNavigation
+- (void)setNavigation
 {
     self.title = @"积分兑换";
 }
 
-- (void)SetTableView
+- (void)setTableView
 {
     _TableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _TableView.scrollEnabled = NO;
