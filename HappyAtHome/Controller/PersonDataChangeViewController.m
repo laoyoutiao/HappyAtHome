@@ -21,7 +21,6 @@
 
 // ViewTypeSign
 @property (assign, nonatomic) NSInteger wordcount;
-@property (strong, nonatomic) NSTimer   *time1;
 @end
 
 @implementation PersonDataChangeViewController
@@ -30,16 +29,7 @@
     [super viewDidLoad];
     [self setNavigation];
     [self setFixedData];
-    
-//    NSTimer *timer =  [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-    _time1 =  [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(tick) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:_time1 forMode:NSRunLoopCommonModes];
     // Do any additional setup after loading the view.
-}
-
-- (void)tick
-{
-    NSLog(@"1");
 }
 
 - (void)didReceiveMemoryWarning {

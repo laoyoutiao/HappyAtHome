@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityTableViewCell.h"
 
 @interface ActivityDetailViewController : UIViewController
 
-//- (void)getDatail:(NSArray *)array;
+- (void)getDetailMessage:(ActivityTableViewCell *)cell;
 
 @end

@@ -9,7 +9,7 @@
 #import "ActivityTableViewCell.h"
 
 @interface ActivityTableViewCell()
-@property (weak, nonatomic) IBOutlet UIImageView *TitleImageView;
+
 
 @end
 
@@ -17,7 +17,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    _TitleImageView.backgroundColor = [UIColor orangeColor];
+//    _TitleImageView.backgroundColor = [UIColor orangeColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

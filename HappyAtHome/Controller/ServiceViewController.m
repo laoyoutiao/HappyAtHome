@@ -11,6 +11,8 @@
 #import "ScrollImageItem.h"
 #import "ScrollImageFrame.h"
 #import "ServiceChooseCityViewController.h"
+#import "ServerHeader.h"
+#import "ServiceImgModel.h"
 
 @interface ServiceViewController ()<ScrollImageFrameDelegate>
 @property (weak, nonatomic) IBOutlet UIView *ScrollImageView;
@@ -38,12 +40,25 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self setScrollImageView];
+//    [self setScrollImageView];
 }
 
 - (void)setFixedData
 {
-    _ScrollImageArray = [[NSArray alloc] initWithObjects:@"service_one.jpg", @"service_two.jpg", @"service_three.jpg", nil];
+    [ServerService serverImgPostBlock:^(NSArray *imgarray) {
+        NSArray *imgmodelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
+        NSMutableArray *scrollimagearray = [[NSMutableArray alloc] init];
+        for (int i = 0;i < [imgmodelArray count];i ++)
+        {
+            ServiceImgModel *imgmodel = [imgmodelArray objectAtIndex:i];
+            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",imgmodel.image]]];
+            UIImage *image = [UIImage imageWithData:imagedata];
+            [scrollimagearray addObject:image];
+        }
+        _ScrollImageArray = scrollimagearray;
+        [self setScrollImageView];
+    }];
+    
 }
 
 - (void)setHousekeeper
@@ -66,20 +81,20 @@
         NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ScrollImageArray count]+2];
         if ([_ScrollImageArray count] > 1)
         {
-            NSString *tempName = [_ScrollImageArray objectAtIndex:[_ScrollImageArray count]-1];
+            UIImage *tempName = [_ScrollImageArray objectAtIndex:[_ScrollImageArray count]-1];
             ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:tempName tag:-1];
             [itemArray addObject:item];
         }
         for (int i = 0; i < [_ScrollImageArray count]; i++)
         {
-            NSString *tempName = [_ScrollImageArray objectAtIndex:i];
+            UIImage *tempName = [_ScrollImageArray objectAtIndex:i];
             ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:tempName tag:i];
             [itemArray addObject:item];
         }
         //添加第一张图 用于循环
         if ([_ScrollImageArray count] >1)
         {
-            NSString *tempName = [_ScrollImageArray objectAtIndex:0];
+            UIImage *tempName = [_ScrollImageArray objectAtIndex:0];
             ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:tempName tag:[_ScrollImageArray count]];
             [itemArray addObject:item];
         }
@@ -94,6 +109,11 @@
         bannerView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleWidth;
         [bannerView scrollToIndex:0];
         [_ScrollImageView addSubview:bannerView];
+}
+
+- (void)foucusImageFrame:(ScrollImageFrame *)imageFrame didSelectItem:(ScrollImageItem *)item
+{
+    NSLog(@"%ld",item.tag);
 }
 
 - (void)setNavigation

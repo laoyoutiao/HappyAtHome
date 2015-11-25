@@ -31,4 +31,14 @@
     }];
 }
 
++ (void)versionPostVersion:(NSString *)version Block:(versionBlock)block
+{
+    NSDictionary *paramdict = @{@"operate":operateApk, @"version":version};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
 @end

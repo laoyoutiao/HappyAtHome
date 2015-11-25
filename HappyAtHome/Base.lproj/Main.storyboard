@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4nm-8f-NuH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="A7v-3s-fr3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -236,7 +236,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="110" y="60" width="40" height="20"/>
+                                                        <rect key="frame" x="110" y="60" width="55" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="3KG-2B-n1Q"/>
                                                             <exclude reference="7TC-N6-tay"/>
@@ -274,9 +274,11 @@
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="4Z2-Yc-N0U"/>
-                                                        <constraint firstAttribute="width" constant="60" id="WlT-bX-wb7"/>
+                                                        <constraint firstAttribute="width" constant="60" id="WlT-bX-wb7">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                                                        </constraint>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
@@ -286,7 +288,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="170" y="60" width="60" height="20"/>
+                                                        <rect key="frame" x="185" y="60" width="50" height="20"/>
                                                         <mask key="constraints">
                                                             <include reference="4Z2-Yc-N0U"/>
                                                             <include reference="WlT-bX-wb7"/>
@@ -339,7 +341,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="155" y="65" width="10" height="10"/>
+                                                        <rect key="frame" x="170" y="65" width="10" height="10"/>
                                                         <mask key="constraints">
                                                             <exclude reference="6ki-VH-MAr"/>
                                                             <include reference="Q7t-I9-TQO"/>
@@ -405,14 +407,16 @@
                                                 <constraint firstAttribute="bottom" secondItem="T2p-I0-sOs" secondAttribute="bottom" constant="10" id="5Te-WE-6s1">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="15"/>
                                                 </constraint>
-                                                <constraint firstItem="BpM-sh-nEG" firstAttribute="leading" secondItem="ako-nx-Mlb" secondAttribute="trailing" constant="5" id="77e-zQ-nv9"/>
+                                                <constraint firstItem="BpM-sh-nEG" firstAttribute="leading" secondItem="ako-nx-Mlb" secondAttribute="trailing" constant="5" id="77e-zQ-nv9">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="7"/>
+                                                </constraint>
                                                 <constraint firstItem="fOd-TB-0L1" firstAttribute="leading" secondItem="T2p-I0-sOs" secondAttribute="trailing" constant="5" id="B6z-Du-f0e"/>
                                                 <constraint firstAttribute="trailing" secondItem="BpM-sh-nEG" secondAttribute="trailing" constant="10" id="EM3-mM-hNk"/>
                                                 <constraint firstItem="z2y-wt-cTo" firstAttribute="leading" secondItem="Y7U-9R-cWA" secondAttribute="leading" id="ES6-Ad-ayl">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="3"/>
                                                 </constraint>
                                                 <constraint firstItem="ako-nx-Mlb" firstAttribute="leading" secondItem="z2y-wt-cTo" secondAttribute="trailing" constant="5" id="Faa-7V-5Nc">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="12"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                                                 </constraint>
                                                 <constraint firstAttribute="bottom" secondItem="z2y-wt-cTo" secondAttribute="bottom" id="GEg-Hm-acY">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="3"/>
@@ -425,7 +429,9 @@
                                                 </constraint>
                                                 <constraint firstItem="xrw-9N-qSd" firstAttribute="leading" secondItem="z2y-wt-cTo" secondAttribute="trailing" constant="5" id="XDE-KZ-hrF"/>
                                                 <constraint firstItem="vdU-Xj-cP0" firstAttribute="leading" secondItem="xrw-9N-qSd" secondAttribute="trailing" constant="5" id="bhV-Ef-tWY"/>
-                                                <constraint firstAttribute="trailing" secondItem="fOd-TB-0L1" secondAttribute="trailing" constant="10" id="h7o-9k-1XB"/>
+                                                <constraint firstAttribute="trailing" secondItem="fOd-TB-0L1" secondAttribute="trailing" constant="10" id="h7o-9k-1XB">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                                                </constraint>
                                                 <constraint firstItem="vdU-Xj-cP0" firstAttribute="top" secondItem="Y7U-9R-cWA" secondAttribute="top" constant="5" id="hlb-P9-0qW"/>
                                                 <constraint firstAttribute="bottom" secondItem="2BN-La-pa9" secondAttribute="bottom" constant="15" id="iCl-yd-oka">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="15"/>
@@ -520,6 +526,11 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
+                                            <outlet property="ActivityNameLbl" destination="xrw-9N-qSd" id="wUU-sN-mhI"/>
+                                            <outlet property="AddressLbl" destination="BpM-sh-nEG" id="Gnj-P8-Tzt"/>
+                                            <outlet property="BookLbl" destination="vdU-Xj-cP0" id="IS2-zH-76C"/>
+                                            <outlet property="CountLbl" destination="fOd-TB-0L1" id="q2m-dL-8R9"/>
+                                            <outlet property="EndTimeLbl" destination="WF6-BG-aSY" id="IKu-W2-SQM"/>
                                             <outlet property="TitleImageView" destination="z2y-wt-cTo" id="txq-F3-yN8"/>
                                         </connections>
                                     </tableViewCell>
@@ -562,6 +573,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="活动" id="Rm7-xh-uya"/>
+                    <connections>
+                        <outlet property="TableView" destination="Zuc-GL-Ekc" id="zSE-qZ-S1Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYL-dC-FHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

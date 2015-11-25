@@ -9,7 +9,19 @@
 #import "ScrollImageItem.h"
 
 @implementation ScrollImageItem
-- (id)initWithTitle:(NSString *)title image:(NSString *)image tag:(NSInteger)tag
+//- (id)initWithTitle:(NSString *)title image:(NSString *)image tag:(NSInteger)tag
+//{
+//    self = [super init];
+//    if (self) {
+//        self.title = title;
+//        self.image = image;
+//        self.tag = tag;
+//    }
+//    
+//    return self;
+//}
+
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image tag:(NSInteger)tag
 {
     self = [super init];
     if (self) {

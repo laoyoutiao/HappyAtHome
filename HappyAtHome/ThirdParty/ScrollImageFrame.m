@@ -118,8 +118,9 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 4.0; //switch interval time
         //加载图片
 
         ScrollImageItem *item = imageItems[i];
-        NSString *name = item.image;
-        imageView.image = [UIImage imageNamed:name];
+//        NSString *name = item.image;
+//        imageView.image = [UIImage imageNamed:name];
+        imageView.image = item.image;
 //        [imageView sd_setImageWithURL:[NSURL URLWithString:name] placeholderImage:nil];
        [_scrollView addSubview:imageView];
     }
@@ -154,7 +155,7 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 4.0; //switch interval time
 
 - (void)singleTapGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 {
-    NSLog(@"%s", __FUNCTION__);
+//    NSLog(@"%s", __FUNCTION__);
     NSArray *imageItems = objc_getAssociatedObject(self, (__bridge const void *)FOCUS_ITEM_ASS_KEY);
     int page = (int)(_scrollView.contentOffset.x / _scrollView.frame.size.width);
     if (page > -1 && page < imageItems.count) {

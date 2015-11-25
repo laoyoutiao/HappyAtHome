@@ -6,7 +6,7 @@
 //  Copyright © 2015年 yuwenhui. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "ServerHeader.h"
 
 typedef NS_ENUM(NSInteger, PayType)

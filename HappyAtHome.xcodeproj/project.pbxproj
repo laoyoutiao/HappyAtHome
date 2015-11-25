@@ -36,6 +36,10 @@
 		5B4E1E381BDB6C9C00D54B88 /* HappyAtHomeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E371BDB6C9C00D54B88 /* HappyAtHomeUITests.m */; };
 		5B59F0E31C02A7DB00E2AF63 /* ServerOtherFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59F0E21C02A7DB00E2AF63 /* ServerOtherFeatures.m */; settings = {ASSET_TAGS = (); }; };
 		5B59F0E61C02AF9400E2AF63 /* ServerShopping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59F0E51C02AF9400E2AF63 /* ServerShopping.m */; settings = {ASSET_TAGS = (); }; };
+		5B5D49A41C03EFB700BEE31F /* ServerService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D49A31C03EFB700BEE31F /* ServerService.m */; settings = {ASSET_TAGS = (); }; };
+		5B5D49A71C04079B00BEE31F /* ServiceImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D49A61C04079B00BEE31F /* ServiceImgModel.m */; settings = {ASSET_TAGS = (); }; };
+		5B5D49AA1C043C5900BEE31F /* ServerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D49A91C043C5900BEE31F /* ServerActivity.m */; settings = {ASSET_TAGS = (); }; };
+		5B5D49AD1C044EEC00BEE31F /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5D49AC1C044EEC00BEE31F /* ActivityModel.m */; settings = {ASSET_TAGS = (); }; };
 		5B6406E81BF9898D00539A99 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6406E71BF9898D00539A99 /* ShopViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B6890491BE305D70089A728 /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6890481BE305D70089A728 /* PersonCenterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B68904C1BE309F80089A728 /* PersonCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68904B1BE309F80089A728 /* PersonCenterTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -164,6 +168,15 @@
 		5B59F0E21C02A7DB00E2AF63 /* ServerOtherFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerOtherFeatures.m; path = Server/ServerOtherFeatures.m; sourceTree = "<group>"; };
 		5B59F0E41C02AF9400E2AF63 /* ServerShopping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerShopping.h; path = Server/ServerShopping.h; sourceTree = "<group>"; };
 		5B59F0E51C02AF9400E2AF63 /* ServerShopping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerShopping.m; path = Server/ServerShopping.m; sourceTree = "<group>"; };
+		5B5D49A21C03EFB700BEE31F /* ServerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerService.h; path = Controller/ServerService.h; sourceTree = "<group>"; };
+		5B5D49A31C03EFB700BEE31F /* ServerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerService.m; path = Controller/ServerService.m; sourceTree = "<group>"; };
+		5B5D49A51C04079B00BEE31F /* ServiceImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceImgModel.h; path = Model/ServiceImgModel.h; sourceTree = "<group>"; };
+		5B5D49A61C04079B00BEE31F /* ServiceImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceImgModel.m; path = Model/ServiceImgModel.m; sourceTree = "<group>"; };
+		5B5D49A81C043C5900BEE31F /* ServerActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerActivity.h; path = Server/ServerActivity.h; sourceTree = "<group>"; };
+		5B5D49A91C043C5900BEE31F /* ServerActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerActivity.m; path = Server/ServerActivity.m; sourceTree = "<group>"; };
+		5B5D49AB1C044EEC00BEE31F /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityModel.h; path = Model/ActivityModel.h; sourceTree = "<group>"; };
+		5B5D49AC1C044EEC00BEE31F /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityModel.m; path = Model/ActivityModel.m; sourceTree = "<group>"; };
+		5B5D49AE1C0453D500BEE31F /* ModelHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ModelHeader.h; path = Model/ModelHeader.h; sourceTree = "<group>"; };
 		5B6406E61BF9898D00539A99 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopViewController.h; path = Controller/ShopViewController.h; sourceTree = "<group>"; };
 		5B6406E71BF9898D00539A99 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopViewController.m; path = Controller/ShopViewController.m; sourceTree = "<group>"; };
 		5B6890471BE305D70089A728 /* PersonCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonCenterViewController.h; path = Controller/PersonCenterViewController.h; sourceTree = "<group>"; };
@@ -536,6 +549,11 @@
 		5B6890451BE301850089A728 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5B5D49AE1C0453D500BEE31F /* ModelHeader.h */,
+				5B5D49A51C04079B00BEE31F /* ServiceImgModel.h */,
+				5B5D49A61C04079B00BEE31F /* ServiceImgModel.m */,
+				5B5D49AB1C044EEC00BEE31F /* ActivityModel.h */,
+				5B5D49AC1C044EEC00BEE31F /* ActivityModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -576,6 +594,10 @@
 				5B59F0E21C02A7DB00E2AF63 /* ServerOtherFeatures.m */,
 				5B59F0E41C02AF9400E2AF63 /* ServerShopping.h */,
 				5B59F0E51C02AF9400E2AF63 /* ServerShopping.m */,
+				5B5D49A21C03EFB700BEE31F /* ServerService.h */,
+				5B5D49A31C03EFB700BEE31F /* ServerService.m */,
+				5B5D49A81C043C5900BEE31F /* ServerActivity.h */,
+				5B5D49A91C043C5900BEE31F /* ServerActivity.m */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -852,6 +874,7 @@
 				5B88F27A1BF32E0400005E0E /* ServiceChooseCityViewController.m in Sources */,
 				5B88F2771BF32DD800005E0E /* PersonIntegrationViewController.m in Sources */,
 				5B6FAC421C00024000EF72CD /* AFURLConnectionOperation.m in Sources */,
+				5B5D49A71C04079B00BEE31F /* ServiceImgModel.m in Sources */,
 				5B45C2171BFAB6640096AA9B /* ScrollImageCube.m in Sources */,
 				5B408EE01BF5B7A400FB8804 /* ActivityDetailViewController.m in Sources */,
 				5B458E3D1BE4982900D4CB6A /* PersonOpetionTableViewCell.m in Sources */,
@@ -865,6 +888,7 @@
 				5B6FAC451C00024000EF72CD /* AFURLSessionManager.m in Sources */,
 				5B6FAC571C001E6300EF72CD /* ServerAFNetworking.m in Sources */,
 				5B4DF6FD1BEB416400F7F677 /* ServiceViewController.m in Sources */,
+				5B5D49AA1C043C5900BEE31F /* ServerActivity.m in Sources */,
 				5B59F0E61C02AF9400E2AF63 /* ServerShopping.m in Sources */,
 				5B59F0E31C02A7DB00E2AF63 /* ServerOtherFeatures.m in Sources */,
 				5B6FAC541C000E3400EF72CD /* NSDictionary+Safe.m in Sources */,
@@ -875,6 +899,7 @@
 				5B4C0BCB1BFD68A200F0DF6A /* ActivityBookViewController.m in Sources */,
 				5B68904F1BE317CD0089A728 /* PersonCenterHeadTableViewCell.m in Sources */,
 				5B49B6B51BE9D8A10091A7EA /* UIColor+Hex.m in Sources */,
+				5B5D49AD1C044EEC00BEE31F /* ActivityModel.m in Sources */,
 				5B6FAC601C0042BC00EF72CD /* RegisterViewController.m in Sources */,
 				5B6FAC641C005B4E00EF72CD /* ServerUserInfo.m in Sources */,
 				5B6FAC411C00024000EF72CD /* AFSecurityPolicy.m in Sources */,
@@ -884,6 +909,7 @@
 				5BB0A5FD1BFDA1F700865DD2 /* ShopSortViewController.m in Sources */,
 				5B49B6AC1BE9D8600091A7EA /* PersonOrderViewController.m in Sources */,
 				5B6FAC3D1C00024000EF72CD /* AFHTTPRequestOperation.m in Sources */,
+				5B5D49A41C03EFB700BEE31F /* ServerService.m in Sources */,
 				5B0C1C841BEC830800432430 /* ScrollImageFrame.m in Sources */,
 				5B6FAC441C00024000EF72CD /* AFURLResponseSerialization.m in Sources */,
 				5B4E1E141BDB6C9B00D54B88 /* main.m in Sources */,

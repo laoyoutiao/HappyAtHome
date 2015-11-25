@@ -10,8 +10,18 @@
 #import "ActivityTableViewCell.h"
 #import "ActivityDetailViewController.h"
 #import "UIColor+Hex.h"
+#import "ServerHeader.h"
+#import "ModelHeader.h"
 
 @interface ActivityViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *TableView;
+
+@property (nonatomic, strong) NSArray *activityImgArray;
+@property (nonatomic, strong) NSArray *activityAddressArray;
+@property (nonatomic, strong) NSArray *activityEndTimeArray;
+@property (nonatomic, strong) NSArray *activityCountArray;
+@property (nonatomic, strong) NSArray *activityNameArray;
 
 @end
 
@@ -20,6 +30,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigation];
+    [ServerActivity activityPostUserId:nil Starttime:nil Orderby:nil Block:^(NSArray *activityarray) {
+        NSLog(@"%@",activityarray);
+        NSArray *activitymodelarray = [ActivityModel instanceArrayDictFromDict:activityarray];
+        NSMutableArray *imgarray = [[NSMutableArray alloc] init];
+        NSMutableArray *addressarray = [[NSMutableArray alloc] init];
+        NSMutableArray *endtimearray = [[NSMutableArray alloc] init];
+        NSMutableArray *countarray = [[NSMutableArray alloc] init];
+        NSMutableArray *namearray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < [activitymodelarray count]; i ++) {
+            ActivityModel *model = [activitymodelarray objectAtIndex:i];
+            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
+            UIImage *image = [UIImage imageWithData:imagedata];
+            [imgarray addObject:image];
+            [addressarray addObject:model.address];
+            [endtimearray addObject:model.endtime];
+            [countarray addObject:[NSString stringWithFormat:@"%ld", model.collect]];
+            [namearray addObject:model.activityname];
+        }
+        _activityImgArray = imgarray;
+        _activityAddressArray = addressarray;
+        _activityEndTimeArray = endtimearray;
+        _activityCountArray = countarray;
+        _activityNameArray = namearray;
+        [_TableView reloadData];
+    }];
     // Do any additional setup after loading the view.
 }
 
@@ -44,7 +79,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return [_activityNameArray count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -101,13 +136,21 @@
 {
     ActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityTableView"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.ActivityNameLbl.text = [_activityNameArray objectAtIndex:indexPath.row];
+    cell.AddressLbl.text = [_activityAddressArray objectAtIndex:indexPath.row];
+    cell.EndTimeLbl.text = [_activityEndTimeArray objectAtIndex:indexPath.row];
+    cell.CountLbl.text = [NSString stringWithFormat:@"报名人数:%@人",[_activityCountArray objectAtIndex:indexPath.row]];
+    cell.TitleImageView.image = [_activityImgArray objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    ActivityTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     ActivityDetailViewController *activitydetailview = [self.storyboard instantiateViewControllerWithIdentifier:@"ActivityDetailViewController"];
+    [activitydetailview getDetailMessage:cell];
     [self.navigationController showViewController:activitydetailview sender:nil];
+    [self.tabBarController.tabBar setHidden:YES];
 }
 
 /*

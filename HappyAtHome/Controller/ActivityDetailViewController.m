@@ -25,6 +25,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)getDetailMessage:(ActivityTableViewCell *)cell
+{
+    NSLog(@"%@",cell.ActivityNameLbl.text);
+}
+
 - (IBAction)clickBookActivity:(id)sender {
     ActivityBookViewController *activitybookview = [self.storyboard instantiateViewControllerWithIdentifier:@"ActivityBookViewController"];
     [self.navigationController showViewController:activitybookview sender:nil];

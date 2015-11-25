@@ -53,7 +53,11 @@
 #define operateCompettorAdd         @"078"
 #define operateCompettroSign        @"079"
 
-
-
+#import "ServerLoginOrRegister.h"
+#import "ServerUserInfo.h"
+#import "ServerOtherFeatures.h"
+#import "ServerShopping.h"
+#import "ServerService.h"
+#import "ServerActivity.h"
 
 #endif /* ServerHeader_h */
