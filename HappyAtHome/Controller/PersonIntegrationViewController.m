@@ -145,6 +145,7 @@
         CGPathMoveToPoint(path, NULL, 4, view.frame.size.height - 2);
         CGPathAddLineToPoint(path, NULL, 4, 2);
         
+        
         CAShapeLayer *layer = [CAShapeLayer layer];
         [layer setFrame:view.bounds];
         [layer setStrokeColor:[UIColor blackColor].CGColor];

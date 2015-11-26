@@ -10,6 +10,12 @@
 #import "ActivityBookViewController.h"
 
 @interface ActivityDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *ActivityNameLbl;
+@property (weak, nonatomic) IBOutlet UILabel *AddressLbl;
+@property (weak, nonatomic) IBOutlet UILabel *TimeLbl;
+@property (weak, nonatomic) IBOutlet UILabel *ContentsLbl;
+@property (weak, nonatomic) IBOutlet UILabel *CountLbl;
+@property (strong, nonatomic) ActivityTableViewCell *cell;
 
 @end
 
@@ -17,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setDetailMessage];
     // Do any additional setup after loading the view.
 }
 
@@ -25,9 +32,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setDetailMessage
+{
+    _ActivityNameLbl.text = _cell.ActivityNameLbl.text;
+    _AddressLbl.text = _cell.AddressLbl.text;
+    _TimeLbl.text = _cell.EndTimeLbl.text;
+    NSString *count = [_cell.CountLbl.text substringWithRange:NSMakeRange(5, _cell.CountLbl.text.length - 5)];
+    _CountLbl.text = [NSString stringWithFormat:@"%@已报名",count];
+}
+
 - (void)getDetailMessage:(ActivityTableViewCell *)cell
 {
-    NSLog(@"%@",cell.ActivityNameLbl.text);
+    _cell = cell;
 }
 
 - (IBAction)clickBookActivity:(id)sender {

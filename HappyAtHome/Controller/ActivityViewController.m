@@ -31,7 +31,7 @@
     [super viewDidLoad];
     [self setNavigation];
     [ServerActivity activityPostUserId:nil Starttime:nil Orderby:nil Block:^(NSArray *activityarray) {
-        NSLog(@"%@",activityarray);
+//        NSLog(@"%@",activityarray);
         NSArray *activitymodelarray = [ActivityModel instanceArrayDictFromDict:activityarray];
         NSMutableArray *imgarray = [[NSMutableArray alloc] init];
         NSMutableArray *addressarray = [[NSMutableArray alloc] init];

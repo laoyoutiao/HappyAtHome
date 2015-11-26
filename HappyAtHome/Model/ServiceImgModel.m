@@ -17,7 +17,6 @@
         _serviceId = [dict safeIntegerForKey:@"service_id"];
         _serverImgId = [dict safeIntegerForKey:@"serverimg_id"];
         _image = [dict safeStringForKey:@"logo"];
-        _lable = [dict safeStringForKey:@"lable"];
     }
     return self;
 }

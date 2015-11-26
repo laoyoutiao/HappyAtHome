@@ -15,6 +15,7 @@
 		5B45C2171BFAB6640096AA9B /* ScrollImageCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B45C2161BFAB6640096AA9B /* ScrollImageCube.m */; settings = {ASSET_TAGS = (); }; };
 		5B484FB01BF47BBE00735690 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B484FAF1BF47BBE00735690 /* ActivityViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B484FB31BF480CE00735690 /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B484FB21BF480CE00735690 /* ActivityTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		5B48F5C31C05A57A002ECE50 /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B48F5C21C05A57A002ECE50 /* ServiceModel.m */; settings = {ASSET_TAGS = (); }; };
 		5B49B6AC1BE9D8600091A7EA /* PersonOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B49B6AB1BE9D8600091A7EA /* PersonOrderViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B49B6AF1BE9D86D0091A7EA /* PersonDataChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B49B6AE1BE9D86D0091A7EA /* PersonDataChangeViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B49B6B21BE9D8790091A7EA /* PersonOpetionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B49B6B11BE9D8790091A7EA /* PersonOpetionViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -131,6 +132,8 @@
 		5B484FAF1BF47BBE00735690 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityViewController.m; path = Controller/ActivityViewController.m; sourceTree = "<group>"; };
 		5B484FB11BF480CE00735690 /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityTableViewCell.h; path = Controller/ActivityTableViewCell.h; sourceTree = "<group>"; };
 		5B484FB21BF480CE00735690 /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityTableViewCell.m; path = Controller/ActivityTableViewCell.m; sourceTree = "<group>"; };
+		5B48F5C11C05A57A002ECE50 /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceModel.h; path = Model/ServiceModel.h; sourceTree = "<group>"; };
+		5B48F5C21C05A57A002ECE50 /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceModel.m; path = Model/ServiceModel.m; sourceTree = "<group>"; };
 		5B49B6AA1BE9D8600091A7EA /* PersonOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonOrderViewController.h; path = Controller/PersonOrderViewController.h; sourceTree = "<group>"; };
 		5B49B6AB1BE9D8600091A7EA /* PersonOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonOrderViewController.m; path = Controller/PersonOrderViewController.m; sourceTree = "<group>"; };
 		5B49B6AD1BE9D86D0091A7EA /* PersonDataChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonDataChangeViewController.h; path = Controller/PersonDataChangeViewController.h; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 				5B5D49AE1C0453D500BEE31F /* ModelHeader.h */,
 				5B5D49A51C04079B00BEE31F /* ServiceImgModel.h */,
 				5B5D49A61C04079B00BEE31F /* ServiceImgModel.m */,
+				5B48F5C11C05A57A002ECE50 /* ServiceModel.h */,
+				5B48F5C21C05A57A002ECE50 /* ServiceModel.m */,
 				5B5D49AB1C044EEC00BEE31F /* ActivityModel.h */,
 				5B5D49AC1C044EEC00BEE31F /* ActivityModel.m */,
 			);
@@ -878,6 +883,7 @@
 				5B45C2171BFAB6640096AA9B /* ScrollImageCube.m in Sources */,
 				5B408EE01BF5B7A400FB8804 /* ActivityDetailViewController.m in Sources */,
 				5B458E3D1BE4982900D4CB6A /* PersonOpetionTableViewCell.m in Sources */,
+				5B48F5C31C05A57A002ECE50 /* ServiceModel.m in Sources */,
 				5B49B6B21BE9D8790091A7EA /* PersonOpetionViewController.m in Sources */,
 				5B68904C1BE309F80089A728 /* PersonCenterTableViewCell.m in Sources */,
 				5B6FAC611C0042BC00EF72CD /* UIView+Additions.m in Sources */,

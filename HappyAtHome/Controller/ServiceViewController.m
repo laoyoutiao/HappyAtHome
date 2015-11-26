@@ -12,15 +12,15 @@
 #import "ScrollImageFrame.h"
 #import "ServiceChooseCityViewController.h"
 #import "ServerHeader.h"
-#import "ServiceImgModel.h"
+#import "ModelHeader.h"
 
-@interface ServiceViewController ()<ScrollImageFrameDelegate>
+@interface ServiceViewController ()<ScrollImageFrameDelegate,UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *TableView;
 @property (weak, nonatomic) IBOutlet UIView *ScrollImageView;
-@property (weak, nonatomic) IBOutlet UIButton *LiveBtn;
-@property (weak, nonatomic) IBOutlet UIButton *HealthBtn;
-@property (weak, nonatomic) IBOutlet UIButton *EmergencyBtn;
 
-@property (strong, nonatomic) NSArray *ScrollImageArray;
+@property (strong, nonatomic) NSArray *ServiceImageModelArray;
+@property (strong, nonatomic) NSDictionary *Service;
+
 @end
 
 @implementation ServiceViewController
@@ -29,7 +29,6 @@
     [super viewDidLoad];
     [self setNavigation];
     [self setFixedData];
-    [self setHousekeeper];
     // Do any additional setup after loading the view.
 }
 
@@ -46,56 +45,42 @@
 - (void)setFixedData
 {
     [ServerService serverImgPostBlock:^(NSArray *imgarray) {
-        NSArray *imgmodelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
-        NSMutableArray *scrollimagearray = [[NSMutableArray alloc] init];
-        for (int i = 0;i < [imgmodelArray count];i ++)
-        {
-            ServiceImgModel *imgmodel = [imgmodelArray objectAtIndex:i];
-            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",imgmodel.image]]];
-            UIImage *image = [UIImage imageWithData:imagedata];
-            [scrollimagearray addObject:image];
-        }
-        _ScrollImageArray = scrollimagearray;
+        _ServiceImageModelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
         [self setScrollImageView];
     }];
     
-}
+    [ServerService searchPostBlock:^(NSArray *searcharray) {
 
-- (void)setHousekeeper
-{
-    _LiveBtn.layer.masksToBounds = YES;
-    _LiveBtn.layer.cornerRadius = 5;
-    _LiveBtn.backgroundColor = [UIColor colorWithHex:0x77CBE0];
-    
-    _HealthBtn.layer.masksToBounds = YES;
-    _HealthBtn.layer.cornerRadius = 5;
-    _HealthBtn.backgroundColor = [UIColor colorWithHex:0xF66373];
-    
-    _EmergencyBtn.layer.masksToBounds = YES;
-    _EmergencyBtn.layer.cornerRadius = 5;
-    _EmergencyBtn.backgroundColor = [UIColor colorWithHex:0xB09DDC];
+        [_TableView reloadData];
+    }];
 }
 
 - (void)setScrollImageView
 {
-        NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ScrollImageArray count]+2];
-        if ([_ScrollImageArray count] > 1)
+        NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ServiceImageModelArray count]+2];
+        if ([_ServiceImageModelArray count] > 1)
         {
-            UIImage *tempName = [_ScrollImageArray objectAtIndex:[_ScrollImageArray count]-1];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:tempName tag:-1];
+            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:[_ServiceImageModelArray count]-1];
+            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
+            UIImage *image = [UIImage imageWithData:imagedata];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:image tag:-1];
             [itemArray addObject:item];
         }
-        for (int i = 0; i < [_ScrollImageArray count]; i++)
+        for (int i = 0; i < [_ServiceImageModelArray count]; i++)
         {
-            UIImage *tempName = [_ScrollImageArray objectAtIndex:i];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:tempName tag:i];
+            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:i];
+            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
+            UIImage *image = [UIImage imageWithData:imagedata];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:image tag:i];
             [itemArray addObject:item];
         }
         //添加第一张图 用于循环
-        if ([_ScrollImageArray count] >1)
+        if ([_ServiceImageModelArray count] >1)
         {
-            UIImage *tempName = [_ScrollImageArray objectAtIndex:0];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:tempName tag:[_ScrollImageArray count]];
+            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:0];
+            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
+            UIImage *image = [UIImage imageWithData:imagedata];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:image tag:[_ServiceImageModelArray count]];
             [itemArray addObject:item];
         }
     
@@ -132,6 +117,27 @@
 {
     ServiceChooseCityViewController *choosecityview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceChooseCityViewController"];
     [self.navigationController pushViewController:choosecityview animated:YES];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+//    return [_TableViewTitleArray count];
+    return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+    }
+//    NSLog(@"%@",[_TableViewCellNumArray objectAtIndex:indexPath.section]);
+    return cell;
 }
 
 /*

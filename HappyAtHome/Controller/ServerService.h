@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ServerHeader.h"
 
-typedef void (^searchBlock)(NSDictionary *searchdict);
+typedef void (^searchBlock)(NSArray *searcharray);
 typedef void (^clickadBlock)(NSDictionary *clickaddict);
 typedef void (^imgBlcok)(NSArray *imgarray);
 

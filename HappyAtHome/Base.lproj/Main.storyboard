@@ -914,6 +914,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="ActivityNameLbl" destination="88P-fR-ITQ" id="EF0-Ag-ANV"/>
+                        <outlet property="AddressLbl" destination="dCS-LP-byb" id="29H-3y-25r"/>
+                        <outlet property="ContentsLbl" destination="aMo-5e-FqP" id="GFI-Se-Y6L"/>
+                        <outlet property="CountLbl" destination="dLg-54-nNV" id="DOb-cW-nUD"/>
+                        <outlet property="TimeLbl" destination="Ssc-kx-ky5" id="uiH-W9-oHo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYe-nD-31i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1749,114 +1756,62 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY8-Dq-gtT">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-Ge-Z0X">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="DXx-hz-0rL"/>
-                                </constraints>
-                                <state key="normal" title="生活管家">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="DXx-hz-0rL"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="DXx-hz-0rL"/>
-                                    </mask>
-                                </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xek-un-VlR">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="健康管家">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iA2-JG-96Z">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="应急管家">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iGL-8W-wIp" id="vdK-De-031"/>
+                                    <outlet property="delegate" destination="iGL-8W-wIp" id="lOx-5y-Veg"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xek-un-VlR" firstAttribute="top" secondItem="Cse-bI-r5K" secondAttribute="bottom" constant="10" id="Dbq-Xk-GXA"/>
                             <constraint firstItem="Cse-bI-r5K" firstAttribute="leading" secondItem="iWc-jX-jqN" secondAttribute="leading" id="GWd-OF-HW3"/>
-                            <constraint firstAttribute="trailing" secondItem="iA2-JG-96Z" secondAttribute="trailing" constant="10" id="KIN-Y7-KeG"/>
-                            <constraint firstItem="fY8-Dq-gtT" firstAttribute="top" secondItem="Cse-bI-r5K" secondAttribute="bottom" constant="10" id="LCF-fc-EDZ"/>
-                            <constraint firstItem="iA2-JG-96Z" firstAttribute="height" secondItem="fY8-Dq-gtT" secondAttribute="height" id="Mwa-QP-HuK"/>
-                            <constraint firstItem="Xek-un-VlR" firstAttribute="height" secondItem="fY8-Dq-gtT" secondAttribute="height" id="PbZ-aR-Rmq"/>
-                            <constraint firstItem="iA2-JG-96Z" firstAttribute="top" secondItem="Cse-bI-r5K" secondAttribute="bottom" constant="10" id="RcX-zK-OTD"/>
-                            <constraint firstItem="Xek-un-VlR" firstAttribute="leading" secondItem="fY8-Dq-gtT" secondAttribute="trailing" constant="5" id="T6L-Tm-mwK"/>
+                            <constraint firstItem="fKH-Ge-Z0X" firstAttribute="leading" secondItem="iWc-jX-jqN" secondAttribute="leading" id="HFx-hD-Xfo"/>
                             <constraint firstItem="Cse-bI-r5K" firstAttribute="top" secondItem="LsK-XZ-Fqp" secondAttribute="bottom" id="bgF-o7-WD2"/>
-                            <constraint firstItem="iA2-JG-96Z" firstAttribute="width" secondItem="fY8-Dq-gtT" secondAttribute="width" id="dcD-Xz-3LY"/>
-                            <constraint firstItem="Xek-un-VlR" firstAttribute="width" secondItem="fY8-Dq-gtT" secondAttribute="width" id="tk7-VJ-dnG"/>
-                            <constraint firstItem="iA2-JG-96Z" firstAttribute="leading" secondItem="Xek-un-VlR" secondAttribute="trailing" constant="5" id="trz-GF-PS8"/>
+                            <constraint firstItem="fKH-Ge-Z0X" firstAttribute="top" secondItem="Cse-bI-r5K" secondAttribute="bottom" id="dDh-zz-I3r"/>
                             <constraint firstAttribute="trailing" secondItem="Cse-bI-r5K" secondAttribute="trailing" id="tvF-5U-fLg"/>
-                            <constraint firstItem="fY8-Dq-gtT" firstAttribute="leading" secondItem="iWc-jX-jqN" secondAttribute="leading" constant="10" id="xX9-1d-aOq"/>
+                            <constraint firstItem="l4Q-mi-0jZ" firstAttribute="top" secondItem="fKH-Ge-Z0X" secondAttribute="bottom" id="tyx-4m-xOV"/>
+                            <constraint firstAttribute="trailing" secondItem="fKH-Ge-Z0X" secondAttribute="trailing" id="xBp-Vw-g8t"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Cse-bI-r5K"/>
-                                <exclude reference="fY8-Dq-gtT"/>
-                                <exclude reference="Xek-un-VlR"/>
-                                <exclude reference="iA2-JG-96Z"/>
+                                <exclude reference="fKH-Ge-Z0X"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Dbq-Xk-GXA"/>
-                                <exclude reference="PbZ-aR-Rmq"/>
-                                <exclude reference="T6L-Tm-mwK"/>
-                                <exclude reference="tk7-VJ-dnG"/>
-                                <exclude reference="LCF-fc-EDZ"/>
-                                <exclude reference="xX9-1d-aOq"/>
-                                <exclude reference="KIN-Y7-KeG"/>
-                                <exclude reference="Mwa-QP-HuK"/>
-                                <exclude reference="RcX-zK-OTD"/>
-                                <exclude reference="dcD-Xz-3LY"/>
-                                <exclude reference="trz-GF-PS8"/>
                                 <exclude reference="GWd-OF-HW3"/>
                                 <exclude reference="bgF-o7-WD2"/>
                                 <exclude reference="tvF-5U-fLg"/>
+                                <exclude reference="HFx-hD-Xfo"/>
+                                <exclude reference="dDh-zz-I3r"/>
+                                <exclude reference="xBp-Vw-g8t"/>
+                                <exclude reference="tyx-4m-xOV"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Cse-bI-r5K"/>
-                                <include reference="fY8-Dq-gtT"/>
-                                <include reference="Xek-un-VlR"/>
-                                <include reference="iA2-JG-96Z"/>
+                                <include reference="fKH-Ge-Z0X"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Dbq-Xk-GXA"/>
-                                <include reference="PbZ-aR-Rmq"/>
-                                <include reference="T6L-Tm-mwK"/>
-                                <include reference="tk7-VJ-dnG"/>
-                                <include reference="LCF-fc-EDZ"/>
-                                <include reference="xX9-1d-aOq"/>
-                                <include reference="KIN-Y7-KeG"/>
-                                <include reference="Mwa-QP-HuK"/>
-                                <include reference="RcX-zK-OTD"/>
-                                <include reference="dcD-Xz-3LY"/>
-                                <include reference="trz-GF-PS8"/>
                                 <include reference="GWd-OF-HW3"/>
                                 <include reference="bgF-o7-WD2"/>
                                 <include reference="tvF-5U-fLg"/>
+                                <include reference="HFx-hD-Xfo"/>
+                                <include reference="dDh-zz-I3r"/>
+                                <include reference="xBp-Vw-g8t"/>
+                                <include reference="tyx-4m-xOV"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="服务" id="vaz-wX-GaK"/>
                     <connections>
-                        <outlet property="EmergencyBtn" destination="iA2-JG-96Z" id="ZlM-RA-qWM"/>
-                        <outlet property="HealthBtn" destination="Xek-un-VlR" id="NqZ-cd-UfS"/>
-                        <outlet property="LiveBtn" destination="fY8-Dq-gtT" id="fZr-ex-9ax"/>
                         <outlet property="ScrollImageView" destination="Cse-bI-r5K" id="VfU-Oc-J01"/>
+                        <outlet property="TableView" destination="fKH-Ge-Z0X" id="S3R-3i-nEz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nw7-22-H7H" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,5 +11,8 @@
 
 #import "ServiceImgModel.h"
 #import "ActivityModel.h"
+#import "ServiceModel.h"
+#import "NSDictionary+Safe.h"
+
 
 #endif /* ModelHeader_h */
