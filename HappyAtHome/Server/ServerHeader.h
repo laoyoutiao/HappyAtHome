@@ -59,5 +59,6 @@
 #import "ServerShopping.h"
 #import "ServerService.h"
 #import "ServerActivity.h"
+#import "NSDictionary+Safe.h"
 
 #endif /* ServerHeader_h */

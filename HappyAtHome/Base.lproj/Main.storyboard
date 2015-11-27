@@ -1756,7 +1756,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-Ge-Z0X">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-Ge-Z0X">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1783,13 +1783,13 @@
                                 <exclude reference="fKH-Ge-Z0X"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="tyx-4m-xOV"/>
                                 <exclude reference="GWd-OF-HW3"/>
                                 <exclude reference="bgF-o7-WD2"/>
                                 <exclude reference="tvF-5U-fLg"/>
                                 <exclude reference="HFx-hD-Xfo"/>
                                 <exclude reference="dDh-zz-I3r"/>
                                 <exclude reference="xBp-Vw-g8t"/>
-                                <exclude reference="tyx-4m-xOV"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1798,13 +1798,13 @@
                                 <include reference="fKH-Ge-Z0X"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="tyx-4m-xOV"/>
                                 <include reference="GWd-OF-HW3"/>
                                 <include reference="bgF-o7-WD2"/>
                                 <include reference="tvF-5U-fLg"/>
                                 <include reference="HFx-hD-Xfo"/>
                                 <include reference="dDh-zz-I3r"/>
                                 <include reference="xBp-Vw-g8t"/>
-                                <include reference="tyx-4m-xOV"/>
                             </mask>
                         </variation>
                     </view>
