@@ -15,14 +15,15 @@
     if (self = [super init]) {
         _serviceId = [dict safeIntegerForKey:@"service_id"];
         _serverImgId = [dict safeIntegerForKey:@"serverimg_id"];
-        _image = [dict safeStringForKey:@"logo"];
+        NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",[dict safeStringForKey:@"logo"]]]];
+        UIImage *image = [UIImage imageWithData:imagedata];
+        _image = image;
     }
     return self;
 }
 
 + (NSDictionary *)instanceArrayDictFromDict:(NSArray *)array
 {
-    NSLog(@"%@",array);
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     for (NSDictionary *dictionary in array) {
         if ([dictionary objectForKey:@"services"] && [dictionary objectForKey:@"title"]) {
@@ -32,7 +33,6 @@
                 [modelarray addObject:[[self alloc] initWithDictionary:[arr objectAtIndex:i]]];
             }
             [dict setObject:modelarray forKey:[dictionary objectForKey:@"title"]];
-            NSLog(@"%@",dict);
         }
     }
     return [NSDictionary dictionaryWithDictionary:dict];

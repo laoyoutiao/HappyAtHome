@@ -15,11 +15,15 @@
 #import "ModelHeader.h"
 #import "MyHeader.h"
 
-#define cellheightmodulus
+#define cellheightmodulus 150
 
-@interface ServiceViewController ()<ScrollImageFrameDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ServiceViewController ()<ScrollImageFrameDelegate,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    NSInteger collectioncellnum;
+    NSString *collectioncelltitle;
+}
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
-@property (weak, nonatomic) IBOutlet UIView *ScrollImageView;
+@property (strong, nonatomic) UIView *ScrollImageView;
 
 @property (strong, nonatomic) NSArray *ServiceImageModelArray;
 @property (strong, nonatomic) NSDictionary *ServiceModelDict;
@@ -40,72 +44,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-//    [self setScrollImageView];
-}
-
-- (void)setFixedData
-{
-    [ServerService serverImgPostBlock:^(NSArray *imgarray) {
-        _ServiceImageModelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
-        [self setScrollImageView];
-    }];
-    
-    [ServerService searchPostBlock:^(NSArray *searcharray) {
-        _ServiceModelDict = [ServiceModel instanceArrayDictFromDict:searcharray];
-        NSLog(@"%@",_ServiceModelDict);
-        [_TableView reloadData];
-        [[_ServiceModelDict allKeys] count]? [_TableView setHidden:NO]:nil;
-    }];
-}
-
-- (void)setScrollImageView
-{
-        NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ServiceImageModelArray count]+2];
-        if ([_ServiceImageModelArray count] > 1)
-        {
-            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:[_ServiceImageModelArray count]-1];
-            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
-            UIImage *image = [UIImage imageWithData:imagedata];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:image tag:-1];
-            [itemArray addObject:item];
-        }
-        for (int i = 0; i < [_ServiceImageModelArray count]; i++)
-        {
-            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:i];
-            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
-            UIImage *image = [UIImage imageWithData:imagedata];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:image tag:i];
-            [itemArray addObject:item];
-        }
-        //添加第一张图 用于循环
-        if ([_ServiceImageModelArray count] >1)
-        {
-            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:0];
-            NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
-            UIImage *image = [UIImage imageWithData:imagedata];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:image tag:[_ServiceImageModelArray count]];
-            [itemArray addObject:item];
-        }
-    
-    
-    ScrollImageFrame *bannerView;
-    bannerView = [[ScrollImageFrame alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 150) delegate:self imageItems:itemArray isAuto:YES];
-
-    
-        bannerView.backgroundColor=[[UIColor redColor]colorWithAlphaComponent:0.1];
-        bannerView.delegate = self;
-        bannerView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleWidth;
-        [bannerView scrollToIndex:0];
-        [_ScrollImageView addSubview:bannerView];
-}
-
-- (void)foucusImageFrame:(ScrollImageFrame *)imageFrame didSelectItem:(ScrollImageItem *)item
-{
-    NSLog(@"%ld",item.tag);
-}
-
 - (void)setNavigation
 {
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithHex:0xF37B9F];
@@ -124,6 +62,100 @@
     [self.navigationController pushViewController:choosecityview animated:YES];
 }
 
+- (void)setFixedData
+{
+    [ServerService serverImgPostBlock:^(NSArray *imgarray) {
+        _ServiceImageModelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
+        [self setScrollImageView];
+    }];
+    
+    [ServerService searchPostBlock:^(NSArray *searcharray) {
+        _ServiceModelDict = [ServiceModel instanceArrayDictFromDict:searcharray];
+        [_TableView reloadData];
+        [[_ServiceModelDict allKeys] count]? [_TableView setHidden:NO]:nil;
+    }];
+}
+
+- (void)setScrollImageView
+{
+    _ScrollImageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 150)];
+        NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ServiceImageModelArray count]+2];
+        if ([_ServiceImageModelArray count] > 1)
+        {
+            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:[_ServiceImageModelArray count]-1];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:model.image tag:-1];
+            [itemArray addObject:item];
+        }
+        for (int i = 0; i < [_ServiceImageModelArray count]; i++)
+        {
+            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:i];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:model.image tag:i];
+            [itemArray addObject:item];
+        }
+        //添加第一张图 用于循环
+        if ([_ServiceImageModelArray count] >1)
+        {
+            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:0];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:model.image tag:[_ServiceImageModelArray count]];
+            [itemArray addObject:item];
+        }
+    
+    
+    ScrollImageFrame *bannerView;
+    bannerView = [[ScrollImageFrame alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 150) delegate:self imageItems:itemArray isAuto:YES];
+
+    bannerView.backgroundColor=[[UIColor redColor]colorWithAlphaComponent:0.1];
+    bannerView.delegate = self;
+    bannerView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleWidth;
+    [bannerView scrollToIndex:0];
+    [_ScrollImageView addSubview:bannerView];
+}
+
+- (void)foucusImageFrame:(ScrollImageFrame *)imageFrame didSelectItem:(ScrollImageItem *)item
+{
+    NSLog(@"%ld",item.tag);
+}
+
+
+#pragma makr TableViewDelegate
+#pragma --------------------------
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 170;
+    }else
+    {
+        return 20;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 150)];
+        [view addSubview:_ScrollImageView];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 150, ScreenSize.width - 10, 20)];
+        label.textAlignment = NSTextAlignmentLeft;
+        label.font = [UIFont systemFontOfSize:12];
+        NSString *str = [self switchToCellString:section];
+        label.text = str;
+        [view addSubview:label];
+        return view;
+    }else
+    {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 20)];
+        view.backgroundColor = [UIColor whiteColor];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, ScreenSize.width - 10, 20)];
+        label.textAlignment = NSTextAlignmentLeft;
+        label.font = [UIFont systemFontOfSize:12];
+        NSString *str = [self switchToCellString:section];
+        label.text = str;
+        [view addSubview:label];
+        return view;
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [[_ServiceModelDict allKeys] count];
@@ -131,17 +163,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [[_ServiceModelDict allKeys] count]? 1:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    UICollectionViewFlowLayout *collectviewlayout = [[UICollectionViewFlowLayout alloc] init];
+    NSInteger height;
+    NSString *str = [self switchToCellString:indexPath.section];
+    height = [[_ServiceModelDict objectForKey:str] count] / 3 * cellheightmodulus + cellheightmodulus;
+    UICollectionView *collectview = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, height) collectionViewLayout:collectviewlayout];
+    collectview.delegate = self;
+    collectview.dataSource = self;
+    [cell addSubview:collectview];
+    [collectview registerClass:[UICollectionViewCell class]forCellWithReuseIdentifier:@"cell"];
+    collectview.scrollEnabled = NO;
+    collectview.backgroundColor = [UIColor whiteColor];
+    collectioncellnum = [[_ServiceModelDict objectForKey:str] count];
+    collectioncelltitle = str;
     
     return cell;
 }
@@ -153,50 +199,61 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
-        case 0:
-            return [[_ServiceModelDict objectForKey:@"康复保健"] count] / 3 * 160 + 160;
-            break;
-            
-        case 1:
-            return [[_ServiceModelDict objectForKey:@"膳食服务"] count] / 3 * 160 + 160;
-            break;
-            
-        case 2:
-            return [[_ServiceModelDict objectForKey:@"日托服务"] count] / 3 * 160 + 160;
-            break;
-            
-        case 3:
-            return [[_ServiceModelDict objectForKey:@"专业护理"] count] / 3 * 160 + 160;
-            break;
-            
-        case 4:
-            return [[_ServiceModelDict objectForKey:@"居家服务"] count] / 3 * 160 + 160;
-            break;
-            
-        case 5:
-            return [[_ServiceModelDict objectForKey:@"健康顾问"] count] / 3 * 160 + 160;
-            break;
-            
-        default:
-            return 0;
-            break;
-    }
+    NSString *str = [self switchToCellString:indexPath.section];
+    return [[_ServiceModelDict objectForKey:str] count] / 3 * cellheightmodulus + cellheightmodulus;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+#pragma makr CollectionViewDelegate
+#pragma --------------------------
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return collectioncellnum;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 20)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, ScreenSize.width - 10, 20)];
-    label.textAlignment = NSTextAlignmentLeft;
-    label.font = [UIFont systemFontOfSize:12];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (ScreenSize.width - 5) / 3, cellheightmodulus - 51)];
+    [cell addSubview:imageview];
+    
+    ServiceModel *model = [[_ServiceModelDict objectForKey:collectioncelltitle] objectAtIndex:indexPath.row];
+    imageview.image = model.image;
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%ld",indexPath.row);
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((ScreenSize.width - 5) / 3,  cellheightmodulus - 1);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(1, 1, 1, 1);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 1;
+}
+
+#pragma mark SelfMethod
+#pragma ---------------
+
+- (NSString *)switchToCellString:(NSInteger)num
+{
     NSString *str;
-    switch (section) {
+    switch (num) {
         case 0:
             str = @"康复保健";
             break;
@@ -224,9 +281,7 @@
         default:
             break;
     }
-    label.text = [[_ServiceModelDict allKeys] objectAtIndex:section];
-    [view addSubview:label];
-    return view;
+    return str;
 }
 
 /*

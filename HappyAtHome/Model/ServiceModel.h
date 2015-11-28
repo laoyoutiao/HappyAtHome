@@ -13,7 +13,7 @@
 
 @property (nonatomic, assign) NSInteger serverImgId;
 @property (nonatomic, assign) NSInteger serviceId;
-@property (nonatomic, assign) NSString  *image;
+@property (nonatomic, strong) UIImage  *image;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 
