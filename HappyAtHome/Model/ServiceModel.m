@@ -13,17 +13,19 @@
 - (id)initWithDictionary:(NSDictionary *)dict
 {
     if (self = [super init]) {
-        _serviceId = [dict safeIntegerForKey:@"service_id"];
-        _serverImgId = [dict safeIntegerForKey:@"serverimg_id"];
-        NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",[dict safeStringForKey:@"logo"]]]];
+        _name = [dict safeStringForKey:@"service_name"];
+        _introduce = [dict safeStringForKey:@"introduce"];
+        _count = [dict safeIntegerForKey:@"getcount"];
+        NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",[dict safeStringForKey:@"logo"]]]];
         UIImage *image = [UIImage imageWithData:imagedata];
         _image = image;
     }
     return self;
 }
 
-+ (NSDictionary *)instanceArrayDictFromDict:(NSArray *)array
++ (NSDictionary *)instanceArrayDictFromArray:(NSArray *)array
 {
+    NSLog(@"%@",array);
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     for (NSDictionary *dictionary in array) {
         if ([dictionary objectForKey:@"services"] && [dictionary objectForKey:@"title"]) {

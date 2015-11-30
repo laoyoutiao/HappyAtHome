@@ -7,6 +7,7 @@
 //
 
 #import "ScrollImageCube.h"
+#import "ModelHeader.h"
 
 @interface ScrollImageCube ()<UIGestureRecognizerDelegate>
 {
@@ -34,12 +35,18 @@
 {
     imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 5)];
     [self addSubview:imageview];
-    imageview.image = [UIImage imageNamed:[imageArray objectAtIndex:0]];
+    ShopImgModel *model = [imageArray objectAtIndex:0];
+    imageview.image = model.image;
     index = 0;
     
     UIPanGestureRecognizer *panGestureRecognize = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(GestureMove:)];
     panGestureRecognize.delegate = self;
     [self addGestureRecognizer:panGestureRecognize];
+    
+    UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureRecognizer:)];
+    tapGestureRecognize.delegate = self;
+    tapGestureRecognize.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:tapGestureRecognize];
     
     if ([imageArray count] > 1) {
         [self performSelector:@selector(movenext) withObject:nil afterDelay:4.0];
@@ -60,6 +67,11 @@
     }
 }
 
+- (void)singleTapGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+{
+        NSLog(@"%ld", index);
+}
+
 - (void)GestureMove:(UIGestureRecognizer *)gestureRecognizer
 {
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
@@ -74,7 +86,8 @@
                 index = [imageArray count] - 1;
             }
             [self changelinecolor:index];
-            imageview.image = [UIImage imageNamed:[imageArray objectAtIndex:index]];
+            ShopImgModel *model = [imageArray objectAtIndex:index];
+            imageview.image = model.image;
             ca.subtype = kCATransitionFromLeft;
         }else
         {
@@ -83,10 +96,11 @@
                 index = 0;
             }
             [self changelinecolor:index];
-            imageview.image = [UIImage imageNamed:[imageArray objectAtIndex:index]];
+            ShopImgModel *model = [imageArray objectAtIndex:index];
+            imageview.image = model.image;
             ca.subtype = kCATransitionFromRight;
         }
-        ca.duration = 2.0;
+        ca.duration = 1.0;
         [imageview.layer addAnimation:ca forKey:nil];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(movenext) object:nil];
         
@@ -108,11 +122,12 @@
     }
     [self changelinecolor:index];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(movenext) object:nil];
-    imageview.image = [UIImage imageNamed:[imageArray objectAtIndex:index]];
+    ShopImgModel *model = [imageArray objectAtIndex:index];
+    imageview.image = model.image;
     CATransition *ca = [CATransition animation];
     ca.type = @"cube";
     ca.subtype = kCATransitionFromRight;
-    ca.duration = 2.0;
+    ca.duration = 1.0;
     [imageview.layer addAnimation:ca forKey:nil];
     [self performSelector:@selector(movenext) withObject:nil afterDelay:4.0];
 }

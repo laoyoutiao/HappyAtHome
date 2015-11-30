@@ -15,8 +15,9 @@
     NSDictionary *paramdict = @{@"operate":operateServiceLook};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
         block([resopnObject objectForKey:@"response"]);
+//        NSLog(@"%@",resopnObject);
     } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
-        
+        NSLog(@"%@",error);
     }];
 }
 

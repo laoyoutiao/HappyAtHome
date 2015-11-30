@@ -15,7 +15,7 @@
 #define ServerHeader_h
 
 
-#define ServerURL @"http://192.168.1.146:8080//EnjoyLiveHome/MainRequest"
+#define ServerURL @"http://61.142.211.110:92//EnjoyLiveHome/MainRequest"
 
 #define operateLogin                @"001"
 #define operateRegister             @"002"

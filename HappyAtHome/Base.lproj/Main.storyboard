@@ -1738,7 +1738,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-Ge-Z0X">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fKH-Ge-Z0X">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1761,10 +1761,10 @@
                                 <exclude reference="fKH-Ge-Z0X"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="tyx-4m-xOV"/>
                                 <exclude reference="HFx-hD-Xfo"/>
                                 <exclude reference="ZUd-EU-Vwo"/>
                                 <exclude reference="xBp-Vw-g8t"/>
-                                <exclude reference="tyx-4m-xOV"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1772,10 +1772,10 @@
                                 <include reference="fKH-Ge-Z0X"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="tyx-4m-xOV"/>
                                 <include reference="HFx-hD-Xfo"/>
                                 <include reference="ZUd-EU-Vwo"/>
                                 <include reference="xBp-Vw-g8t"/>
-                                <include reference="tyx-4m-xOV"/>
                             </mask>
                         </variation>
                     </view>

@@ -10,12 +10,15 @@
 #import "ScrollImageCube.h"
 #import "ShopSortViewController.h"
 #import "MyHeader.h"
+#import "ServerHeader.h"
+#import "ModelHeader.h"
 
 @interface ShopViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *ScorllView;
 @property (strong, nonatomic) ScrollImageCube *cube;
 @property (strong, nonatomic) NSArray *typeArray;
 @property (strong, nonatomic) NSArray *typeTitleArray;
+@property (strong, nonatomic) NSArray *goodsImgArray;
 @end
 
 @implementation ShopViewController
@@ -28,13 +31,13 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self setScorll];
+    
 }
 
 - (void)setScorll
 {
     if (!_cube) {
-        _cube = [[ScrollImageCube alloc] initWithFrame:CGRectMake(0, 0, _ScorllView.frame.size.width, _ScorllView.frame.size.height) ImageArray:@[@"service_one.jpg",@"service_two.jpg",@"service_three.jpg",@"service_one.jpg",@"service_two.jpg"]];
+        _cube = [[ScrollImageCube alloc] initWithFrame:CGRectMake(0, 0, _ScorllView.frame.size.width, _ScorllView.frame.size.height) ImageArray:_goodsImgArray];
         [_ScorllView addSubview:_cube];
     }
 }
@@ -42,6 +45,11 @@
 - (void)setFixedData
 {
     _typeArray = [NSArray arrayWithObjects:@"local_sort_main_movie.png",@"local_navi_tuan.png",@"local_sort_main_park.png",@"local_sort_main_food.png", nil];
+    [ServerShopping goodsPost:^(NSDictionary *goodsarray) {
+        _goodsImgArray = [ShopImgModel instanceArrayDictFromArray:[goodsarray objectForKey:@"1"]];
+        NSLog(@"%@",_goodsImgArray);
+        [self setScorll];
+    }];
     _typeTitleArray = [NSArray arrayWithObjects:@"商品分类",@"购物车",@"我的收藏",@"充值中心", nil];
 }
 

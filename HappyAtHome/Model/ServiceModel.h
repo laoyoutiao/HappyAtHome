@@ -11,12 +11,13 @@
 
 @interface ServiceModel : NSObject
 
-@property (nonatomic, assign) NSInteger serverImgId;
-@property (nonatomic, assign) NSInteger serviceId;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, assign) NSInteger count;
+@property (nonatomic, strong) NSString *introduce;
 @property (nonatomic, strong) UIImage  *image;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 
-+ (NSDictionary *)instanceArrayDictFromDict:(NSArray *)array;
++ (NSDictionary *)instanceArrayDictFromArray:(NSArray *)array;
 
 @end

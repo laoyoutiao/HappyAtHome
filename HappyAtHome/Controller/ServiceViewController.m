@@ -14,8 +14,9 @@
 #import "ServerHeader.h"
 #import "ModelHeader.h"
 #import "MyHeader.h"
+#import "MJRefresh.h"
 
-#define cellheightmodulus 150
+#define cellheightmodulus 130
 
 @interface ServiceViewController ()<ScrollImageFrameDelegate,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 {
@@ -36,7 +37,26 @@
     [super viewDidLoad];
     [self setNavigation];
     [self setFixedData];
+    [self loadTableView];
     // Do any additional setup after loading the view.
+}
+
+- (void)loadTableView
+{
+    // 下拉刷新
+    _TableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 结束刷新
+        [_TableView.mj_header endRefreshing];
+    }];
+    
+    _TableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+}
+
+- (void)loadNewData
+{
+    [self setFixedData];
+    
+    [_TableView.mj_header endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +74,12 @@
     leftitem.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = leftitem;
     self.tabBarController.tabBar.tintColor = [UIColor redColor];
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [btn setImage:[UIImage imageNamed:@"contacts_button_message.png"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(clickEmail) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem = rightitem;
 }
 
 - (void)clickChooseCity
@@ -62,22 +88,31 @@
     [self.navigationController pushViewController:choosecityview animated:YES];
 }
 
+- (void)clickEmail
+{
+    
+}
+
 - (void)setFixedData
 {
     [ServerService serverImgPostBlock:^(NSArray *imgarray) {
         _ServiceImageModelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
+        if (_ScrollImageView)
+        {
+            _ScrollImageView = nil;
+        }
         [self setScrollImageView];
     }];
     
     [ServerService searchPostBlock:^(NSArray *searcharray) {
-        _ServiceModelDict = [ServiceModel instanceArrayDictFromDict:searcharray];
-        [_TableView reloadData];
-        [[_ServiceModelDict allKeys] count]? [_TableView setHidden:NO]:nil;
+            _ServiceModelDict = [ServiceModel instanceArrayDictFromArray:searcharray];
+            [_TableView reloadData];
     }];
 }
 
 - (void)setScrollImageView
 {
+//    NSLog(@"%@",_ServiceImageModelArray);
     _ScrollImageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 150)];
         NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ServiceImageModelArray count]+2];
         if ([_ServiceImageModelArray count] > 1)
@@ -140,12 +175,13 @@
         label.font = [UIFont systemFontOfSize:12];
         NSString *str = [self switchToCellString:section];
         label.text = str;
+        view.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
         [view addSubview:label];
         return view;
     }else
     {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 20)];
-        view.backgroundColor = [UIColor whiteColor];
+        view.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, ScreenSize.width - 10, 20)];
         label.textAlignment = NSTextAlignmentLeft;
         label.font = [UIFont systemFontOfSize:12];
@@ -188,7 +224,8 @@
     collectview.backgroundColor = [UIColor whiteColor];
     collectioncellnum = [[_ServiceModelDict objectForKey:str] count];
     collectioncelltitle = str;
-    
+    cell.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
+    collectview.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
     return cell;
 }
 
@@ -214,10 +251,26 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (ScreenSize.width - 5) / 3, cellheightmodulus - 51)];
-    [cell addSubview:imageview];
+    
     
     ServiceModel *model = [[_ServiceModelDict objectForKey:collectioncelltitle] objectAtIndex:indexPath.row];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cellheightmodulus - 51, (ScreenSize.width - 5) / 3, 50)];
+    view.backgroundColor = [UIColor whiteColor];
+    [cell addSubview:view];
+    
+    UILabel *namelbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, (ScreenSize.width - 5) / 3 - 5, 20)];
+    namelbl.text = model.name;
+    namelbl.font = [UIFont boldSystemFontOfSize:13];
+    [view addSubview:namelbl];
+    
+    UILabel *countlbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 30, (ScreenSize.width - 5) / 3 - 5, 10)];
+    countlbl.text = [NSString stringWithFormat:@"次数%ld",model.count];
+    countlbl.font = [UIFont systemFontOfSize:9];
+    [view addSubview:countlbl];
+    
+    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (ScreenSize.width - 5) / 3, cellheightmodulus - 51)];
+    [cell addSubview:imageview];
     imageview.image = model.image;
     return cell;
 }

@@ -13,6 +13,7 @@
 #import "ActivityModel.h"
 #import "ServiceModel.h"
 #import "NSDictionary+Safe.h"
+#import "ShopImgModel.h"
 
 
 #endif /* ModelHeader_h */

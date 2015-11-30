@@ -21,12 +21,15 @@ typedef NS_ENUM(NSInteger, ProcessType)
     ProcessTypeFinlish = 4,
 };
 
-typedef void (^sorderBlock)(NSDictionary *sorderblock);
+typedef void (^sorderBlock)(NSDictionary *sorderdict);
+typedef void (^goodsBlock)(NSDictionary *goodsarray);
 
 @interface ServerShopping : NSObject
 
 + (void)reservationPostUserId:(NSString *)userid ServiceName:(NSString *)servicename PayMoney:(NSInteger)paymoney Paytype:(PayType)paytype Sremark:(NSString *)sremark Address:(NSString *)address Starttime:(NSDate *)starttime Counttime:(NSInteger)counttime;
 
 + (void)sorderSearchPostUserId:(NSString *)userid Process:(ProcessType)process Block:(sorderBlock)block;
+
++ (void)goodsPost:(goodsBlock)block;
 
 @end

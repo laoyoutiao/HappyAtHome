@@ -34,4 +34,14 @@
     }];
 }
 
++ (void)goodsPost:(goodsBlock)block
+{
+    NSDictionary *paramdict = @{@"operate":operateGoodsInfo};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        block([resopnObject objectForKey:@"response"]);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
 @end
