@@ -7,6 +7,7 @@
 //
 
 #import "ServiceViewController.h"
+#import "ServiceDetailViewController.h"
 #import "UIColor+Hex.h"
 #import "ScrollImageItem.h"
 #import "ScrollImageFrame.h"
@@ -218,6 +219,7 @@
     UICollectionView *collectview = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, height) collectionViewLayout:collectviewlayout];
     collectview.delegate = self;
     collectview.dataSource = self;
+    collectview.tag = TagView(indexPath.section);
     [cell addSubview:collectview];
     [collectview registerClass:[UICollectionViewCell class]forCellWithReuseIdentifier:@"cell"];
     collectview.scrollEnabled = NO;
@@ -255,9 +257,20 @@
     
     ServiceModel *model = [[_ServiceModelDict objectForKey:collectioncelltitle] objectAtIndex:indexPath.row];
 
+    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (ScreenSize.width - 5) / 3, cellheightmodulus - 51)];
+    [cell addSubview:imageview];
+    imageview.image = model.image;
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cellheightmodulus - 51, (ScreenSize.width - 5) / 3, 50)];
     view.backgroundColor = [UIColor whiteColor];
     [cell addSubview:view];
+    
+    UILabel *introducelbl = [[UILabel alloc] initWithFrame:CGRectMake(0, cellheightmodulus - 66, (ScreenSize.width - 5) / 3, 15)];
+    introducelbl.text = model.introduce;
+    introducelbl.backgroundColor = [UIColor grayColor];
+    introducelbl.alpha = 0.8;
+    introducelbl.font = [UIFont systemFontOfSize:12];
+    [cell addSubview:introducelbl];
     
     UILabel *namelbl = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, (ScreenSize.width - 5) / 3 - 5, 20)];
     namelbl.text = model.name;
@@ -269,15 +282,18 @@
     countlbl.font = [UIFont systemFontOfSize:9];
     [view addSubview:countlbl];
     
-    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (ScreenSize.width - 5) / 3, cellheightmodulus - 51)];
-    [cell addSubview:imageview];
-    imageview.image = model.image;
+    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%ld",indexPath.row);
+//    NSLog(@"%ld --- %@",indexPath.row,[self switchToCellString:collectionView.tag - TagView(0)]);
+    ServiceModel *model = [[_ServiceModelDict objectForKey:[self switchToCellString:collectionView.tag - TagView(0)]] objectAtIndex:indexPath.row];
+    ServiceDetailViewController *servicedetailview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailViewController"];
+    [servicedetailview getServiceModel:model];
+    [self.navigationController showViewController:servicedetailview sender:nil];
+    
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
