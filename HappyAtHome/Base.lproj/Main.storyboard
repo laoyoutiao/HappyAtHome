@@ -1791,12 +1791,13 @@
         <!--Service Detail View Controller-->
         <scene sceneID="PYK-nD-l6u">
             <objects>
-                <viewController storyboardIdentifier="ServiceDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hwi-Pr-5ku" customClass="ServiceDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServiceDetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hwi-Pr-5ku" customClass="ServiceDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SP8-5u-HdI"/>
                         <viewControllerLayoutGuide type="bottom" id="MiM-fB-gbM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5zV-g2-ZJR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0DR-UR-Ekl">
@@ -1822,10 +1823,10 @@
                                 <exclude reference="0DR-UR-Ekl"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="SfG-EE-dQa"/>
                                 <exclude reference="OHB-vH-pcV"/>
                                 <exclude reference="bsR-TM-BRv"/>
                                 <exclude reference="skr-z1-4Jq"/>
-                                <exclude reference="SfG-EE-dQa"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1833,13 +1834,16 @@
                                 <include reference="0DR-UR-Ekl"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="SfG-EE-dQa"/>
                                 <include reference="OHB-vH-pcV"/>
                                 <include reference="bsR-TM-BRv"/>
                                 <include reference="skr-z1-4Jq"/>
-                                <include reference="SfG-EE-dQa"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="TableView" destination="0DR-UR-Ekl" id="h9j-pV-Pn6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBY-R0-r7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
