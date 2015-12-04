@@ -11,10 +11,10 @@
 @interface ScrollImageItem : NSObject
 @property (nonatomic, copy)  NSString     *title;
 //@property (nonatomic, copy)  NSString      *image;
-@property (nonatomic, copy)  UIImage      *image;
+@property (nonatomic, copy)  NSString      *image;
 @property (nonatomic, assign)  NSInteger     tag;
 
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image tag:(NSInteger)tag;
+- (id)initWithTitle:(NSString *)title image:(NSString *)image tag:(NSInteger)tag;
 - (id)initWithDict:(NSDictionary *)dict tag:(NSInteger)tag;
 
 @end

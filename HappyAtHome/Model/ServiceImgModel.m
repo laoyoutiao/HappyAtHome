@@ -16,9 +16,7 @@
     if (self = [super init]) {
         _serviceId = [dict safeIntegerForKey:@"service_id"];
         _serverImgId = [dict safeIntegerForKey:@"serverimg_id"];
-        NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",[dict safeStringForKey:@"logo"]]]];
-        UIImage *image = [UIImage imageWithData:imagedata];
-        _image = image;
+        _image = [dict safeStringForKey:@"logo"];
     }
     return self;
 }

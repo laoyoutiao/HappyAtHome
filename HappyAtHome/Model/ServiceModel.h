@@ -16,7 +16,7 @@
 @property (nonatomic, assign) NSInteger money;
 @property (nonatomic, strong) NSString *introduce;
 @property (nonatomic, strong) NSString *hint;
-@property (nonatomic, strong) UIImage  *image;
+@property (nonatomic, strong) NSString *image;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 

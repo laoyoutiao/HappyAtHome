@@ -15,7 +15,10 @@
 #define TagButton(x) 1000 + x
 
 //View of Tag
-#define TagView(y) 100 + y
+#define TagView(y) 500 + y
+
+//Label of Tag
+#define TagLabel(z) 100 + z
 
 //Screen of window
 #define ScreenSize [UIScreen mainScreen].bounds.size
@@ -46,5 +49,8 @@ __LINE__, __func__);                                                \
 (NSLog)((format), ##__VA_ARGS__);                                           \
 fprintf(stderr, "-------\n");                                               \
 } while (0)
+
+//Block Weak
+#define WeakObj(o) try{}@finally{} __weak typeof(o) o##Weak = o;
 
 #endif /* MyHeader_h */

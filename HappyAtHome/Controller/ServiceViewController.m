@@ -16,6 +16,7 @@
 #import "ModelHeader.h"
 #import "MyHeader.h"
 #import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
 
 #define cellheightmodulus 130
 
@@ -62,6 +63,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    _ScrollImageView = nil;
     // Dispose of any resources that can be recreated.
 }
 
@@ -98,20 +100,19 @@
 {
     [ServerService serverImgPostBlock:^(NSArray *imgarray) {
         _ServiceImageModelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
-        if (_ScrollImageView)
-        {
+        if (_ScrollImageView) {
             _ScrollImageView = nil;
         }
-        [self setScrollImageView];
+        [self setScrollImageViewRun];
     }];
     
     [ServerService searchPostBlock:^(NSArray *searcharray) {
-            _ServiceModelDict = [ServiceModel instanceArrayDictFromArray:searcharray];
-            [_TableView reloadData];
+        _ServiceModelDict = [ServiceModel instanceArrayDictFromArray:searcharray];
+        [_TableView reloadData];
     }];
 }
 
-- (void)setScrollImageView
+- (void)setScrollImageViewRun
 {
 //    NSLog(@"%@",_ServiceImageModelArray);
     _ScrollImageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 150)];
@@ -119,20 +120,20 @@
         if ([_ServiceImageModelArray count] > 1)
         {
             ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:[_ServiceImageModelArray count]-1];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:model.image tag:-1];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image] tag:-1];
             [itemArray addObject:item];
         }
         for (int i = 0; i < [_ServiceImageModelArray count]; i++)
         {
             ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:i];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:model.image tag:i];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image] tag:i];
             [itemArray addObject:item];
         }
         //添加第一张图 用于循环
         if ([_ServiceImageModelArray count] >1)
         {
             ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:0];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:model.image tag:[_ServiceImageModelArray count]];
+            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image] tag:[_ServiceImageModelArray count]];
             [itemArray addObject:item];
         }
     
@@ -209,25 +210,27 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        UICollectionViewFlowLayout *collectviewlayout = [[UICollectionViewFlowLayout alloc] init];
+        NSInteger height;
+        NSString *str = [self switchToCellString:indexPath.section];
+        height = [[_ServiceModelDict objectForKey:str] count] / 3 * cellheightmodulus + cellheightmodulus;
+        UICollectionView *collectview = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, height) collectionViewLayout:collectviewlayout];
+        collectview.delegate = self;
+        collectview.dataSource = self;
+        collectview.tag = TagView(indexPath.section);
+        [cell addSubview:collectview];
+        [collectview registerClass:[UICollectionViewCell class]forCellWithReuseIdentifier:@"cell"];
+        collectview.scrollEnabled = NO;
+        collectview.backgroundColor = [UIColor whiteColor];
+        collectioncellnum = [[_ServiceModelDict objectForKey:str] count];
+        collectioncelltitle = str;
+        cell.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
+        collectview.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
+        collectview = nil;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    UICollectionViewFlowLayout *collectviewlayout = [[UICollectionViewFlowLayout alloc] init];
-    NSInteger height;
-    NSString *str = [self switchToCellString:indexPath.section];
-    height = [[_ServiceModelDict objectForKey:str] count] / 3 * cellheightmodulus + cellheightmodulus;
-    UICollectionView *collectview = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, height) collectionViewLayout:collectviewlayout];
-    collectview.delegate = self;
-    collectview.dataSource = self;
-    collectview.tag = TagView(indexPath.section);
-    [cell addSubview:collectview];
-    [collectview registerClass:[UICollectionViewCell class]forCellWithReuseIdentifier:@"cell"];
-    collectview.scrollEnabled = NO;
-    collectview.backgroundColor = [UIColor whiteColor];
-    collectioncellnum = [[_ServiceModelDict objectForKey:str] count];
-    collectioncelltitle = str;
-    cell.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
-    collectview.backgroundColor = [UIColor colorWithHex:0xCFCFCF];
     return cell;
 }
 
@@ -258,8 +261,9 @@
     ServiceModel *model = [[_ServiceModelDict objectForKey:collectioncelltitle] objectAtIndex:indexPath.row];
 
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (ScreenSize.width - 5) / 3, cellheightmodulus - 51)];
+    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
     [cell addSubview:imageview];
-    imageview.image = model.image;
+    imageview = nil;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, cellheightmodulus - 51, (ScreenSize.width - 5) / 3, 50)];
     view.backgroundColor = [UIColor whiteColor];

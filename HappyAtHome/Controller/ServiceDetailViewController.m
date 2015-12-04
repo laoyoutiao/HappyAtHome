@@ -9,9 +9,10 @@
 #import "ServiceDetailViewController.h"
 #import "UIColor+Hex.h"
 
-@interface ServiceDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate>
+@interface ServiceDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate>
 {
     NSString *servicetime;
+    NSString *servicestarttime;
 }
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 
@@ -82,7 +83,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
-    }
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0)
@@ -144,10 +144,12 @@
                 
             case 1:
                 mutablelabl.text = @"服务时间";
+                mutablelabl.tag = TagLabel(1);
                 break;
                 
             case 2:
-                mutablelabl.text = servicetime.length? servicetime:@"购买数量";
+                mutablelabl.text = @"购买数量";
+                mutablelabl.tag = TagLabel(0);
                 break;
         }
         mutablelabl.textColor = [UIColor colorWithHex:0x999999];
@@ -170,6 +172,8 @@
         UITextView *textview = [[UITextView alloc] initWithFrame:CGRectMake(75, 10, ScreenSize.width - 90, 70)];
         textview.text = @"告诉我们你们的需求";
         textview.textColor = [UIColor colorWithHex:0x999999];
+        [textview resignFirstResponder];
+        textview.delegate = self;
         [cell addSubview:textview];
     }else
     {
@@ -180,6 +184,7 @@
         button.titleLabel.font = [UIFont systemFontOfSize:13];
         [button setTitle:@"提交订单" forState:UIControlStateNormal];
         [cell addSubview:button];
+    }
     }
 //    cell.backgroundColor = [UIColor yellowColor];
     return cell;
@@ -221,15 +226,45 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 2 && indexPath.row == 2) {
-        
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, ScreenSize.height - 200)];
+    if (indexPath.section == 2 && (indexPath.row == 1 || indexPath.row == 2)) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, ScreenSize.height - 220)];
         view.backgroundColor = [UIColor blackColor];
         view.alpha = 0.7;
         view.tag = TagView(0);
         [self.view addSubview:view];
         
+        UIButton *canclebtn = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenSize.height - 220, ScreenSize.width / 2, 20)];
+        canclebtn.backgroundColor = [UIColor blackColor];
+        [canclebtn addTarget:self action:@selector(pickButtonclick:) forControlEvents:UIControlEventTouchUpInside];
+        canclebtn.tag = TagButton(3);
+        [canclebtn setTitle:@"取消" forState:UIControlStateNormal];
+        canclebtn.titleEdgeInsets = UIEdgeInsetsMake(5, 0, 5, 90);
+        [canclebtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        canclebtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [self.view addSubview:canclebtn];
+        
+        UIButton *surebtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width / 2, ScreenSize.height - 220, ScreenSize.width / 2, 20)];
+        surebtn.backgroundColor = [UIColor blackColor];
+        [surebtn addTarget:self action:@selector(pickButtonclick:) forControlEvents:UIControlEventTouchUpInside];
+        surebtn.tag = TagButton(4);
+        [surebtn setTitle:@"确定" forState:UIControlStateNormal];
+        surebtn.titleEdgeInsets = UIEdgeInsetsMake(5, 90, 5, 0);
+        [surebtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        surebtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [self.view addSubview:surebtn];
+    }
+    
+    if (indexPath.section == 2 && indexPath.row == 2) {
         UIPickerView *pickview = [[UIPickerView alloc] initWithFrame:CGRectMake(0, ScreenSize.height - 200, ScreenSize.width, 200)];
+        pickview.tag = TagView(5);
+        pickview.backgroundColor = [UIColor whiteColor];
+        pickview.delegate = self;
+        pickview.dataSource = self;
+        [self.view addSubview:pickview];
+    }else if (indexPath.section == 2 && indexPath.row == 1)
+    {
+        UIPickerView *pickview = [[UIPickerView alloc] initWithFrame:CGRectMake(0, ScreenSize.height - 200, ScreenSize.width, 200)];
+        pickview.tag = TagView(6);
         pickview.backgroundColor = [UIColor whiteColor];
         pickview.delegate = self;
         pickview.dataSource = self;
@@ -237,33 +272,173 @@
     }
 }
 
-#pragma mark ThingMethod
+#pragma mark ThingMethod or ButtonSel
 
+- (void)pickButtonclick:(UIButton *)btn
+{
+    UIView *view = [self.view viewWithTag:TagView(0)];
+    [view removeFromSuperview];
+    
+    UIPickerView *timepickerView = (UIPickerView *)[self.view viewWithTag:TagView(5)];
+    timepickerView ? [timepickerView removeFromSuperview]:nil;
+    
+    UIPickerView *starttimepickerView = (UIPickerView *)[self.view viewWithTag:TagView(6)];
+    starttimepickerView ? [starttimepickerView removeFromSuperview]:nil;
+    
+    UILabel *timelabel = (UILabel *)[self.view viewWithTag:TagLabel(0)];
+    UILabel *startlabel = (UILabel *)[self.view viewWithTag:TagLabel(1)];
+    switch (btn.tag) {
+        case TagButton(4):
+            timepickerView ? timelabel.text = servicetime:nil;
+            starttimepickerView ? startlabel.text = servicestarttime:nil;
+            break;
+    }
+    
+    UIButton *canclebtn = (UIButton *)[self.view viewWithTag:TagButton(4)];
+    [canclebtn removeFromSuperview];
+    
+    UIButton *surebtn = (UIButton *)[self.view viewWithTag:TagButton(3)];
+    [surebtn removeFromSuperview];
+}
 
 #pragma mark PickViewDelegate or DataSource
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 1;
+    if (pickerView.tag == TagView(5))
+    {
+        return 1;
+    }else if (pickerView.tag == TagView(6))
+    {
+        return 3;
+    }else
+    {
+        return 0;
+    }
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 8;
+    if (component == 0)
+    {
+        return 8;
+    }else
+    {
+        return 12;
+    }
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString stringWithFormat:@"1小时X%ld",row + 1];
+    if (pickerView.tag == TagView(5))
+    {
+        return [NSString stringWithFormat:@"1小时X%ld",row + 1];
+    }else if (pickerView.tag == TagView(6))
+    {
+        if (component == 0)
+        {
+            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+            NSDateComponents *comps = nil;
+            comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
+            NSDateComponents *adcomps = [[NSDateComponents alloc] init];
+            [adcomps setYear:0];
+            [adcomps setMonth:0];
+            [adcomps setDay:row];
+            NSDate *newdate = [calendar dateByAddingComponents:adcomps toDate:[NSDate date] options:0];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            NSString *datestr = [formatter stringFromDate:newdate];
+            servicestarttime = [NSString stringWithFormat:@"%@ 08:00",datestr];
+            return datestr;
+        }else if (component == 1)
+        {
+            return row < 2? [NSString stringWithFormat:@"0%ld",row + 8]:[NSString stringWithFormat:@"%ld",row + 8];
+        }else
+        {
+            return row < 2? [NSString stringWithFormat:@"0%ld",row * 5]:[NSString stringWithFormat:@"%ld",row * 5];
+        }
+    }else
+    {
+        return 0;
+    }
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    servicetime = [NSString stringWithFormat:@"1小时X%ld",row + 1];
-    UIView *view = [self.view viewWithTag:TagView(0)];
-    [view removeFromSuperview];
-    [pickerView removeFromSuperview];
-    [_TableView reloadData];
+    if (pickerView.tag == TagView(5))
+    {
+        servicetime = [NSString stringWithFormat:@"1小时X%ld",row + 1];
+    }else if (pickerView.tag == TagView(6))
+    {
+        if (component == 0)
+        {
+            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+            NSDateComponents *comps = nil;
+            comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
+            NSDateComponents *adcomps = [[NSDateComponents alloc] init];
+            [adcomps setYear:0];
+            [adcomps setMonth:0];
+            [adcomps setDay:row];
+            NSDate *newdate = [calendar dateByAddingComponents:adcomps toDate:[NSDate date] options:0];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            NSString *datestr = [formatter stringFromDate:newdate];
+            servicestarttime = [NSString stringWithFormat:@"%@%@",datestr,[servicestarttime substringWithRange:NSMakeRange(10, servicestarttime.length - 10)]];
+        }else if (component == 1)
+        {
+            NSString *hour = row < 2? [NSString stringWithFormat:@"0%ld",row + 8]:[NSString stringWithFormat:@"%ld",row + 8];
+            servicestarttime = [NSString stringWithFormat:@"%@%@%@",[servicestarttime substringWithRange:NSMakeRange(0, 11)],hour,[servicestarttime substringWithRange:NSMakeRange(13, servicestarttime.length - 13)]];
+        }else
+        {
+            NSString *min = row < 2? [NSString stringWithFormat:@"0%ld",row * 5]:[NSString stringWithFormat:@"%ld",row * 5];
+            servicestarttime = [NSString stringWithFormat:@"%@%@",[servicestarttime substringWithRange:NSMakeRange(0, 14)],min];
+        }
+        NSLog(@"%@",servicestarttime);
+    }
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
+{
+    if (pickerView.tag == TagView(6)) {
+        if (component == 0) {
+            return 160;
+        }else
+        {
+            return 50;
+        }
+    }else
+    {
+        return 200;
+    }
+}
+
+#pragma mark TextViewDelegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [textView.text isEqualToString:@"告诉我们你们的需求"] ? textView.text = @"":nil;
+    [_TableView setContentOffset:CGPointMake(0, 270) animated:YES];
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    NSLog(@"%@",textView.text);
+    !textView.text ? textView.text = @"告诉我们你们的需求":nil;
+    [_TableView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSLog(@"%@",text);
+    if ([text  isEqual: @"\n"]) {
+        [textView resignFirstResponder];
+    }
+    return YES;
 }
 
 /*

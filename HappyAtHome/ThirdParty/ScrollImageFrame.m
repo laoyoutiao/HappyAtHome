@@ -8,6 +8,7 @@
 
 #import "ScrollImageFrame.h"
 #import "ScrollImageItem.h"
+#import "UIImageView+WebCache.h"
 #import <objc/runtime.h>
 //#import "UIImageView+WebCache.h"
 @interface ScrollImageFrame () {
@@ -120,8 +121,8 @@ static CGFloat SWITCH_FOCUS_PICTURE_INTERVAL = 4.0; //switch interval time
         ScrollImageItem *item = imageItems[i];
 //        NSString *name = item.image;
 //        imageView.image = [UIImage imageNamed:name];
-        imageView.image = item.image;
-//        [imageView sd_setImageWithURL:[NSURL URLWithString:name] placeholderImage:nil];
+//        imageView.image = item.image;
+        [imageView sd_setImageWithURL:[NSURL URLWithString:item.image] placeholderImage:nil];
        [_scrollView addSubview:imageView];
     }
     if ([imageItems count]>1)

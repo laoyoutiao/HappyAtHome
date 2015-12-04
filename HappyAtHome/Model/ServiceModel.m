@@ -18,9 +18,7 @@
         _count = [dict safeIntegerForKey:@"getcount"];
         _hint = [dict safeStringForKey:@"hint"];
         _money = [dict safeIntegerForKey:@"money0"];
-        NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",[dict safeStringForKey:@"logo"]]]];
-        UIImage *image = [UIImage imageWithData:imagedata];
-        _image = image;
+        _image = [dict safeStringForKey:@"logo"];
     }
     return self;
 }
