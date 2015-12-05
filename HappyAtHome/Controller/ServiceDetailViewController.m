@@ -430,7 +430,7 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    NSLog(@"%@",textView.text);
+    NSLog(@"123%@",textView.text);
     [textView.text isEqualToString:@""] ? textView.text = @"告诉我们你们的需求":nil;
     [_TableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
