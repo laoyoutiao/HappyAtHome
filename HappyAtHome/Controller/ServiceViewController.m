@@ -150,7 +150,7 @@
 
 - (void)foucusImageFrame:(ScrollImageFrame *)imageFrame didSelectItem:(ScrollImageItem *)item
 {
-    NSLog(@"123123%ld",item.tag);
+    NSLog(@"123456%ld",item.tag);
     
     
 }
