@@ -44,6 +44,8 @@
 		5B4C334F1C11264100F50173 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C333D1C11264100F50173 /* UIImageView+HighlightedWebCache.m */; settings = {ASSET_TAGS = (); }; };
 		5B4C33501C11264100F50173 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C333F1C11264100F50173 /* UIImageView+WebCache.m */; settings = {ASSET_TAGS = (); }; };
 		5B4C33511C11264100F50173 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C33411C11264100F50173 /* UIView+WebCacheOperation.m */; settings = {ASSET_TAGS = (); }; };
+		5B4C33551C11374200F50173 /* ServiceDetailValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C33541C11374200F50173 /* ServiceDetailValueViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5B4C33581C1139AB00F50173 /* ServiceBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4C33571C1139AB00F50173 /* ServiceBookViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B4DF6F91BEAF7C300F7F677 /* PersonCouponsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF6F81BEAF7C300F7F677 /* PersonCouponsViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B4DF6FD1BEB416400F7F677 /* ServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4DF6FC1BEB416400F7F677 /* ServiceViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5B4E1E141BDB6C9B00D54B88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E1E131BDB6C9B00D54B88 /* main.m */; };
@@ -224,6 +226,10 @@
 		5B4C333F1C11264100F50173 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		5B4C33401C11264100F50173 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		5B4C33411C11264100F50173 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		5B4C33531C11374200F50173 /* ServiceDetailValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceDetailValueViewController.h; path = Controller/ServiceDetailValueViewController.h; sourceTree = "<group>"; };
+		5B4C33541C11374200F50173 /* ServiceDetailValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceDetailValueViewController.m; path = Controller/ServiceDetailValueViewController.m; sourceTree = "<group>"; };
+		5B4C33561C1139AB00F50173 /* ServiceBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceBookViewController.h; path = Controller/ServiceBookViewController.h; sourceTree = "<group>"; };
+		5B4C33571C1139AB00F50173 /* ServiceBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceBookViewController.m; path = Controller/ServiceBookViewController.m; sourceTree = "<group>"; };
 		5B4DF6F71BEAF7C300F7F677 /* PersonCouponsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonCouponsViewController.h; path = Controller/PersonCouponsViewController.h; sourceTree = "<group>"; };
 		5B4DF6F81BEAF7C300F7F677 /* PersonCouponsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonCouponsViewController.m; path = Controller/PersonCouponsViewController.m; sourceTree = "<group>"; };
 		5B4DF6FB1BEB416400F7F677 /* ServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceViewController.h; path = Controller/ServiceViewController.h; sourceTree = "<group>"; };
@@ -595,6 +601,10 @@
 				5B88F2791BF32E0400005E0E /* ServiceChooseCityViewController.m */,
 				5B47F9A81C0BE9850007361D /* ServiceDetailViewController.h */,
 				5B47F9A91C0BE9850007361D /* ServiceDetailViewController.m */,
+				5B4C33531C11374200F50173 /* ServiceDetailValueViewController.h */,
+				5B4C33541C11374200F50173 /* ServiceDetailValueViewController.m */,
+				5B4C33561C1139AB00F50173 /* ServiceBookViewController.h */,
+				5B4C33571C1139AB00F50173 /* ServiceBookViewController.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -1204,10 +1214,12 @@
 				5B651AC91C0939D1003DD84D /* MJRefreshHeader.m in Sources */,
 				5B4C33501C11264100F50173 /* UIImageView+WebCache.m in Sources */,
 				5B0C1C841BEC830800432430 /* ScrollImageFrame.m in Sources */,
+				5B4C33581C1139AB00F50173 /* ServiceBookViewController.m in Sources */,
 				5B651ACA1C0939D1003DD84D /* MJRefreshAutoGifFooter.m in Sources */,
 				5B4C334F1C11264100F50173 /* UIImageView+HighlightedWebCache.m in Sources */,
 				5B651AD71C0939D1003DD84D /* UIView+MJExtension.m in Sources */,
 				5B6FAC441C00024000EF72CD /* AFURLResponseSerialization.m in Sources */,
+				5B4C33551C11374200F50173 /* ServiceDetailValueViewController.m in Sources */,
 				5B651AC51C0939D1003DD84D /* MJRefreshAutoFooter.m in Sources */,
 				5B4E1E141BDB6C9B00D54B88 /* main.m in Sources */,
 				5B4C33421C11264100F50173 /* MKAnnotationView+WebCache.m in Sources */,

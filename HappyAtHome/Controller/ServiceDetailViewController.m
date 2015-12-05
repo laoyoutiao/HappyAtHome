@@ -227,13 +227,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 2 && (indexPath.row == 1 || indexPath.row == 2)) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, ScreenSize.height - 220)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, ScreenSize.height - 225)];
         view.backgroundColor = [UIColor blackColor];
         view.alpha = 0.7;
         view.tag = TagView(0);
         [self.view addSubview:view];
         
-        UIButton *canclebtn = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenSize.height - 220, ScreenSize.width / 2, 20)];
+        UIButton *canclebtn = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenSize.height - 225, ScreenSize.width / 2, 25)];
         canclebtn.backgroundColor = [UIColor blackColor];
         [canclebtn addTarget:self action:@selector(pickButtonclick:) forControlEvents:UIControlEventTouchUpInside];
         canclebtn.tag = TagButton(3);
@@ -243,7 +243,7 @@
         canclebtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [self.view addSubview:canclebtn];
         
-        UIButton *surebtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width / 2, ScreenSize.height - 220, ScreenSize.width / 2, 20)];
+        UIButton *surebtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width / 2, ScreenSize.height - 225, ScreenSize.width / 2, 25)];
         surebtn.backgroundColor = [UIColor blackColor];
         [surebtn addTarget:self action:@selector(pickButtonclick:) forControlEvents:UIControlEventTouchUpInside];
         surebtn.tag = TagButton(4);
@@ -269,6 +269,9 @@
         pickview.delegate = self;
         pickview.dataSource = self;
         [self.view addSubview:pickview];
+    }else if (indexPath.section == 0)
+    {
+        
     }
 }
 
@@ -332,6 +335,7 @@
 {
     if (pickerView.tag == TagView(5))
     {
+        servicetime = @"1小时X1";
         return [NSString stringWithFormat:@"1小时X%ld",row + 1];
     }else if (pickerView.tag == TagView(6))
     {
@@ -393,7 +397,6 @@
             NSString *min = row < 2? [NSString stringWithFormat:@"0%ld",row * 5]:[NSString stringWithFormat:@"%ld",row * 5];
             servicestarttime = [NSString stringWithFormat:@"%@%@",[servicestarttime substringWithRange:NSMakeRange(0, 14)],min];
         }
-        NSLog(@"%@",servicestarttime);
     }
 }
 
@@ -428,7 +431,7 @@
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     NSLog(@"%@",textView.text);
-    !textView.text ? textView.text = @"告诉我们你们的需求":nil;
+    [textView.text isEqualToString:@""] ? textView.text = @"告诉我们你们的需求":nil;
     [_TableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
