@@ -98,18 +98,19 @@
 
 - (void)setFixedData
 {
-    [ServerService serverImgPostBlock:^(NSArray *imgarray) {
-        _ServiceImageModelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
-        if (_ScrollImageView) {
-            _ScrollImageView = nil;
-        }
-        [self setScrollImageViewRun];
-    }];
-    
-    [ServerService searchPostBlock:^(NSArray *searcharray) {
-        _ServiceModelDict = [ServiceModel instanceArrayDictFromArray:searcharray];
-        [_TableView reloadData];
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [ServerService serverImgPostBlock:^(NSArray *imgarray) {
+            _ServiceImageModelArray = [ServiceImgModel instanceArrayDictFromDict:imgarray];
+            if (_ScrollImageView) {
+                _ScrollImageView = nil;
+            }
+            [self setScrollImageViewRun];
+            [ServerService searchPostBlock:^(NSArray *searcharray) {
+                _ServiceModelDict = [ServiceModel instanceArrayDictFromArray:searcharray];
+                [_TableView reloadData];
+            }];
+        }];
+    });
 }
 
 - (void)setScrollImageViewRun
@@ -150,7 +151,7 @@
 
 - (void)foucusImageFrame:(ScrollImageFrame *)imageFrame didSelectItem:(ScrollImageItem *)item
 {
-    NSLog(@"123456%ld",item.tag);
+    NSLog(@"%ld",item.tag);
     
     
 }

@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "UIView+Additions.h"
 #import "UIColor+Hex.h"
+#import "ServerHeader.h"
 
 #define BACKGROUNDCOLOR [UIColor colorWithRed:239/255.0 green:125/255.0 blue:159/255.0 alpha:1.0]
 @interface RegisterViewController ()
@@ -120,7 +121,7 @@
 }
 - (void)registerBtnAction
 {
-    
+    [ServerLoginOrRegister registerPostPhone:@"13425889426" Pass:@"123456" Id:@"440682199308164731"];
 }
 - (void)agreeProtocol
 {

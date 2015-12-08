@@ -7,6 +7,7 @@
 //
 
 #import "ServiceDetailViewController.h"
+#import "ServiceDetailValueViewController.h"
 #import "UIColor+Hex.h"
 
 @interface ServiceDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate>
@@ -269,9 +270,10 @@
         pickview.delegate = self;
         pickview.dataSource = self;
         [self.view addSubview:pickview];
-    }else if (indexPath.section == 0)
+    }else if (indexPath.section == 2 && indexPath.row == 0)
     {
-        
+        ServiceDetailValueViewController *detailvalueview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailValueViewController"];
+        [self.navigationController showViewController:detailvalueview sender:nil];
     }
 }
 
