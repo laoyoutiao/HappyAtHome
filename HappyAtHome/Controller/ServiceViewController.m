@@ -300,6 +300,7 @@
     ServiceDetailViewController *servicedetailview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailViewController"];
     [servicedetailview getServiceModel:model];
     [self.navigationController showViewController:servicedetailview sender:nil];
+    [self.tabBarController.tabBar setHidden:NO];
     
 }
 

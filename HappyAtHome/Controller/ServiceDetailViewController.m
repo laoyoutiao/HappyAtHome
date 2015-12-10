@@ -8,9 +8,10 @@
 
 #import "ServiceDetailViewController.h"
 #import "ServiceDetailValueViewController.h"
+#import "ServicePayViewController.h"
 #import "UIColor+Hex.h"
 
-@interface ServiceDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate>
+@interface ServiceDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,AddressDelegate>
 {
     NSString *servicetime;
     NSString *servicestarttime;
@@ -90,7 +91,7 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, ScreenSize.width - 10, 35)];
-        label.text = servicemodel.hint;
+        label.text = servicemodel.hint.length? servicemodel.hint:@"暂无";
         label.font = [UIFont systemFontOfSize:13];
         label.textColor = [UIColor colorWithHex:0x515270];
         [cell addSubview:label];
@@ -107,7 +108,7 @@
         [cell addSubview:line];
         
         UILabel *mutablelabl = [[UILabel alloc] initWithFrame:CGRectMake(85, 0, ScreenSize.width - 120, 40)];
-        mutablelabl.text = !indexPath.row? [NSString stringWithFormat:@"%ld",servicemodel.money]:@"天气干燥";
+        mutablelabl.text = !indexPath.row? [NSString stringWithFormat:@"%.1f",servicemodel.money]:@"天气干燥";
         mutablelabl.textColor = !indexPath.row? [UIColor colorWithHex:0x515270]:[UIColor colorWithHex:0x636363];
         mutablelabl.font = [UIFont systemFontOfSize:13];
         [cell addSubview:mutablelabl];
@@ -141,6 +142,7 @@
         switch (indexPath.row) {
             case 0:
                 mutablelabl.text = @"服务地点";
+                mutablelabl.tag = TagLabel(2);
                 break;
                 
             case 1:
@@ -184,6 +186,7 @@
         button.layer.cornerRadius = 3;
         button.titleLabel.font = [UIFont systemFontOfSize:13];
         [button setTitle:@"提交订单" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(clickImportBookBtn) forControlEvents:UIControlEventTouchUpInside];
         [cell addSubview:button];
     }
     }
@@ -274,10 +277,24 @@
     {
         ServiceDetailValueViewController *detailvalueview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailValueViewController"];
         [self.navigationController showViewController:detailvalueview sender:nil];
+        detailvalueview.delegate = self;
+        [detailvalueview viewType:addressviewType];
+    }else if (indexPath.section == 0)
+    {
+        ServiceDetailValueViewController *detailvalueview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailValueViewController"];
+        [detailvalueview viewType:introduceviewType];
+        [detailvalueview setIntroducestring:servicemodel.introduce];
+        [self.navigationController showViewController:detailvalueview sender:nil];
     }
 }
 
-#pragma mark ThingMethod or ButtonSel
+- (void)getAddressName:(NSString *)addressname
+{
+    UILabel *label = (UILabel *)[self.view viewWithTag:TagLabel(2)];
+    label.text = addressname;
+}
+
+#pragma mark Button Mehtods
 
 - (void)pickButtonclick:(UIButton *)btn
 {
@@ -304,6 +321,17 @@
     
     UIButton *surebtn = (UIButton *)[self.view viewWithTag:TagButton(3)];
     [surebtn removeFromSuperview];
+}
+
+- (void)clickImportBookBtn
+{
+    ServicePayViewController *servicepayview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServicePayViewController"];
+    [self.navigationController showViewController:servicepayview sender:nil];
+    UILabel *addresslbl = (UILabel *)[self.view viewWithTag:TagLabel(2)];
+    UILabel *starttimelbl = (UILabel *)[self.view viewWithTag:TagLabel(1)];
+    UILabel *timenumlbl = (UILabel *)[self.view viewWithTag:TagLabel(0)];
+    NSInteger num = [timenumlbl.text substringWithRange:NSMakeRange(4, timenumlbl.text.length - 4)].integerValue;
+    [servicepayview getMessageServiceHint:servicemodel.name StartTime:starttimelbl.text Address:addresslbl.text Money:num * servicemodel.money];
 }
 
 #pragma mark PickViewDelegate or DataSource
@@ -445,6 +473,8 @@
     }
     return YES;
 }
+
+
 
 /*
 #pragma mark - Navigation

@@ -10,7 +10,7 @@
         <!--商城-->
         <scene sceneID="tKm-8y-1EN">
             <objects>
-                <viewController storyboardIdentifier="ShopViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OuC-9S-zFw" customClass="ShopViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OuC-9S-zFw" customClass="ShopViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="91V-e4-7oR"/>
                         <viewControllerLayoutGuide type="bottom" id="bGg-On-rS6"/>
@@ -103,7 +103,7 @@
         <!--Shop Sort View Controller-->
         <scene sceneID="Tqm-Tg-Q0g">
             <objects>
-                <viewController storyboardIdentifier="ShopSortViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gYt-3h-5E3" customClass="ShopSortViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopSortViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gYt-3h-5E3" customClass="ShopSortViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vGp-l8-I7x"/>
                         <viewControllerLayoutGuide type="bottom" id="nsf-d3-l5h"/>
@@ -161,7 +161,7 @@
         <!--活动-->
         <scene sceneID="sbl-hR-PQx">
             <objects>
-                <viewController id="F2j-wA-w1Z" customClass="ActivityViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="F2j-wA-w1Z" customClass="ActivityViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WXL-Ml-hP1"/>
                         <viewControllerLayoutGuide type="bottom" id="LEb-Zp-unf"/>
@@ -584,7 +584,7 @@
         <!--Activity Detail View Controller-->
         <scene sceneID="nR9-AW-QuQ">
             <objects>
-                <viewController storyboardIdentifier="ActivityDetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="taf-Sj-Gb8" customClass="ActivityDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityDetailViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="taf-Sj-Gb8" customClass="ActivityDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vGB-CR-JUi"/>
                         <viewControllerLayoutGuide type="bottom" id="LFx-4I-4aK"/>
@@ -929,7 +929,7 @@
         <!--Activity Book View Controller-->
         <scene sceneID="xcU-l8-F1B">
             <objects>
-                <viewController storyboardIdentifier="ActivityBookViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SEm-ZU-On6" customClass="ActivityBookViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActivityBookViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SEm-ZU-On6" customClass="ActivityBookViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TEd-mz-TaU"/>
                         <viewControllerLayoutGuide type="bottom" id="KYL-UP-fBi"/>
@@ -1043,7 +1043,7 @@
         <!--Person Data View Controller-->
         <scene sceneID="BKQ-sQ-etB">
             <objects>
-                <viewController storyboardIdentifier="PersonDataViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k5b-Hk-lY0" customClass="PersonDataViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonDataViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k5b-Hk-lY0" customClass="PersonDataViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jcd-rF-Dpi"/>
                         <viewControllerLayoutGuide type="bottom" id="4vx-6q-UIY"/>
@@ -1103,7 +1103,7 @@
         <!--Person Data Change View Controller-->
         <scene sceneID="Sq1-26-Ppi">
             <objects>
-                <viewController storyboardIdentifier="PersonDataChangeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mw1-nd-byj" customClass="PersonDataChangeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonDataChangeViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mw1-nd-byj" customClass="PersonDataChangeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dwb-2q-A4f"/>
                         <viewControllerLayoutGuide type="bottom" id="aJY-nU-FpS"/>
@@ -1163,7 +1163,7 @@
         <!--Person Integration View Controller-->
         <scene sceneID="B6n-Is-iFn">
             <objects>
-                <viewController storyboardIdentifier="PersonIntegrationViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n10-1N-lCO" customClass="PersonIntegrationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonIntegrationViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n10-1N-lCO" customClass="PersonIntegrationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mj7-EZ-MvW"/>
                         <viewControllerLayoutGuide type="bottom" id="Ba3-7l-s38"/>
@@ -1226,7 +1226,7 @@
         <!--Person Order View Controller-->
         <scene sceneID="Eka-Ox-xi1">
             <objects>
-                <viewController storyboardIdentifier="PersonOrderViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MRM-rF-fDX" customClass="PersonOrderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonOrderViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MRM-rF-fDX" customClass="PersonOrderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i1S-xf-6Xj"/>
                         <viewControllerLayoutGuide type="bottom" id="WTY-O3-Ica"/>
@@ -1323,7 +1323,7 @@
         <!--Person Coupons View Controller-->
         <scene sceneID="FZV-4J-gnh">
             <objects>
-                <viewController storyboardIdentifier="PersonCouponsViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="29O-xg-eXp" customClass="PersonCouponsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonCouponsViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="29O-xg-eXp" customClass="PersonCouponsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sT2-Ps-wbV"/>
                         <viewControllerLayoutGuide type="bottom" id="vbO-G0-G4h"/>
@@ -1406,7 +1406,7 @@
         <!--我的-->
         <scene sceneID="3jS-Aj-TuC">
             <objects>
-                <viewController id="7EX-bU-gp2" customClass="PersonCenterViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="7EX-bU-gp2" customClass="PersonCenterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dHk-Rd-F8q"/>
                         <viewControllerLayoutGuide type="bottom" id="WNH-jr-bfW"/>
@@ -1570,7 +1570,7 @@
         <!--Person Opetion View Controller-->
         <scene sceneID="9Qt-wB-dDw">
             <objects>
-                <viewController storyboardIdentifier="PersonOpetionViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Edz-eb-hEZ" customClass="PersonOpetionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonOpetionViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Edz-eb-hEZ" customClass="PersonOpetionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MQi-jT-iUo"/>
                         <viewControllerLayoutGuide type="bottom" id="e9e-1Y-oua"/>
@@ -1679,7 +1679,7 @@
         <!--Service Choose City View Controller-->
         <scene sceneID="lt8-SQ-WKk">
             <objects>
-                <viewController storyboardIdentifier="ServiceChooseCityViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="apI-k4-EjR" customClass="ServiceChooseCityViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServiceChooseCityViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="apI-k4-EjR" customClass="ServiceChooseCityViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vkr-U2-wo1"/>
                         <viewControllerLayoutGuide type="bottom" id="ORK-gg-iJb"/>
@@ -1759,7 +1759,7 @@
         <!--服务-->
         <scene sceneID="znj-aU-gda">
             <objects>
-                <viewController id="iGL-8W-wIp" customClass="ServiceViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="iGL-8W-wIp" customClass="ServiceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LsK-XZ-Fqp"/>
                         <viewControllerLayoutGuide type="bottom" id="l4Q-mi-0jZ"/>
@@ -1781,20 +1781,20 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fKH-Ge-Z0X" firstAttribute="leading" secondItem="iWc-jX-jqN" secondAttribute="leading" id="HFx-hD-Xfo"/>
-                            <constraint firstItem="fKH-Ge-Z0X" firstAttribute="top" secondItem="LsK-XZ-Fqp" secondAttribute="bottom" id="ZUd-EU-Vwo"/>
-                            <constraint firstItem="l4Q-mi-0jZ" firstAttribute="top" secondItem="fKH-Ge-Z0X" secondAttribute="bottom" id="tyx-4m-xOV"/>
-                            <constraint firstAttribute="trailing" secondItem="fKH-Ge-Z0X" secondAttribute="trailing" id="xBp-Vw-g8t"/>
+                            <constraint firstItem="l4Q-mi-0jZ" firstAttribute="top" secondItem="fKH-Ge-Z0X" secondAttribute="bottom" id="Dul-Qg-Af3"/>
+                            <constraint firstItem="fKH-Ge-Z0X" firstAttribute="leading" secondItem="iWc-jX-jqN" secondAttribute="leading" id="Utg-kB-d04"/>
+                            <constraint firstItem="fKH-Ge-Z0X" firstAttribute="top" secondItem="LsK-XZ-Fqp" secondAttribute="bottom" id="YHP-Qh-PBx"/>
+                            <constraint firstAttribute="trailing" secondItem="fKH-Ge-Z0X" secondAttribute="trailing" id="axm-LS-1av"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="fKH-Ge-Z0X"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="tyx-4m-xOV"/>
-                                <exclude reference="HFx-hD-Xfo"/>
-                                <exclude reference="ZUd-EU-Vwo"/>
-                                <exclude reference="xBp-Vw-g8t"/>
+                                <exclude reference="Dul-Qg-Af3"/>
+                                <exclude reference="Utg-kB-d04"/>
+                                <exclude reference="YHP-Qh-PBx"/>
+                                <exclude reference="axm-LS-1av"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1802,10 +1802,10 @@
                                 <include reference="fKH-Ge-Z0X"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="tyx-4m-xOV"/>
-                                <include reference="HFx-hD-Xfo"/>
-                                <include reference="ZUd-EU-Vwo"/>
-                                <include reference="xBp-Vw-g8t"/>
+                                <include reference="Dul-Qg-Af3"/>
+                                <include reference="Utg-kB-d04"/>
+                                <include reference="YHP-Qh-PBx"/>
+                                <include reference="axm-LS-1av"/>
                             </mask>
                         </variation>
                     </view>
@@ -1821,7 +1821,7 @@
         <!--Service Detail View Controller-->
         <scene sceneID="PYK-nD-l6u">
             <objects>
-                <viewController storyboardIdentifier="ServiceDetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hwi-Pr-5ku" customClass="ServiceDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServiceDetailViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hwi-Pr-5ku" customClass="ServiceDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SP8-5u-HdI"/>
                         <viewControllerLayoutGuide type="bottom" id="MiM-fB-gbM"/>
@@ -1843,20 +1843,22 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0DR-UR-Ekl" firstAttribute="leading" secondItem="5zV-g2-ZJR" secondAttribute="leading" id="OHB-vH-pcV"/>
-                            <constraint firstItem="MiM-fB-gbM" firstAttribute="top" secondItem="0DR-UR-Ekl" secondAttribute="bottom" id="SfG-EE-dQa"/>
-                            <constraint firstItem="0DR-UR-Ekl" firstAttribute="top" secondItem="SP8-5u-HdI" secondAttribute="bottom" id="bsR-TM-BRv"/>
-                            <constraint firstAttribute="trailing" secondItem="0DR-UR-Ekl" secondAttribute="trailing" id="skr-z1-4Jq"/>
+                            <constraint firstItem="0DR-UR-Ekl" firstAttribute="top" secondItem="5zV-g2-ZJR" secondAttribute="top" id="0Bg-kM-mur"/>
+                            <constraint firstItem="0DR-UR-Ekl" firstAttribute="top" secondItem="SP8-5u-HdI" secondAttribute="bottom" id="IMo-Bg-VtF"/>
+                            <constraint firstAttribute="trailing" secondItem="0DR-UR-Ekl" secondAttribute="trailing" id="QVe-hx-qr3"/>
+                            <constraint firstItem="MiM-fB-gbM" firstAttribute="top" secondItem="0DR-UR-Ekl" secondAttribute="bottom" id="Qdt-VR-Btb"/>
+                            <constraint firstItem="0DR-UR-Ekl" firstAttribute="leading" secondItem="5zV-g2-ZJR" secondAttribute="leading" id="lPC-JE-UGa"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="0DR-UR-Ekl"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="SfG-EE-dQa"/>
-                                <exclude reference="OHB-vH-pcV"/>
-                                <exclude reference="bsR-TM-BRv"/>
-                                <exclude reference="skr-z1-4Jq"/>
+                                <exclude reference="Qdt-VR-Btb"/>
+                                <exclude reference="0Bg-kM-mur"/>
+                                <exclude reference="IMo-Bg-VtF"/>
+                                <exclude reference="QVe-hx-qr3"/>
+                                <exclude reference="lPC-JE-UGa"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1864,10 +1866,11 @@
                                 <include reference="0DR-UR-Ekl"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="SfG-EE-dQa"/>
-                                <include reference="OHB-vH-pcV"/>
-                                <include reference="bsR-TM-BRv"/>
-                                <include reference="skr-z1-4Jq"/>
+                                <include reference="Qdt-VR-Btb"/>
+                                <exclude reference="0Bg-kM-mur"/>
+                                <include reference="IMo-Bg-VtF"/>
+                                <include reference="QVe-hx-qr3"/>
+                                <include reference="lPC-JE-UGa"/>
                             </mask>
                         </variation>
                     </view>
@@ -1882,7 +1885,7 @@
         <!--Service Detail Value View Controller-->
         <scene sceneID="aG7-bc-wdH">
             <objects>
-                <viewController storyboardIdentifier="ServiceDetailValueViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TGo-C8-JfG" customClass="ServiceDetailValueViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServiceDetailValueViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TGo-C8-JfG" customClass="ServiceDetailValueViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BS9-YI-wn2"/>
                         <viewControllerLayoutGuide type="bottom" id="yZf-9p-h6f"/>
@@ -1897,6 +1900,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8E-QR-8Zm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2224.5" y="-990.75"/>
+        </scene>
+        <!--Service Pay View Controller-->
+        <scene sceneID="H6t-ES-yfp">
+            <objects>
+                <viewController storyboardIdentifier="ServicePayViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a0s-87-Xpk" customClass="ServicePayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tC5-9P-HZm"/>
+                        <viewControllerLayoutGuide type="bottom" id="cKr-VZ-bNc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fcJ-Pl-t9p">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T1P-4g-Xet">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="a0s-87-Xpk" id="l4J-5h-9ba"/>
+                                    <outlet property="delegate" destination="a0s-87-Xpk" id="ojZ-EZ-6jx"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cKr-VZ-bNc" firstAttribute="top" secondItem="T1P-4g-Xet" secondAttribute="bottom" id="8fs-co-Ubb"/>
+                            <constraint firstAttribute="trailing" secondItem="T1P-4g-Xet" secondAttribute="trailing" id="syJ-Ur-ypq"/>
+                            <constraint firstItem="T1P-4g-Xet" firstAttribute="top" secondItem="tC5-9P-HZm" secondAttribute="bottom" id="ve2-tG-T25"/>
+                            <constraint firstItem="T1P-4g-Xet" firstAttribute="leading" secondItem="fcJ-Pl-t9p" secondAttribute="leading" id="y3W-jX-qaG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="T1P-4g-Xet"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="syJ-Ur-ypq"/>
+                                <exclude reference="ve2-tG-T25"/>
+                                <exclude reference="y3W-jX-qaG"/>
+                                <exclude reference="8fs-co-Ubb"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="T1P-4g-Xet"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="syJ-Ur-ypq"/>
+                                <include reference="ve2-tG-T25"/>
+                                <include reference="y3W-jX-qaG"/>
+                                <include reference="8fs-co-Ubb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="TableView" destination="T1P-4g-Xet" id="FqY-cu-qxW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTo-b3-EtZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2973" y="-990.75"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Cqp-aE-S2L">

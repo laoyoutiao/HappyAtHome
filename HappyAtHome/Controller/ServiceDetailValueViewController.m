@@ -9,28 +9,64 @@
 #import "ServiceDetailValueViewController.h"
 #import "MyHeader.h"
 
-@interface ServiceDetailValueViewController ()<UITableViewDelegate,UITableViewDataSource>
+typedef NS_ENUM(NSInteger, tableviewType) {
+    addresstableviewType = 0,
+    communittableviewType = 1,
+};
 
+@interface ServiceDetailValueViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    viewType _viewType;
+    tableviewType _tableviewType;
+}
+@property (strong, nonatomic) NSString *introducestring;
 @end
 
 @implementation ServiceDetailValueViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (_viewType == addressviewType) {
+        [self setAddressView];
+    }else if (_viewType == introduceviewType)
+    {
+        [self setIntroduceView];
+    }
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewType:(viewType)type
+{
+    _viewType = type;
+}
+
+- (void)setAddressView
+{
     UIButton *addressbtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 64, ScreenSize.width / 2, 80)];
     [addressbtn setTitle:@"上门服务" forState:UIControlStateNormal];
     [addressbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [addressbtn setImageEdgeInsets:UIEdgeInsetsMake(30, 15, 30, ScreenSize.width / 2 - 35)];
+    [addressbtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
     [addressbtn setImage:[UIImage imageNamed:@"checkbox_circle_n.png"] forState:UIControlStateNormal];
+    [addressbtn setImage:[UIImage imageNamed:@"checkbox_circle_p.png"] forState:UIControlStateSelected];
     [addressbtn addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     addressbtn.tag = TagButton(0);
+    addressbtn.selected = YES;
+    _tableviewType = addresstableviewType;
     [self.view addSubview:addressbtn];
     
     UIButton *communitybtn = [[UIButton alloc] initWithFrame:CGRectMake(ScreenSize.width / 2, 64, ScreenSize.width / 2, 80)];
     [communitybtn setTitle:@"服务中心" forState:UIControlStateNormal];
     [communitybtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [communitybtn setImageEdgeInsets:UIEdgeInsetsMake(30, 15, 30, ScreenSize.width / 2 - 35)];
+    [communitybtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
     [communitybtn setImage:[UIImage imageNamed:@"checkbox_circle_n.png"] forState:UIControlStateNormal];
+    [communitybtn setImage:[UIImage imageNamed:@"checkbox_circle_p.png"] forState:UIControlStateSelected];
     [communitybtn addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     communitybtn.tag = TagButton(1);
     [self.view addSubview:communitybtn];
@@ -40,12 +76,20 @@
     tableview.delegate = self;
     tableview.dataSource = self;
     [self.view addSubview:tableview];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setIntroduceView
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 74, ScreenSize.width - 16, 0)];
+    label.numberOfLines = 0;
+    [self.view addSubview:label];
+    label.text = _introducestring.length? _introducestring:@"暂无";
+    [label sizeToFit];
+}
+
+- (void)setIntroducestring:(NSString *)introducestring
+{
+    _introducestring = introducestring;
 }
 
 #pragma mark Button Methods
@@ -55,21 +99,18 @@
 {
     UIButton *addressbtn = (UIButton *)[self.view viewWithTag:TagButton(0)];
     UIButton *communitybtn = (UIButton *)[self.view viewWithTag:TagButton(1)];
+    UITableView *tableview = (UITableView *)[self.view viewWithTag:TagView(0)];
     if (btn.tag == TagButton(0)) {
         addressbtn.selected = YES;
-        [addressbtn setImage:[UIImage imageNamed:@"checkbox_circle_p.png"] forState:UIControlStateNormal];
-        [communitybtn setImage:[UIImage imageNamed:@"checkbox_circle_n.png"] forState:UIControlStateNormal];
-        [addressbtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
-        [communitybtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         communitybtn.selected = NO;
+        _tableviewType = addresstableviewType;
+        [tableview reloadData];
     }else if (btn.tag == TagButton(1))
     {
         addressbtn.selected = NO;
-        [addressbtn setImage:[UIImage imageNamed:@"checkbox_circle_n.png"] forState:UIControlStateNormal];
-        [communitybtn setImage:[UIImage imageNamed:@"checkbox_circle_p.png"] forState:UIControlStateNormal];
-        [addressbtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-        [communitybtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
         communitybtn.selected = YES;
+        _tableviewType = communittableviewType;
+        [tableview reloadData];
     }
 }
 
@@ -78,7 +119,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    if (_tableviewType == addresstableviewType)
+    {
+        return 2;
+    }else if (_tableviewType == communittableviewType)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,14 +140,22 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdintifier"];
     }
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"详细地址(如小区门牌号等)";
-        cell.backgroundColor = [UIColor grayColor];
-    }else if (indexPath.row == 1)
+    if (_tableviewType == addresstableviewType) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"详细地址(如小区门牌号等)";
+            cell.backgroundColor = [UIColor grayColor];
+        }else if (indexPath.row == 1)
+        {
+            UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(8, 0, ScreenSize.width - 16, 20)];
+            textfield.layer.borderWidth = 0.5;
+            [cell addSubview:textfield];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }else if (_tableviewType == communittableviewType)
     {
-        UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(5, 0, ScreenSize.width - 10, cell.frame.size.height)];
-        [cell addSubview:textfield];
+        cell.textLabel.text = @"深圳某小区";
     }
+    
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     return cell;
 }
@@ -111,7 +167,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 20;
+    if (_tableviewType == addresstableviewType) {
+        return 20;
+    }
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -120,9 +179,19 @@
     UIButton *btn = [[UIButton alloc] initWithFrame:view.frame];
     [view addSubview:btn];
     [btn setTitle:@"点击选择位置" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    view.backgroundColor = [UIColor blackColor];
     return view;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_tableviewType == communittableviewType) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [_delegate getAddressName:cell.textLabel.text];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 /*
 #pragma mark - Navigation

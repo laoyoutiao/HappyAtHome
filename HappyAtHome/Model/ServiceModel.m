@@ -17,7 +17,7 @@
         _introduce = [dict safeStringForKey:@"introduce"];
         _count = [dict safeIntegerForKey:@"getcount"];
         _hint = [dict safeStringForKey:@"hint"];
-        _money = [dict safeIntegerForKey:@"money0"];
+        _money = [dict safeFloatForKey:@"money0"];
         _image = [dict safeStringForKey:@"logo"];
     }
     return self;

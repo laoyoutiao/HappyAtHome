@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) NSInteger count;
-@property (nonatomic, assign) NSInteger money;
+@property (nonatomic, assign) CGFloat money;
 @property (nonatomic, strong) NSString *introduce;
 @property (nonatomic, strong) NSString *hint;
 @property (nonatomic, strong) NSString *image;

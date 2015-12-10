@@ -124,7 +124,7 @@
         label.font = [UIFont systemFontOfSize:12];
         label.textColor = [UIColor grayColor];
         [cell addSubview:label];
-        UITextView *textview = [[UITextView alloc] initWithFrame:CGRectMake(75, 20, cell.frame.size.width - 80, 80)];
+        UITextView *textview = [[UITextView alloc] initWithFrame:CGRectMake(80, 20, cell.frame.size.width - 85, 80)];
         textview.text = @"不超过100字";
         textview.layer.borderWidth = 0.5;
         textview.layer.borderColor = [UIColor grayColor].CGColor;
