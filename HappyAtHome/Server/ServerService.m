@@ -21,16 +21,6 @@
     }];
 }
 
-+ (void)clickAdvertisingPostServiceId:(NSString *)serviceid Block:(clickadBlock)block
-{
-    NSDictionary *paramdict = @{@"operate":operateAdvertisingClick, @"serviceid":serviceid};
-    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
-        
-    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
-        
-    }];
-}
-
 + (void)serverImgPostBlock:(imgBlcok)block
 {
     NSDictionary *paramdict = @{@"operate":operateAdvertisingLook};
@@ -52,6 +42,28 @@
     paramdict = dict;
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
         
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
++ (void)serverExRulePostBlock
+{
+    NSDictionary *paramdict = @{@"operate":operateExGet};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        //        block([resopnObject objectForKey:@"response"]);
+        //        NSLog(@"%@",[resopnObject objectForKey:@"response"]);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
++ (void)serverExChangedPostBlock
+{
+    NSDictionary *paramdict = @{@"operate":operateExChanged};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+//        block([resopnObject objectForKey:@"response"]);
+//        NSLog(@"%@",[resopnObject objectForKey:@"response"]);
     } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
         
     }];

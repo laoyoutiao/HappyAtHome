@@ -17,6 +17,7 @@
 
 @property (nonatomic, assign) NSInteger serverImgId;
 @property (nonatomic, assign) NSInteger serviceId;
+@property (nonatomic, assign) NSInteger ticket;
 @property (nonatomic, strong) NSString  *image;
 @property (nonatomic, strong) NSString  *name;
 @property (nonatomic, assign) NSInteger count;

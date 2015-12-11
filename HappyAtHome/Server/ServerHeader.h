@@ -26,7 +26,6 @@
 #define operateSorderSet            @"048"
 #define operateSorderGet            @"049"
 #define operateServiceLook          @"021"
-#define operateAdvertisingClick     @"073"
 #define operateAdvertisingLook      @"072"
 #define operateDiscuss              @"051"
 #define operateApk                  @"057"

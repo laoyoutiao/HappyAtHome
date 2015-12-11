@@ -10,6 +10,9 @@
 #import "ServiceDetailValueViewController.h"
 #import "ServicePayViewController.h"
 #import "UIColor+Hex.h"
+#import "ModelHeader.h"
+#import "ServerHeader.h"
+#import "EnterViewController.h"
 
 @interface ServiceDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate,UITextViewDelegate,AddressDelegate>
 {
@@ -332,7 +335,7 @@
     NSInteger num = [timenumlbl.text substringWithRange:NSMakeRange(4, timenumlbl.text.length - 4)].integerValue;
     if (![addresslbl.text isEqualToString:@"服务地点"] && ![starttimelbl.text isEqualToString:@"服务时间"] && ![timenumlbl.text isEqualToString:@"购买数量"]) {
         [self.navigationController showViewController:servicepayview sender:nil];
-        [servicepayview getMessageServiceHint:[NSString stringWithFormat:@"%@*%ld",servicemodel.name,num] StartTime:starttimelbl.text Address:addresslbl.text Money:num * servicemodel.money];
+        [servicepayview getMessageServiceHint:[NSString stringWithFormat:@"%@*%ld",servicemodel.name,num] StartTime:starttimelbl.text Address:addresslbl.text Money:num * servicemodel.money Ticket:servicemodel.ticket];
     }else
     {
         UIAlertController *alertview = [UIAlertController alertControllerWithTitle:@"错误" message:@"购买资料不全" preferredStyle:UIAlertControllerStyleAlert];
@@ -340,7 +343,6 @@
         [alertview addAction:cancleaction];
         [self presentViewController:alertview animated:YES completion:nil];
     }
-    
 }
 
 #pragma mark PickViewDelegate or DataSource

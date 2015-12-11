@@ -19,6 +19,7 @@
         _hint = [dict safeStringForKey:@"hint"];
         _money = [dict safeFloatForKey:@"money0"];
         _image = [dict safeStringForKey:@"logo"];
+        _ticket = [dict safeIntegerForKey:@"ticket0"];
     }
     return self;
 }

@@ -14,6 +14,7 @@
 #import "ServiceModel.h"
 #import "NSDictionary+Safe.h"
 #import "ShopImgModel.h"
+#import "UserInfoModel.h"
 
 
 #endif /* ModelHeader_h */

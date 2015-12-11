@@ -8,6 +8,9 @@
 
 #import "ServicePayViewController.h"
 #import "MyHeader.h"
+#import "ServerHeader.h"
+#import "ModelHeader.h"
+#import "EnterViewController.h"
 
 @interface ServicePayViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -15,6 +18,7 @@
     NSString *_starttime;
     NSString *_address;
     CGFloat _money;
+    NSInteger _ticket;
 }
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 
@@ -24,6 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setFixedData];
+    [self setNavigation];
     // Do any additional setup after loading the view.
 }
 
@@ -32,12 +38,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setFixedData
+{
+    [ServerService serverExChangedPostBlock];
+}
+
+- (void)setNavigation
+{
+    self.title = @"订单确认";
+}
+
 - (void)getMessageServiceHint:(NSString *)servicehint StartTime:(NSString *)starttime Address:(NSString *)address Money:(CGFloat)money
+                       Ticket:(NSInteger)ticket
 {
     _servicehint = servicehint;
     _starttime = starttime;
     _address = address;
     _money = money;
+    _ticket = ticket;
 }
 
 #pragma mark TableViewDelegate or Datasource
@@ -69,9 +87,10 @@
     UILabel *addresslabel;
     UILabel *moneyLabel;
     UIButton *paybutton;
+    UserInfoModel *userinfomodel = [UserInfoModel sharedInstance];
     switch (indexPath.row) {
         case 0:
-            cell.textLabel.text = @"电话";
+            cell.textLabel.text = userinfomodel.username;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
             
@@ -138,8 +157,9 @@
     tickimage.frame = CGRectMake(15, 10, 20, 20);
     [view addSubview:tickimage];
     
+    UserInfoModel *userinfomodel = [UserInfoModel sharedInstance];
     UIButton *tickBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 40)];
-    [tickBtn setTitle:@"我的养老券" forState:UIControlStateNormal];
+    [tickBtn setTitle:[NSString stringWithFormat:@"我的养老券余额:￥%ld",userinfomodel.oldticket] forState:UIControlStateNormal];
     [tickBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     tickBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     tickBtn.titleLabel.font = [UIFont systemFontOfSize:14];

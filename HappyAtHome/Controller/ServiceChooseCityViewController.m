@@ -35,8 +35,6 @@
 
 - (void)setNavigation
 {
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.title = @"城市选择";
 }
 

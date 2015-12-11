@@ -10,6 +10,9 @@
 #import "RegisterViewController.h"
 #import "UIView+Additions.h"
 #import "UIColor+Hex.h"
+#import "ServerHeader.h"
+#import "ModelHeader.h"
+
 
 #define BACKGROUNDCOLOR [UIColor colorWithRed:239/255.0 green:125/255.0 blue:159/255.0 alpha:1.0]
 @interface EnterViewController ()
@@ -108,7 +111,21 @@
 {
     if (_passWordTf != nil && _phoneNumTf != nil) {
         [ServerLoginOrRegister loginPostPhone:_phoneNumTf.text Pass:_passWordTf.text Block:^(NSDictionary *logindict) {
+            UserInfoModel *userinfomodel;
+            userinfomodel = [[UserInfoModel sharedInstance] initWithDictionary:logindict];
             NSLog(@"%@",logindict);
+            if (userinfomodel.username != nil)
+            {
+                UITabBarController *tabbarview = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+                [self.navigationController presentViewController:tabbarview animated:YES completion:nil];
+            }else
+            {
+                UIAlertController *alertview = [UIAlertController alertControllerWithTitle:@"错误" message:@"账号密码错误" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancleaction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [alertview addAction:cancleaction];
+                [self presentViewController:alertview animated:YES completion:nil];
+            }
+            
         }];
     }
 }

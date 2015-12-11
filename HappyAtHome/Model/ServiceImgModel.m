@@ -22,6 +22,7 @@
         _count = [dict safeIntegerForKey:@"getcount"];
         _hint = [dict safeStringForKey:@"hint"];
         _money = [dict safeFloatForKey:@"money0"];
+        _ticket = [dict safeIntegerForKey:@"ticket0"];
     }
     return self;
 }
@@ -34,6 +35,7 @@
     model.count = serviceimgmodel.count;
     model.hint = serviceimgmodel.hint;
     model.money = serviceimgmodel.money;
+    model.ticket = serviceimgmodel.ticket;
     return model;
 }
 

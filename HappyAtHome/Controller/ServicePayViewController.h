@@ -10,6 +10,6 @@
 
 @interface ServicePayViewController : UIViewController
 
-- (void)getMessageServiceHint:(NSString *)servicehint StartTime:(NSString *)starttime Address:(NSString *)address Money:(CGFloat)money;
+- (void)getMessageServiceHint:(NSString *)servicehint StartTime:(NSString *)starttime Address:(NSString *)address Money:(CGFloat)money Ticket:(NSInteger)ticket;
 
 @end
