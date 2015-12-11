@@ -326,12 +326,21 @@
 - (void)clickImportBookBtn
 {
     ServicePayViewController *servicepayview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServicePayViewController"];
-    [self.navigationController showViewController:servicepayview sender:nil];
     UILabel *addresslbl = (UILabel *)[self.view viewWithTag:TagLabel(2)];
     UILabel *starttimelbl = (UILabel *)[self.view viewWithTag:TagLabel(1)];
     UILabel *timenumlbl = (UILabel *)[self.view viewWithTag:TagLabel(0)];
     NSInteger num = [timenumlbl.text substringWithRange:NSMakeRange(4, timenumlbl.text.length - 4)].integerValue;
-    [servicepayview getMessageServiceHint:servicemodel.name StartTime:starttimelbl.text Address:addresslbl.text Money:num * servicemodel.money];
+    if (![addresslbl.text isEqualToString:@"服务地点"] && ![starttimelbl.text isEqualToString:@"服务时间"] && ![timenumlbl.text isEqualToString:@"购买数量"]) {
+        [self.navigationController showViewController:servicepayview sender:nil];
+        [servicepayview getMessageServiceHint:[NSString stringWithFormat:@"%@*%ld",servicemodel.name,num] StartTime:starttimelbl.text Address:addresslbl.text Money:num * servicemodel.money];
+    }else
+    {
+        UIAlertController *alertview = [UIAlertController alertControllerWithTitle:@"错误" message:@"购买资料不全" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancleaction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+        [alertview addAction:cancleaction];
+        [self presentViewController:alertview animated:YES completion:nil];
+    }
+    
 }
 
 #pragma mark PickViewDelegate or DataSource

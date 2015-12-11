@@ -8,6 +8,7 @@
 
 #import "ScrollImageCube.h"
 #import "ModelHeader.h"
+#import "UIImageView+WebCache.h"
 
 @interface ScrollImageCube ()<UIGestureRecognizerDelegate>
 {
@@ -36,7 +37,7 @@
     imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 5)];
     [self addSubview:imageview];
     ShopImgModel *model = [imageArray objectAtIndex:0];
-    imageview.image = model.image;
+    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
     index = 0;
     
     UIPanGestureRecognizer *panGestureRecognize = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(GestureMove:)];
@@ -87,7 +88,7 @@
             }
             [self changelinecolor:index];
             ShopImgModel *model = [imageArray objectAtIndex:index];
-            imageview.image = model.image;
+            [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
             ca.subtype = kCATransitionFromLeft;
         }else
         {
@@ -97,7 +98,7 @@
             }
             [self changelinecolor:index];
             ShopImgModel *model = [imageArray objectAtIndex:index];
-            imageview.image = model.image;
+            [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
             ca.subtype = kCATransitionFromRight;
         }
         ca.duration = 1.0;
@@ -123,7 +124,7 @@
     [self changelinecolor:index];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(movenext) object:nil];
     ShopImgModel *model = [imageArray objectAtIndex:index];
-    imageview.image = model.image;
+    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
     CATransition *ca = [CATransition animation];
     ca.type = @"cube";
     ca.subtype = kCATransitionFromRight;

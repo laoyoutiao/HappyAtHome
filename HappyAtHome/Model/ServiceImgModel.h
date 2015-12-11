@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServiceModel.h"
 
 @interface ServiceImgModel : NSObject
 
@@ -17,9 +18,16 @@
 @property (nonatomic, assign) NSInteger serverImgId;
 @property (nonatomic, assign) NSInteger serviceId;
 @property (nonatomic, strong) NSString  *image;
+@property (nonatomic, strong) NSString  *name;
+@property (nonatomic, assign) NSInteger count;
+@property (nonatomic, assign) CGFloat money;
+@property (nonatomic, strong) NSString *introduce;
+@property (nonatomic, strong) NSString *hint;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 
 + (NSArray *)instanceArrayDictFromDict:(NSArray *)array;
+
++ (ServiceModel *)changeServiceModel:(ServiceImgModel *)serviceimgmodel;
 
 @end

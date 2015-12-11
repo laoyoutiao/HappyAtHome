@@ -12,13 +12,16 @@
 #import "MyHeader.h"
 #import "ServerHeader.h"
 #import "ModelHeader.h"
+#import "UIImageView+WebCache.h"
 
 @interface ShopViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *ScorllView;
 @property (strong, nonatomic) ScrollImageCube *cube;
+
 @property (strong, nonatomic) NSArray *typeArray;
 @property (strong, nonatomic) NSArray *typeTitleArray;
 @property (strong, nonatomic) NSArray *goodsImgArray;
+//@property (strong, nonatomic) NSArray 
 @end
 
 @implementation ShopViewController
@@ -47,7 +50,6 @@
     _typeArray = [NSArray arrayWithObjects:@"local_sort_main_movie.png",@"local_navi_tuan.png",@"local_sort_main_park.png",@"local_sort_main_food.png", nil];
     [ServerShopping goodsPost:^(NSDictionary *goodsarray) {
         _goodsImgArray = [ShopImgModel instanceArrayDictFromArray:[goodsarray objectForKey:@"1"]];
-        NSLog(@"%@",_goodsImgArray);
         [self setScorll];
     }];
     _typeTitleArray = [NSArray arrayWithObjects:@"商品分类",@"购物车",@"我的收藏",@"充值中心", nil];
@@ -67,6 +69,8 @@
     self.tabBarController.tabBar.tintColor = [UIColor redColor];
 }
 
+#pragma mark TableViewDelegate or Datasource
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
@@ -79,6 +83,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    tableView.scrollEnabled = NO;
     return 2;
 }
 
@@ -95,7 +100,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return (ScreenSize.width - 80) / 4 + 65;
+        return (ScreenSize.width - 80) / 4 + 70;
     }else
     {
         return 20;
@@ -122,35 +127,38 @@
             [view addSubview:label];
         }
         
-        UIView *titleview = [[UIView alloc] initWithFrame:CGRectMake(0, (ScreenSize.width - 80) / 4 + 47, ScreenSize.width, 13)];
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 13, 13)];
+        UIView *titleview = [[UIView alloc] initWithFrame:CGRectMake(0, (ScreenSize.width - 80) / 4 + 50, ScreenSize.width, 20)];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 3.5, 13, 13)];
         imageview.image = [UIImage imageNamed:@"home_shopping_icon.png"];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 100, 13)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 100, 20)];
         label.text = [_typeTitleArray objectAtIndex:section];
         label.font = [UIFont systemFontOfSize:11];
         [titleview addSubview:imageview];
         [titleview addSubview:label];
         [view addSubview:titleview];
-        
+        titleview.backgroundColor = [UIColor grayColor];
         return view;
     }else
     {
-        UIView *titleview = [[UIView alloc] initWithFrame:CGRectMake(0, 3.5, ScreenSize.width, 13)];
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 13, 13)];
+        UIView *titleview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 20)];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 3.5, 13, 13)];
         imageview.image = [UIImage imageNamed:@"home_shopping_icon.png"];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 100, 13)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(35, 0, 100, 20)];
         label.text = [_typeTitleArray objectAtIndex:section];
         label.font = [UIFont systemFontOfSize:11];
         [titleview addSubview:imageview];
         [titleview addSubview:label];
+        titleview.backgroundColor = [UIColor grayColor];
         return titleview;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 113;
+    return 100;
 }
+
+#pragma  mark Button Methods
 
 - (void)clickTypeButton:(UIButton *)btn
 {

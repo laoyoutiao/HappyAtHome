@@ -10,7 +10,7 @@
 
 @interface ShopImgModel : NSObject
 
-@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSString *image;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 

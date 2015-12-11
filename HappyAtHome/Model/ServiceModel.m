@@ -25,7 +25,7 @@
 
 + (NSDictionary *)instanceArrayDictFromArray:(NSArray *)array
 {
-    NSLog(@"%@",array);
+//    NSLog(@"%@",array);
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     for (NSDictionary *dictionary in array) {
         if ([dictionary objectForKey:@"services"] && [dictionary objectForKey:@"title"]) {

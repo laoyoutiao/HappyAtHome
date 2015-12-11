@@ -151,8 +151,12 @@
 
 - (void)foucusImageFrame:(ScrollImageFrame *)imageFrame didSelectItem:(ScrollImageItem *)item
 {
-    NSLog(@"%ld",item.tag);
-    
+//    NSLog(@"%ld",item.tag);
+    ServiceImgModel *imgmodel = [_ServiceImageModelArray objectAtIndex:item.tag];
+    ServiceModel *model = [ServiceImgModel changeServiceModel:imgmodel];
+    ServiceDetailViewController *servicedetailview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailViewController"];
+    [servicedetailview getServiceModel:model];
+    [self.navigationController showViewController:servicedetailview sender:nil];
     
 }
 
@@ -300,7 +304,6 @@
     ServiceDetailViewController *servicedetailview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailViewController"];
     [servicedetailview getServiceModel:model];
     [self.navigationController showViewController:servicedetailview sender:nil];
-    [self.tabBarController.tabBar setHidden:NO];
     
 }
 

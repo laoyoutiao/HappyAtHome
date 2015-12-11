@@ -32,4 +32,6 @@ typedef void (^goodsBlock)(NSDictionary *goodsarray);
 
 + (void)goodsPost:(goodsBlock)block;
 
++ (void)goodsTypePost:(goodsBlock)block;
+
 @end
