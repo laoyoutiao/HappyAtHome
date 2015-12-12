@@ -53,4 +53,16 @@ fprintf(stderr, "-------\n");                                               \
 //Block Weak
 #define WeakObj(o) try{}@finally{} __weak typeof(o) o##Weak = o;
 
+//SetFrame Label
+#define LabelSetFrame(a,b,c,d) [[UILabel alloc] initWithFrame:CGRectMake(a, b, c, d)]
+
+//SetFrame Button
+#define ButtonSetFrame(a,b,c,d) [[UIButton alloc] initWithFrame:CGRectMake(a, b, c, d)]
+
+//SetFrame View
+#define ViewSetFrame(a,b,c,d) [[UIView alloc] initWithFrame:CGRectMake(a, b, c, d)]
+
+//SetFrame ImageView
+#define ImageViewSetFrame(a,b,c,d) [[UIImageView alloc] initWithFrame:CGRectMake(a, b, c, d)]
+
 #endif /* MyHeader_h */

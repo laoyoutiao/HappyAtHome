@@ -48,6 +48,7 @@
     _phoneNumTf = [[UITextField alloc]initWithFrame:CGRectMake(phoneImg.right + 3, 0, phoneNumView.width - phoneImg.width - 10, 40)];
     _phoneNumTf.font = [UIFont systemFontOfSize:16.0];
     _phoneNumTf.placeholder = @"请输入手机号码";
+    _phoneNumTf.text = @"13425889425";
     _phoneNumTf.textAlignment = NSTextAlignmentLeft;
     [phoneNumView addSubview:_phoneNumTf];
     
@@ -65,6 +66,7 @@
     _passWordTf = [[UITextField alloc]initWithFrame:CGRectMake(passWordImg.right + 3, 0, passWordView.width - passWordImg.width - 10, 40)];
     _passWordTf.font = [UIFont systemFontOfSize:16.0];
     _passWordTf.placeholder = @"请输入密码";
+    _passWordTf.text = @"123456";
     _passWordTf.secureTextEntry = YES;
     _passWordTf.textAlignment = NSTextAlignmentLeft;
     [passWordView addSubview:_passWordTf];

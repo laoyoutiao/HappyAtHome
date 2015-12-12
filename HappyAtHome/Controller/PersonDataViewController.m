@@ -8,8 +8,16 @@
 
 #import "PersonDataViewController.h"
 #import "PersonDataChangeViewController.h"
+#import "ModelHeader.h"
+#import "UIImageView+WebCache.h"
+#import "ServerHeader.h"
+#import "MyHeader.h"
 
 @interface PersonDataViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    UserInfoModel *userinfomodel;
+}
+
 @property (strong, nonatomic) NSArray *TitleArray;
 @end
 
@@ -29,6 +37,7 @@
 
 - (void)setFixedData
 {
+    userinfomodel = [UserInfoModel sharedInstance];
     _TitleArray = [[NSArray alloc] initWithObjects:@"头像",@"账号",@"性别",@"呢称",@"积分",@"我的地址",@"个性签名",@"地区", nil];
 }
 
@@ -74,11 +83,63 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
     cell.textLabel.text = [_TitleArray objectAtIndex:indexPath.row + indexPath.section * 5];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (!(indexPath.section == 0 && (indexPath.row == 1 || indexPath.row == 4))) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }else{
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
+    if (indexPath.section == 0)
+    {
+        UIImageView *headimageview;
+        UILabel *usernamelabel;
+        UILabel *personnamelabel;
+        UILabel *sexlabel;
+        UILabel *integrallabel;
+        switch (indexPath.row) {
+            case 0:
+                headimageview = ImageViewSetFrame(ScreenSize.width - 60, 5, 30, 30);
+                [headimageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",userinfomodel.headimage]]];
+                [cell addSubview:headimageview];
+                break;
+                
+            case 1:
+                usernamelabel = LabelSetFrame(ScreenSize.width - 200, 5, 190, 30);
+                usernamelabel.text = userinfomodel.username;
+                usernamelabel.textAlignment = NSTextAlignmentRight;
+                usernamelabel.font = [UIFont systemFontOfSize:12];
+                [cell addSubview:usernamelabel];
+                break;
+                
+            case 2:
+                sexlabel = LabelSetFrame(ScreenSize.width - 100, 5, 70, 30);
+                sexlabel.text = userinfomodel.sex;
+                sexlabel.textAlignment = NSTextAlignmentRight;
+                sexlabel.font = [UIFont systemFontOfSize:12];
+                [cell addSubview:sexlabel];
+                break;
+                
+            case 3:
+                personnamelabel = LabelSetFrame(ScreenSize.width - 200, 5, 170, 30);
+                personnamelabel.text = userinfomodel.personname? :@"未设置";
+                personnamelabel.textAlignment = NSTextAlignmentRight;
+                personnamelabel.font = [UIFont systemFontOfSize:12];
+                [cell addSubview:personnamelabel];
+                break;
+                
+            case 4:
+                integrallabel = LabelSetFrame(ScreenSize.width - 60, 5, 50, 30);
+                integrallabel.text = [NSString stringWithFormat:@"%ld",userinfomodel.integral];
+                integrallabel.textAlignment = NSTextAlignmentRight;
+                integrallabel.font = [UIFont systemFontOfSize:12];
+                [cell addSubview:integrallabel];
+                break;
+                
+            default:
+                break;
+        }
+
+    }
+    
     return cell;
 }
 

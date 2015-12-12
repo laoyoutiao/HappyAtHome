@@ -7,6 +7,7 @@
 //
 
 #import "PersonDataChangeViewController.h"
+#import "ModelHeader.h"
 
 @interface PersonDataChangeViewController ()<UITableViewDataSource,UITableViewDelegate>
 

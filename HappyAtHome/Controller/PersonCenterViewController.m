@@ -15,6 +15,10 @@
 #import "PersonCouponsViewController.h"
 #import "PersonIntegrationViewController.h"
 #import "UIColor+Hex.h"
+#import "MyHeader.h"
+#import "ModelHeader.h"
+#import "ServerHeader.h"
+#import "UIImageView+WebCache.h"
 
 @interface PersonCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *PersonCenterTableView;
@@ -95,9 +99,24 @@
         PersonCenterHeadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PersonCenterHeadTableViewCell"];
         cell.backgroundColor = [UIColor orangeColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 120)];
-        imageview.image = [UIImage imageNamed:@"0.png"];
-        [cell addSubview:imageview];
+        UIImageView *backimageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 120)];
+        backimageview.image = [UIImage imageNamed:@"mine_bg.png"];
+        [cell addSubview:backimageview];
+
+        UserInfoModel *userinfomodel = [UserInfoModel sharedInstance];
+        UIImageView *headimageview = ImageViewSetFrame(10, 30, 60, 60);
+        [headimageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",userinfomodel.headimage]]];
+        headimageview.layer.masksToBounds = YES;
+        headimageview.layer.cornerRadius = headimageview.frame.size.width / 2;
+        [cell addSubview:headimageview];
+        
+        UILabel *personnamelabel = LabelSetFrame(80, 40, ScreenSize.width - 80, 20);
+        personnamelabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ 积分: %ld",userinfomodel.personname? userinfomodel.personname:@"呢称未设置",userinfomodel.integral]];
+        [cell addSubview:personnamelabel];
+        
+        
+        
+        
         return cell;
     }
 }
