@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol PersonUserInfoDelegate
+
+@optional
+
+- (void)reloadUserInfo;
+
+@end
+
 @interface PersonIntegrationViewController : UIViewController
+
+@property (strong, nonatomic) id<PersonUserInfoDelegate> delegate;
 
 @end

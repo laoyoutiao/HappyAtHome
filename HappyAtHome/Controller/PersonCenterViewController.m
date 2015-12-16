@@ -20,7 +20,7 @@
 #import "ServerHeader.h"
 #import "UIImageView+WebCache.h"
 
-@interface PersonCenterViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface PersonCenterViewController ()<UITableViewDataSource,UITableViewDelegate,PersonUserInfoDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *PersonCenterTableView;
 
 @property (strong, nonatomic) NSArray *CellTitleArray;
@@ -31,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setFixedData];
     [self setNavigation];
     // Do any additional setup after loading the view.
@@ -60,6 +59,8 @@
     PersonOpetionViewController *personopetionview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonOpetionViewController"];
     [self.navigationController pushViewController:personopetionview animated:YES];
 }
+
+#pragma mark TableViewDelegate Or Datasource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -114,7 +115,9 @@
         personnamelabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ 积分: %ld",userinfomodel.personname? userinfomodel.personname:@"呢称未设置",userinfomodel.integral]];
         [cell addSubview:personnamelabel];
         
-        
+        UILabel *personintroducelabel = LabelSetFrame(80, 60, ScreenSize.width - 80, 20);
+        personintroducelabel.text = @"签名未设置";
+        [cell addSubview:personintroducelabel];
         
         
         return cell;
@@ -146,6 +149,8 @@
     }
 }
 
+#pragma mark PushView
+
 - (void)pushPersonDataView
 {
     PersonDataViewController *persondataview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonDataViewController"];
@@ -168,6 +173,12 @@
 {
     PersonIntegrationViewController *personintegrationview = [self.storyboard instantiateViewControllerWithIdentifier:@"PersonIntegrationViewController"];
     [self.navigationController showViewController:personintegrationview sender:nil];
+    personintegrationview.delegate = self;
+}
+
+- (void)reloadUserInfo
+{
+    [_PersonCenterTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -10,6 +10,9 @@
 #import "MyHeader.h"
 #import "AFNetworking.h"
 
+typedef void(^NSDictionaryBlock)    (NSDictionary *dictblock);
+typedef void(^NSArrayBlock)         (NSArray *arrayblock);
+typedef void(^NSStringBlock)        (NSString *stringblock);
 
 #ifndef ServerHeader_h
 #define ServerHeader_h

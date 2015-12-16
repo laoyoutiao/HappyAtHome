@@ -10,7 +10,7 @@
 
 @implementation ServerService
 
-+ (void)searchPostBlock:(searchBlock)block
++ (void)serverPostBlock:(NSArrayBlock)block
 {
     NSDictionary *paramdict = @{@"operate":operateServiceLook};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
@@ -21,7 +21,7 @@
     }];
 }
 
-+ (void)serverImgPostBlock:(imgBlcok)block
++ (void)serverImgPostBlock:(NSArrayBlock)block
 {
     NSDictionary *paramdict = @{@"operate":operateAdvertisingLook};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
@@ -58,12 +58,12 @@
     }];
 }
 
-+ (void)serverExChangedPostBlock
++ (void)serverExChangedPostUserId:(NSInteger)userid Integral:(NSInteger)integral OldTicket:(NSInteger)oldticket Block:(NSDictionaryBlock)block
 {
-    NSDictionary *paramdict = @{@"operate":operateExChanged};
+    NSDictionary *paramdict = @{@"operate":operateExChanged,@"userid":[NSString stringWithFormat:@"%ld",userid],@"integral":[NSString stringWithFormat:@"%ld",integral],@"money":[NSString stringWithFormat:@"%ld",oldticket]};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
-//        block([resopnObject objectForKey:@"response"]);
-//        NSLog(@"%@",[resopnObject objectForKey:@"response"]);
+        block(resopnObject);
+        NSLog(@"%@",resopnObject);
     } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
         
     }];

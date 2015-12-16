@@ -10,7 +10,7 @@
 
 @implementation ServerShopping
 
-+ (void)reservationPostUserId:(NSString *)userid ServiceName:(NSString *)servicename PayMoney:(NSInteger)paymoney Paytype:(PayType)paytype Sremark:(NSString *)sremark Address:(NSString *)address Starttime:(NSDate *)starttime Counttime:(NSInteger)counttime
++ (void)reservationPostUserId:(NSString *)userid ServiceName:(NSString *)servicename PayMoney:(NSInteger)paymoney Paytype:(ShopPayType)paytype Sremark:(NSString *)sremark Address:(NSString *)address Starttime:(NSDate *)starttime Counttime:(NSInteger)counttime
 {
     NSString *countTime = [NSString stringWithFormat:@"%ld",counttime];
     NSString *payMoney = [NSString stringWithFormat:@"%ld",paymoney];
@@ -23,7 +23,7 @@
     }];
 }
 
-+ (void)sorderSearchPostUserId:(NSString *)userid Process:(ProcessType)process Block:(sorderBlock)block
++ (void)sorderSearchPostUserId:(NSString *)userid Process:(ProcessType)process Block:(NSDictionaryBlock)block
 {
     NSString *Process = [NSString stringWithFormat:@"%ld",process];
     NSDictionary *paramdict = @{@"operate":operateSorderGet, @"process":Process};
@@ -34,7 +34,7 @@
     }];
 }
 
-+ (void)goodsPost:(goodsBlock)block
++ (void)goodsPost:(NSDictionaryBlock)block
 {
     NSDictionary *paramdict = @{@"operate":operateGoodsInfo};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
@@ -44,7 +44,7 @@
     }];
 }
 
-+ (void)goodsTypePost:(goodsBlock)block
++ (void)goodsTypePost:(NSDictionaryBlock)block
 {
     NSDictionary *paramdict = @{@"operate":operateGoodsType};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {

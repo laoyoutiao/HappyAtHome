@@ -15,12 +15,12 @@ typedef NS_ENUM(NSInteger, SexType)
     SexTypeGirl = 1,
 };
 
-typedef void (^userInfoBlock)(NSDictionary *userinfodict);
-
 @interface ServerUserInfo : NSObject
 
-+ (void)userInfoGetPostUserId:(NSString *)userid Block:(userInfoBlock)block;
+//获取个人资料
++ (void)userInfoGetPostUserId:(NSInteger)userid Block:(NSDictionaryBlock)block;
 
+//修改个人资料
 + (void)userInfoChangePostUserID:(NSString *)userid PersonName:(NSString *)personname Sign:(NSString *)sign Sex:(SexType)sex Zone:(NSString *)zone;
 
 @end

@@ -9,16 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ServerHeader.h"
 
-typedef void (^searchBlock)(NSArray *searcharray);
-typedef void (^imgBlcok)(NSArray *imgarray);
 
 @interface ServerService : NSObject
 
 //获取所有服务数据
-+ (void)searchPostBlock:(searchBlock)block;
++ (void)serverPostBlock:(NSArrayBlock)block;
 
 //获取广告栏服务数据
-+ (void)serverImgPostBlock:(imgBlcok)block;
++ (void)serverImgPostBlock:(NSArrayBlock)block;
 
 //服务评论
 + (void)discussPostWaiterId:(NSString *)waiterid Username:(NSString *)username Word:(NSString *)word Ontime:(NSString *)ontime Attitude:(NSString *)attitude Profession:(NSString *)profession SorderId:(NSString *)sorderid;
@@ -27,6 +25,6 @@ typedef void (^imgBlcok)(NSArray *imgarray);
 + (void)serverExRulePostBlock;
 
 //积分兑换养老券
-+ (void)serverExChangedPostBlock;
++ (void)serverExChangedPostUserId:(NSInteger)userid Integral:(NSInteger)integral OldTicket:(NSInteger)oldticket Block:(NSDictionaryBlock)block;
 
 @end

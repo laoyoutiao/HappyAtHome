@@ -7,11 +7,10 @@
 //
 
 #import "ServerLoginOrRegister.h"
-#import "ServerHeader.h"
 
 @implementation ServerLoginOrRegister
 
-+ (void)loginPostPhone:(NSString *)username Pass:(NSString *)password Block:(loginBlock)block
++ (void)loginPostPhone:(NSString *)username Pass:(NSString *)password Block:(NSDictionaryBlock)block
 {
     NSDictionary *paramdict = @{@"operate":operateLogin, @"phone":username, @"password":password};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id responObject){

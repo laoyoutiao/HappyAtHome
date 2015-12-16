@@ -8,8 +8,27 @@
 
 #import "PersonIntegrationViewController.h"
 #import "UIColor+Hex.h"
+#import "ServerHeader.h"
+#import "ModelHeader.h"
+
+typedef struct {
+    NSInteger oldticket;
+    NSInteger integral;
+}ChangeRule;
+
+typedef NS_ENUM(NSInteger, changeType) {
+    changeType100 = 0,
+    changeType150 = 1,
+    changeType200 = 2,
+    changeType500 = 3,
+};
 
 @interface PersonIntegrationViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    changeType _changeType;
+}
+
+
 @property (weak, nonatomic) IBOutlet UITableView *TableView;
 
 @end
@@ -170,7 +189,55 @@
 
 - (void)clicksure
 {
+    UserInfoModel *userinfomodel = [UserInfoModel sharedInstance];
+    ChangeRule changerule;
+    switch (_changeType) {
+        case 0:
+            changerule.oldticket = 100;
+            changerule.integral = 80;
+            break;
+            
+        case 1:
+            changerule.oldticket = 150;
+            changerule.integral = 100;
+            break;
+            
+        case 2:
+            changerule.oldticket = 200;
+            changerule.integral = 160;
+            break;
+            
+        case 3:
+            changerule.oldticket = 500;
+            changerule.integral = 320;
+            break;
+
+    }
     
+    [ServerService serverExChangedPostUserId:userinfomodel.userid Integral:changerule.integral OldTicket:changerule.oldticket Block:^(NSDictionary *dictblock) {
+        __block UIAlertController *alertview;
+        NSString *code = [dictblock objectForKey:@"code"];
+        if (code.integerValue == 1) {
+            NSString *tick = [dictblock objectForKey:@"response"];
+            NSInteger ticket = tick.integerValue;
+            alertview = [UIAlertController alertControllerWithTitle:[dictblock objectForKey:@"msg"] message:[NSString stringWithFormat:@"剩余养老卷:%ld",ticket] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *sureaction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            
+            [ServerUserInfo userInfoGetPostUserId:userinfomodel.userid Block:^(NSDictionary *dictblock) {
+                UserInfoModel *userinfomodel;
+                userinfomodel = [[UserInfoModel sharedInstance] initWithDictionary:dictblock];
+                [alertview addAction:sureaction];
+                [_delegate reloadUserInfo];
+            }];
+        }else
+        {
+            alertview = [UIAlertController alertControllerWithTitle:[dictblock objectForKey:@"msg"] message:[NSString stringWithFormat:@"剩余养老卷:%@",[dictblock objectForKey:@"response"]] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *sureaction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            [alertview addAction:sureaction];
+            [_delegate reloadUserInfo];
+        }
+        [self presentViewController:alertview animated:YES completion:nil];
+    }];
 }
 
 - (void)clickchoosecoupons:(UIButton *)btn
@@ -181,6 +248,9 @@
         if (i != btn.tag) {
             UIButton *button = (UIButton *)[self.view viewWithTag:i];
             button.selected = NO;
+        }else
+        {
+            _changeType = btn.tag - 101;
         }
     }
 }

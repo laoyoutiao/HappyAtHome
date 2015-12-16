@@ -30,7 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigation];
-    [ServerActivity activityPostUserId:nil Starttime:nil Orderby:nil Block:^(NSArray *activityarray) {
+    UserInfoModel *userinfomodel = [UserInfoModel sharedInstance];
+    [ServerActivity activityPostUserId:[NSString stringWithFormat:@"%ld",userinfomodel.userid] Starttime:nil Orderby:nil Block:^(NSArray *activityarray) {
 //        NSLog(@"%@",activityarray);
         NSArray *activitymodelarray = [ActivityModel instanceArrayDictFromDict:activityarray];
         NSMutableArray *imgarray = [[NSMutableArray alloc] init];

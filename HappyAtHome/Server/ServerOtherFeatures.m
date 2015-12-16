@@ -10,7 +10,7 @@
 
 @implementation ServerOtherFeatures
 
-+ (void)oldTicketPostUserId:(NSString *)userid UseFlag:(FlagType)useflag Block:(oldTicketBlock)block
++ (void)oldTicketPostUserId:(NSString *)userid UseFlag:(FlagType)useflag Block:(NSDictionaryBlock)block
 {
     NSString *flag = [[NSString alloc] initWithFormat:@"%ld",useflag];
     NSDictionary *paramdict = @{@"operate":operateOldticket, @"userid":userid, @"userflag":flag};
@@ -31,7 +31,7 @@
     }];
 }
 
-+ (void)versionPostVersion:(NSString *)version Block:(versionBlock)block
++ (void)versionPostVersion:(NSString *)version Block:(NSDictionaryBlock)block
 {
     NSDictionary *paramdict = @{@"operate":operateApk, @"version":version};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {

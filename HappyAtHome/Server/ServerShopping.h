@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ServerHeader.h"
 
-typedef NS_ENUM(NSInteger, PayType)
+typedef NS_ENUM(NSInteger, ShopPayType)
 {
-    PayTypeOldTicket = 0,
+    ShopPayTypeOldTicket = 0,
 };
 
 typedef NS_ENUM(NSInteger, ProcessType)
@@ -21,17 +21,16 @@ typedef NS_ENUM(NSInteger, ProcessType)
     ProcessTypeFinlish = 4,
 };
 
-typedef void (^sorderBlock)(NSDictionary *sorderdict);
-typedef void (^goodsBlock)(NSDictionary *goodsarray);
 
 @interface ServerShopping : NSObject
 
-+ (void)reservationPostUserId:(NSString *)userid ServiceName:(NSString *)servicename PayMoney:(NSInteger)paymoney Paytype:(PayType)paytype Sremark:(NSString *)sremark Address:(NSString *)address Starttime:(NSDate *)starttime Counttime:(NSInteger)counttime;
 
-+ (void)sorderSearchPostUserId:(NSString *)userid Process:(ProcessType)process Block:(sorderBlock)block;
++ (void)reservationPostUserId:(NSString *)userid ServiceName:(NSString *)servicename PayMoney:(NSInteger)paymoney Paytype:(ShopPayType)paytype Sremark:(NSString *)sremark Address:(NSString *)address Starttime:(NSDate *)starttime Counttime:(NSInteger)counttime;
 
-+ (void)goodsPost:(goodsBlock)block;
++ (void)sorderSearchPostUserId:(NSString *)userid Process:(ProcessType)process Block:(NSDictionaryBlock)block;
 
-+ (void)goodsTypePost:(goodsBlock)block;
++ (void)goodsPost:(NSDictionaryBlock)block;
+
++ (void)goodsTypePost:(NSDictionaryBlock)block;
 
 @end

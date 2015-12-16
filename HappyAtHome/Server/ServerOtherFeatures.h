@@ -16,17 +16,16 @@ typedef NS_ENUM(NSInteger, FlagType)
     FlagTypeTimeOut = 2,
 };
 
-typedef void (^oldTicketBlock)(NSDictionary *oldticketdict);
-
-typedef void (^versionBlock)(NSDictionary *versiondict);
 
 @interface ServerOtherFeatures : NSObject
 
 // flag 0查询可用的，1查询已用完的，2查询没用完过期的
-+ (void)oldTicketPostUserId:(NSString *)userid UseFlag:(FlagType)useflag Block:(oldTicketBlock)block;
++ (void)oldTicketPostUserId:(NSString *)userid UseFlag:(FlagType)useflag Block:(NSDictionaryBlock)block;
 
+// 评论
 + (void)reBackPostUserId:(NSString *)userid Contents:(NSString *)contents;
 
-+ (void)versionPostVersion:(NSString *)version Block:(versionBlock)block;
+//检测版本
++ (void)versionPostVersion:(NSString *)version Block:(NSDictionaryBlock)block;
 
 @end

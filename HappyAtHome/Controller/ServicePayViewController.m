@@ -40,7 +40,7 @@
 
 - (void)setFixedData
 {
-    [ServerService serverExChangedPostBlock];
+//    [ServerService serverExChangedPostBlock];
 }
 
 - (void)setNavigation

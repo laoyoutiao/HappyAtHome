@@ -105,7 +105,7 @@
                 _ScrollImageView = nil;
             }
             [self setScrollImageViewRun];
-            [ServerService searchPostBlock:^(NSArray *searcharray) {
+            [ServerService serverPostBlock:^(NSArray *searcharray) {
                 _ServiceModelDict = [ServiceModel instanceArrayDictFromArray:searcharray];
                 [_TableView reloadData];
             }];

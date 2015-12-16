@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef void (^loginBlock)(NSDictionary *logindict);
+#import "ServerHeader.h"
 
 @interface ServerLoginOrRegister : NSObject
 
-+ (void)loginPostPhone:(NSString *)username Pass:(NSString *)password Block:(loginBlock)block;
+//登录
++ (void)loginPostPhone:(NSString *)username Pass:(NSString *)password Block:(NSDictionaryBlock)block;
+
+//注册
 + (void)registerPostPhone:(NSString *)username Pass:(NSString *)password Id:(NSString *)idcard;
 
 @end

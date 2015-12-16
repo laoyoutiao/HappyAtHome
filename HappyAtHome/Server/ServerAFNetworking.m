@@ -19,6 +19,7 @@
      {
          successblock(operation, responObject);
      } failure:^(NSURLSessionTask *operation, NSError *error) {
+         NSLog(@"%@",error);
          errorblock(operation, error);
      }];
 }
