@@ -11,7 +11,7 @@
 @interface ActivityTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *TitleImageView;
 @property (weak, nonatomic) IBOutlet UILabel *AddressLbl;
-@property (weak, nonatomic) IBOutlet UILabel *EndTimeLbl;
+@property (weak, nonatomic) IBOutlet UILabel *UpTimeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *BookLbl;
 @property (weak, nonatomic) IBOutlet UILabel *CountLbl;
 @property (weak, nonatomic) IBOutlet UILabel *ActivityNameLbl;

@@ -31,7 +31,7 @@
         _oldticket = [dict safeIntegerForKey:@"oldticket"];
         _integral = [dict safeIntegerForKey:@"integral"];
         _userinfoid = [dict safeIntegerForKey:@"userinfo_id"];
-        _userid = [dict safeIntegerForKey:@"userid"];
+        _userid = [dict safeStringForKey:@"userid"];
         
         _headimage = [dict safeStringForKey:@"img_header"];
         _personname = [dict safeStringForKey:@"personnanme"];

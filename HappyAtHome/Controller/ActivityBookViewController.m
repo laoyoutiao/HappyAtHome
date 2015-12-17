@@ -8,9 +8,14 @@
 
 #import "ActivityBookViewController.h"
 #import "UIColor+Hex.h"
+#import "ModelHeader.h"
+#import "MyHeader.h"
+#import "ServerHeader.h"
 
-@interface ActivityBookViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+@interface ActivityBookViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
+{
+    ActivityModel *_model;
+}
 @end
 
 @implementation ActivityBookViewController
@@ -24,6 +29,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)getActivityModel:(ActivityModel *)model
+{
+    _model = model;
 }
 
 - (void)setNavigation
@@ -141,10 +151,23 @@
         label.font = [UIFont systemFontOfSize:13];
         label.textColor = [UIColor whiteColor];
         [cell addSubview:label];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickSure)];
+        tap.delegate = self;
+        tap.numberOfTapsRequired = 1;
+        [cell addGestureRecognizer:tap];
+        
     }
-    
     return cell;
 }
+
+- (void)clickSure
+{
+    UserInfoModel *userinfomodel = [UserInfoModel sharedInstance];
+    [ServerActivity applyActivityPostUserId:userinfomodel.userid ActivityId:_model.activityid PayType:ActivityPayTypeOldTicket Block:^(NSDictionary *dictblock) {
+        NSLog(@"%@",[dictblock objectForKey:@"msg"]);
+    }];
+}
+
 
 /*
 #pragma mark - Navigation

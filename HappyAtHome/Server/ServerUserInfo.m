@@ -10,9 +10,9 @@
 
 @implementation ServerUserInfo
 
-+ (void)userInfoGetPostUserId:(NSInteger)userid Block:(NSDictionaryBlock)block
++ (void)userInfoGetPostUserId:(NSString *)userid Block:(NSDictionaryBlock)block
 {
-    NSDictionary *paramdict = @{@"operate":operateUserInfoGet, @"userid":[NSString stringWithFormat:@"%ld",userid]};
+    NSDictionary *paramdict = @{@"operate":operateUserInfoGet, @"userid":userid};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
         block([resopnObject objectForKey:@"response"]);
     } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {

@@ -58,9 +58,9 @@
     }];
 }
 
-+ (void)serverExChangedPostUserId:(NSInteger)userid Integral:(NSInteger)integral OldTicket:(NSInteger)oldticket Block:(NSDictionaryBlock)block
++ (void)serverExChangedPostUserId:(NSString *)userid Integral:(NSInteger)integral OldTicket:(NSInteger)oldticket Block:(NSDictionaryBlock)block
 {
-    NSDictionary *paramdict = @{@"operate":operateExChanged,@"userid":[NSString stringWithFormat:@"%ld",userid],@"integral":[NSString stringWithFormat:@"%ld",integral],@"money":[NSString stringWithFormat:@"%ld",oldticket]};
+    NSDictionary *paramdict = @{@"operate":operateExChanged,@"userid":userid,@"integral":[NSString stringWithFormat:@"%ld",integral],@"money":[NSString stringWithFormat:@"%ld",oldticket]};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
         block(resopnObject);
         NSLog(@"%@",resopnObject);

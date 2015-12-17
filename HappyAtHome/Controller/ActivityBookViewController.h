@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ActivityModel.h"
 
 @interface ActivityBookViewController : UIViewController
+
+- (void)getActivityModel:(ActivityModel *)model;
 
 @end

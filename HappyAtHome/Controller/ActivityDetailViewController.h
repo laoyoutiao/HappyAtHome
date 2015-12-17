@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ActivityTableViewCell.h"
+#import "ActivityModel.h"
 
 @interface ActivityDetailViewController : UIViewController
 
-- (void)getDetailMessage:(ActivityTableViewCell *)cell;
+- (void)getDetailMessage:(ActivityModel *)model;
 
 @end

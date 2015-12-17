@@ -8,14 +8,23 @@
 
 #import "ActivityDetailViewController.h"
 #import "ActivityBookViewController.h"
+#import "UIImageView+WebCache.h"
+#import "ModelHeader.h"
+#import "MyHeader.h"
+#import "ServerHeader.h"
+#import "UIImageView+WebCache.h"
 
 @interface ActivityDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    ActivityModel *_model;
+    NSArray *activityPersonArray;
+}
+@property (weak, nonatomic) IBOutlet UITableView *TableView;
 @property (weak, nonatomic) IBOutlet UILabel *ActivityNameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *AddressLbl;
 @property (weak, nonatomic) IBOutlet UILabel *TimeLbl;
 @property (weak, nonatomic) IBOutlet UILabel *ContentsLbl;
 @property (weak, nonatomic) IBOutlet UILabel *CountLbl;
-@property (strong, nonatomic) ActivityTableViewCell *cell;
 
 @end
 
@@ -24,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setDetailMessage];
+    [self setFixedData];
     // Do any additional setup after loading the view.
 }
 
@@ -34,26 +44,36 @@
 
 - (void)setDetailMessage
 {
-    _ActivityNameLbl.text = _cell.ActivityNameLbl.text;
-    _AddressLbl.text = _cell.AddressLbl.text;
-    _TimeLbl.text = _cell.EndTimeLbl.text;
-    NSString *count = [_cell.CountLbl.text substringWithRange:NSMakeRange(5, _cell.CountLbl.text.length - 5)];
-    _CountLbl.text = [NSString stringWithFormat:@"%@已报名",count];
+    _ActivityNameLbl.text = _model.introduce;
+    _AddressLbl.text = _model.address;
+    _TimeLbl.text = _model.uptime;
+    _ContentsLbl.text = _model.activityname;
+    _CountLbl.text = [NSString stringWithFormat:@"%ld人已报名",_model.sign];
 }
 
-- (void)getDetailMessage:(ActivityTableViewCell *)cell
+- (void)getDetailMessage:(ActivityModel *)model
 {
-    _cell = cell;
+    _model = model;
+}
+
+- (void)setFixedData
+{
+    [ServerActivity peopleOfActivityPostActivityId:_model.activityid Block:^(NSArray *arrayblock) {
+        activityPersonArray = arrayblock;
+        NSLog(@"%@",activityPersonArray);
+        [_TableView reloadData];
+    }];
 }
 
 - (IBAction)clickBookActivity:(id)sender {
     ActivityBookViewController *activitybookview = [self.storyboard instantiateViewControllerWithIdentifier:@"ActivityBookViewController"];
     [self.navigationController showViewController:activitybookview sender:nil];
+    [activitybookview getActivityModel:_model];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [activityPersonArray count]? 3:0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -64,7 +84,7 @@
             break;
             
         case 1:
-            return 4;
+            return 1;
             break;
             
         case 2:
@@ -90,7 +110,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, view.frame.size.width, view.frame.size.height)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, view.frame.size.width - 15, view.frame.size.height)];
     label.font = [UIFont systemFontOfSize:13];
     switch (section) {
         case 0:
@@ -111,12 +131,13 @@
     [view addSubview:label];
     if (section == 1)
     {
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(view.frame.size.width - 40, 0, 20, 20)];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(view.frame.size.width - 30, 0, 20, 20)];
         imageview.image = [UIImage imageNamed:@"ic_deal_arrow_right.png"];
         [view addSubview:imageview];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.size.width - 80, 0, 40, 20)];
-        label.text = @"4人";
+        label.text = [NSString stringWithFormat:@"%ld人",[activityPersonArray count]];
+        label.textAlignment = NSTextAlignmentRight;
         label.font = [UIFont systemFontOfSize:13];
         [view addSubview:label];
     }
@@ -151,7 +172,47 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    cell.backgroundColor = [UIColor grayColor];
+//    cell.backgroundColor = [UIColor grayColor];
+    if (indexPath.section == 0) {
+        UILabel *introducelabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, ScreenSize.width - 30, 60)];
+        introducelabel.text = _model.orgintroduce;
+        introducelabel.numberOfLines = 0;
+        introducelabel.textColor = [UIColor grayColor];
+        introducelabel.font = [UIFont systemFontOfSize:10];
+        [cell addSubview:introducelabel];
+    }else if (indexPath.section == 1)
+    {
+        UIImageView *headimageview = ImageViewSetFrame(15, 0, 40, 40);
+        [headimageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",[[activityPersonArray objectAtIndex:0] objectForKey:@"img_header"]]]];
+        [cell addSubview:headimageview];
+        
+        UILabel *namelabel = LabelSetFrame(60, 5, ScreenSize.width - 70, 10);
+        namelabel.text = [[activityPersonArray objectAtIndex:0] objectForKey:@"personname"];
+        namelabel.font = [UIFont systemFontOfSize:9];
+        namelabel.textColor = [UIColor grayColor];
+        [cell addSubview:namelabel];
+        
+        UILabel *sexlabel = LabelSetFrame(60, 15, ScreenSize.width - 70, 10);
+        sexlabel.text = [[[activityPersonArray objectAtIndex:0] objectForKey:@"sex"] isEqualToString:@"0"]? @"女":@"男";
+        sexlabel.font = [UIFont systemFontOfSize:9];
+        sexlabel.textColor = [UIColor grayColor];
+        [cell addSubview:sexlabel];
+        
+        UILabel *introducelabel = LabelSetFrame(60, 25, ScreenSize.width - 70, 10);
+        introducelabel.text = [[activityPersonArray objectAtIndex:0] objectForKey:@"selfdom_sign"];
+        introducelabel.font = [UIFont systemFontOfSize:9];
+        introducelabel.textColor = [UIColor grayColor];
+        [cell addSubview:introducelabel];
+        
+    }else
+    {
+        UILabel *orgiaztionlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, ScreenSize.width - 30, 60)];
+        orgiaztionlabel.numberOfLines = 0;
+        orgiaztionlabel.text = _model.organization;
+        orgiaztionlabel.font = [UIFont systemFontOfSize:12];
+        orgiaztionlabel.textColor = [UIColor grayColor];
+        [cell addSubview:orgiaztionlabel];
+    }
     return cell;
 }
 

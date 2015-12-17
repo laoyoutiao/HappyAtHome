@@ -63,6 +63,7 @@
     NSDictionary *paramdict = @{@"operate":operateCompettorAdd,@"activity_id":activityid,@"userid":userid};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
         block(resopnObject);
+//        NSLog(@"%@",resopnObject);
     } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
         
     }];

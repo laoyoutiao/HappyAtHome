@@ -15,7 +15,7 @@
 @property (assign, nonatomic) NSInteger oldticket;
 @property (assign, nonatomic) NSInteger integral;
 @property (assign, nonatomic) NSInteger userinfoid;
-@property (assign, nonatomic) NSInteger userid;
+@property (assign, nonatomic) NSString *userid;
 
 @property (strong, nonatomic) NSString *headimage;
 @property (strong, nonatomic) NSString *personname;

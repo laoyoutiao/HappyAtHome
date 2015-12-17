@@ -25,6 +25,6 @@
 + (void)serverExRulePostBlock;
 
 //积分兑换养老券
-+ (void)serverExChangedPostUserId:(NSInteger)userid Integral:(NSInteger)integral OldTicket:(NSInteger)oldticket Block:(NSDictionaryBlock)block;
++ (void)serverExChangedPostUserId:(NSString *)userid Integral:(NSInteger)integral OldTicket:(NSInteger)oldticket Block:(NSDictionaryBlock)block;
 
 @end

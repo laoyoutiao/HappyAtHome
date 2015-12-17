@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, SexType)
 @interface ServerUserInfo : NSObject
 
 //获取个人资料
-+ (void)userInfoGetPostUserId:(NSInteger)userid Block:(NSDictionaryBlock)block;
++ (void)userInfoGetPostUserId:(NSString *)userid Block:(NSDictionaryBlock)block;
 
 //修改个人资料
 + (void)userInfoChangePostUserID:(NSString *)userid PersonName:(NSString *)personname Sign:(NSString *)sign Sex:(SexType)sex Zone:(NSString *)zone;
