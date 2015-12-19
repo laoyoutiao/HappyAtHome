@@ -40,6 +40,8 @@ typedef NS_ENUM(NSInteger, tableviewType) {
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark UI Or Data
+
 - (void)viewType:(viewType)type
 {
     _viewType = type;
@@ -92,7 +94,7 @@ typedef NS_ENUM(NSInteger, tableviewType) {
     _introducestring = introducestring;
 }
 
-#pragma mark Button Methods
+#pragma mark ClickResponse
 #pragma -------------------
 
 - (void)clickButton:(UIButton *)btn

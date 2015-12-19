@@ -38,9 +38,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark UI Or Data
+
 - (void)setFixedData
 {
-//    [ServerService serverExChangedPostBlock];
+
 }
 
 - (void)setNavigation

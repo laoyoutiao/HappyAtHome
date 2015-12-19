@@ -42,7 +42,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="FAH-yo-e5r">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <animations/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="OuC-9S-zFw" id="UcS-uu-6AX"/>
                                     <outlet property="delegate" destination="OuC-9S-zFw" id="gtO-nT-zxC"/>
@@ -185,7 +185,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="z2y-wt-cTo" secondAttribute="height" multiplier="1:1" id="GWo-A7-zXf"/>
+                                                        <constraint firstAttribute="width" secondItem="z2y-wt-cTo" secondAttribute="height" multiplier="1:1" identifier="TestLayout" id="GWo-A7-zXf"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">

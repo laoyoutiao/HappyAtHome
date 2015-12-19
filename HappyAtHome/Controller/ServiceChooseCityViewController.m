@@ -28,6 +28,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark UI Or Data
+
 - (void)setFixedData
 {
     _OpenArray = [[NSArray alloc] initWithObjects:@"深圳市", @"佛山市", @"广州市", nil];
@@ -37,6 +39,8 @@
 {
     self.title = @"城市选择";
 }
+
+#pragma mark TableViewDelegate Or DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

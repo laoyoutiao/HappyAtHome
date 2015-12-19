@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, changeType) {
     [super viewDidLoad];
     [self setNavigation];
     [self setTableView];
+    [self setFixedData];
     // Do any additional setup after loading the view.
 }
 
@@ -50,6 +51,11 @@ typedef NS_ENUM(NSInteger, changeType) {
 - (void)setNavigation
 {
     self.title = @"积分兑换";
+}
+
+- (void)setFixedData
+{
+//    [ServerService serverExRulePostBlock];
 }
 
 - (void)setTableView

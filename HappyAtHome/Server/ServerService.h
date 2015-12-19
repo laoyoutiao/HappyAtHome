@@ -22,7 +22,7 @@
 + (void)discussPostWaiterId:(NSString *)waiterid Username:(NSString *)username Word:(NSString *)word Ontime:(NSString *)ontime Attitude:(NSString *)attitude Profession:(NSString *)profession SorderId:(NSString *)sorderid;
 
 //兑换积分规则
-+ (void)serverExRulePostBlock;
++ (void)serverExRulePostBlock:(NSArrayBlock)block;
 
 //积分兑换养老券
 + (void)serverExChangedPostUserId:(NSString *)userid Integral:(NSInteger)integral OldTicket:(NSInteger)oldticket Block:(NSDictionaryBlock)block;

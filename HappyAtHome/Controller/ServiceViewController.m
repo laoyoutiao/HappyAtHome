@@ -43,6 +43,14 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    _ScrollImageView = nil;
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark ReloadTableView Or Data
+
 - (void)loadTableView
 {
     // 下拉刷新
@@ -61,11 +69,7 @@
     [_TableView.mj_header endRefreshing];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    _ScrollImageView = nil;
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark UI Or Data
 
 - (void)setNavigation
 {
@@ -83,17 +87,6 @@
     [btn addTarget:self action:@selector(clickEmail) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightitem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = rightitem;
-}
-
-- (void)clickChooseCity
-{
-    ServiceChooseCityViewController *choosecityview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceChooseCityViewController"];
-    [self.navigationController pushViewController:choosecityview animated:YES];
-}
-
-- (void)clickEmail
-{
-    
 }
 
 - (void)setFixedData
@@ -115,29 +108,26 @@
 
 - (void)setScrollImageViewRun
 {
-//    NSLog(@"%@",_ServiceImageModelArray);
     _ScrollImageView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenSize.width, 150)];
-        NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ServiceImageModelArray count]+2];
-        if ([_ServiceImageModelArray count] > 1)
-        {
-            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:[_ServiceImageModelArray count]-1];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image] tag:-1];
-            [itemArray addObject:item];
-        }
-        for (int i = 0; i < [_ServiceImageModelArray count]; i++)
-        {
-            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:i];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image] tag:i];
-            [itemArray addObject:item];
-        }
-        //添加第一张图 用于循环
-        if ([_ServiceImageModelArray count] >1)
-        {
-            ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:0];
-            ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image] tag:[_ServiceImageModelArray count]];
-            [itemArray addObject:item];
-        }
-    
+    NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:[_ServiceImageModelArray count]+2];
+    if ([_ServiceImageModelArray count] > 1)
+    {
+        ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:[_ServiceImageModelArray count]-1];
+        ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"%@%@",ServerImgURL,model.image] tag:-1];
+        [itemArray addObject:item];
+    }
+    for (int i = 0; i < [_ServiceImageModelArray count]; i++)
+    {
+        ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:i];
+        ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"%@%@",ServerImgURL,model.image] tag:i];
+        [itemArray addObject:item];
+    }
+    if ([_ServiceImageModelArray count] >1)
+    {
+        ServiceImgModel *model = [_ServiceImageModelArray objectAtIndex:0];
+        ScrollImageItem *item = [[ScrollImageItem alloc] initWithTitle:nil image:[NSString stringWithFormat:@"%@%@",ServerImgURL,model.image] tag:[_ServiceImageModelArray count]];
+        [itemArray addObject:item];
+    }
     
     ScrollImageFrame *bannerView;
     bannerView = [[ScrollImageFrame alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 150) delegate:self imageItems:itemArray isAuto:YES];
@@ -149,20 +139,8 @@
     [_ScrollImageView addSubview:bannerView];
 }
 
-- (void)foucusImageFrame:(ScrollImageFrame *)imageFrame didSelectItem:(ScrollImageItem *)item
-{
-//    NSLog(@"%ld",item.tag);
-    ServiceImgModel *imgmodel = [_ServiceImageModelArray objectAtIndex:item.tag];
-    ServiceModel *model = [ServiceImgModel changeServiceModel:imgmodel];
-    ServiceDetailViewController *servicedetailview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailViewController"];
-    [servicedetailview getServiceModel:model];
-    [self.navigationController showViewController:servicedetailview sender:nil];
-    
-}
 
-
-#pragma makr TableViewDelegate
-#pragma --------------------------
+#pragma mark TableViewDelegate Or DataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -213,13 +191,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier"];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
-        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
         UICollectionViewFlowLayout *collectviewlayout = [[UICollectionViewFlowLayout alloc] init];
         NSInteger height;
         NSString *str = [self switchToCellString:indexPath.section];
@@ -252,8 +227,7 @@
     return [[_ServiceModelDict objectForKey:str] count] / 3 * cellheightmodulus + cellheightmodulus;
 }
 
-#pragma makr CollectionViewDelegate
-#pragma --------------------------
+#pragma mark CollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -263,12 +237,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    
-    
     ServiceModel *model = [[_ServiceModelDict objectForKey:collectioncelltitle] objectAtIndex:indexPath.row];
-
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, (ScreenSize.width - 5) / 3, cellheightmodulus - 51)];
-    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",model.image]]];
+    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ServerImgURL,model.image]]];
     [cell addSubview:imageview];
     imageview = nil;
     
@@ -293,18 +264,15 @@
     countlbl.font = [UIFont systemFontOfSize:9];
     [view addSubview:countlbl];
     
-    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"%ld --- %@",indexPath.row,[self switchToCellString:collectionView.tag - TagView(0)]);
     ServiceModel *model = [[_ServiceModelDict objectForKey:[self switchToCellString:collectionView.tag - TagView(0)]] objectAtIndex:indexPath.row];
     ServiceDetailViewController *servicedetailview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailViewController"];
     [servicedetailview getServiceModel:model];
     [self.navigationController showViewController:servicedetailview sender:nil];
-    
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -327,8 +295,7 @@
     return 1;
 }
 
-#pragma mark SelfMethod
-#pragma ---------------
+#pragma mark Method
 
 - (NSString *)switchToCellString:(NSInteger)num
 {
@@ -362,6 +329,28 @@
             break;
     }
     return str;
+}
+
+#pragma mark ClickResponse
+
+- (void)clickChooseCity
+{
+    ServiceChooseCityViewController *choosecityview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceChooseCityViewController"];
+    [self.navigationController pushViewController:choosecityview animated:YES];
+}
+
+- (void)clickEmail
+{
+    
+}
+
+- (void)foucusImageFrame:(ScrollImageFrame *)imageFrame didSelectItem:(ScrollImageItem *)item
+{
+    ServiceImgModel *imgmodel = [_ServiceImageModelArray objectAtIndex:item.tag];
+    ServiceModel *model = [ServiceImgModel changeServiceModel:imgmodel];
+    ServiceDetailViewController *servicedetailview = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceDetailViewController"];
+    [servicedetailview getServiceModel:model];
+    [self.navigationController showViewController:servicedetailview sender:nil];
 }
 
 /*

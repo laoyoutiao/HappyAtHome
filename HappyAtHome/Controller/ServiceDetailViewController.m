@@ -36,6 +36,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark UI Or Data
+
 - (void)setNavigation
 {
     self.title = servicemodel.name;
@@ -193,7 +195,6 @@
         [cell addSubview:button];
     }
     }
-//    cell.backgroundColor = [UIColor yellowColor];
     return cell;
 }
 
@@ -291,13 +292,7 @@
     }
 }
 
-- (void)getAddressName:(NSString *)addressname
-{
-    UILabel *label = (UILabel *)[self.view viewWithTag:TagLabel(2)];
-    label.text = addressname;
-}
-
-#pragma mark Button Mehtods
+#pragma mark ClickResponse
 
 - (void)pickButtonclick:(UIButton *)btn
 {
@@ -485,7 +480,13 @@
     return YES;
 }
 
+#pragma mark OtherDelegateMethod
 
+- (void)getAddressName:(NSString *)addressname
+{
+    UILabel *label = (UILabel *)[self.view viewWithTag:TagLabel(2)];
+    label.text = addressname;
+}
 
 /*
 #pragma mark - Navigation

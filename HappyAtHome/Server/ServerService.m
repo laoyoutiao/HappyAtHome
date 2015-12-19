@@ -47,11 +47,11 @@
     }];
 }
 
-+ (void)serverExRulePostBlock
++ (void)serverExRulePostBlock:(NSArrayBlock)block
 {
     NSDictionary *paramdict = @{@"operate":operateExGet};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
-        //        block([resopnObject objectForKey:@"response"]);
+                block([resopnObject objectForKey:@"response"]);
         //        NSLog(@"%@",[resopnObject objectForKey:@"response"]);
     } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
         
