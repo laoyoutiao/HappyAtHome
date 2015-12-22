@@ -227,7 +227,7 @@ typedef NS_ENUM(NSInteger, changeType) {
             NSString *tick = [dictblock objectForKey:@"response"];
             NSInteger ticket = tick.integerValue;
             alertview = [UIAlertController alertControllerWithTitle:[dictblock objectForKey:@"msg"] message:[NSString stringWithFormat:@"剩余养老卷:%ld",ticket] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *sureaction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *sureaction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
             
             [ServerUserInfo userInfoGetPostUserId:userinfomodel.userid Block:^(NSDictionary *dictblock) {
                 UserInfoModel *userinfomodel;

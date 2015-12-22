@@ -10,4 +10,6 @@
 
 @interface ShopSortViewController : UIViewController
 
+- (void)getGoodsModel:(NSArray *)goodsarray;
+
 @end

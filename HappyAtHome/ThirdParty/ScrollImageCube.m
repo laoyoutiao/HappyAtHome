@@ -10,12 +10,13 @@
 #import "ModelHeader.h"
 #import "UIImageView+WebCache.h"
 
-@interface ScrollImageCube ()<UIGestureRecognizerDelegate>
+@interface ScrollImageCube ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 {
     UIImageView *imageview;
     NSArray *imageArray;
     NSInteger index;
     CGFloat clickx;
+    UIScrollView *scrollview;
 }
 @end
 
@@ -36,13 +37,16 @@
 {
     imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 5)];
     [self addSubview:imageview];
-    ShopImgModel *model = [imageArray objectAtIndex:0];
+    ShopModel *model = [imageArray objectAtIndex:0];
     [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
     index = 0;
     
-    UIPanGestureRecognizer *panGestureRecognize = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(GestureMove:)];
-    panGestureRecognize.delegate = self;
-    [self addGestureRecognizer:panGestureRecognize];
+    scrollview = [[UIScrollView alloc] initWithFrame:self.frame];
+    [self addSubview:scrollview];
+    scrollview.contentSize = CGSizeMake(360, 0);
+    scrollview.bounces = NO;
+    scrollview.showsHorizontalScrollIndicator = NO;
+    scrollview.delegate = self;
     
     UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureRecognizer:)];
     tapGestureRecognize.delegate = self;
@@ -70,49 +74,44 @@
 
 - (void)singleTapGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 {
-        NSLog(@"%ld", index);
+    [_delegate clickAdvertisement:index];
 }
 
-- (void)GestureMove:(UIGestureRecognizer *)gestureRecognizer
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
+    float x = scrollview.contentOffset.x;
+    CATransition *ca = [CATransition animation];
+    ca.type = @"cube";
+    if (x < 40)
     {
-        
-        CATransition *ca = [CATransition animation];
-        ca.type = @"cube";
-        if (clickx - [gestureRecognizer locationInView:self].x < 0)
-        {
-            index --;
-            if (index < 0) {
-                index = [imageArray count] - 1;
-            }
-            [self changelinecolor:index];
-            ShopImgModel *model = [imageArray objectAtIndex:index];
-            [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
-            ca.subtype = kCATransitionFromLeft;
-        }else
-        {
-            index ++;
-            if (index == [imageArray count]) {
-                index = 0;
-            }
-            [self changelinecolor:index];
-            ShopImgModel *model = [imageArray objectAtIndex:index];
-            [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
-            ca.subtype = kCATransitionFromRight;
+        index --;
+        if (index < 0) {
+            index = [imageArray count] - 1;
         }
-        ca.duration = 1.0;
-        [imageview.layer addAnimation:ca forKey:nil];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(movenext) object:nil];
-        
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [self performSelector:@selector(movenext) withObject:nil afterDelay:4.0];
-        });
-    }else if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
+        [self changelinecolor:index];
+        ShopModel *model = [imageArray objectAtIndex:index];
+        [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
+        ca.subtype = kCATransitionFromLeft;
+    }else
     {
-        clickx = [gestureRecognizer locationInView:self].x;
+        index ++;
+        if (index == [imageArray count]) {
+            index = 0;
+        }
+        [self changelinecolor:index];
+        ShopModel *model = [imageArray objectAtIndex:index];
+        [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
+        ca.subtype = kCATransitionFromRight;
     }
+    ca.duration = 1.5;
+    [imageview.layer addAnimation:ca forKey:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(movenext) object:nil];
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self performSelector:@selector(movenext) withObject:nil afterDelay:4.0];
+    });
+
 }
 
 - (void)movenext
@@ -123,7 +122,7 @@
     }
     [self changelinecolor:index];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(movenext) object:nil];
-    ShopImgModel *model = [imageArray objectAtIndex:index];
+    ShopModel *model = [imageArray objectAtIndex:index];
     [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
     CATransition *ca = [CATransition animation];
     ca.type = @"cube";

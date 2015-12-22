@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol scrollDelegate
+
+@optional
+
+- (void)clickAdvertisement:(NSInteger)index;
+
+@end
+
 @interface ScrollImageCube : UIView
 - (id)initWithFrame:(CGRect)frame ImageArray:(NSArray *)array;
+@property (weak, nonatomic) id<scrollDelegate> delegate;
 @end

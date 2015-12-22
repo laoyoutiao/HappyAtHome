@@ -13,7 +13,7 @@
 #import "ActivityModel.h"
 #import "ServiceModel.h"
 #import "NSDictionary+Safe.h"
-#import "ShopImgModel.h"
+#import "ShopModel.h"
 #import "UserInfoModel.h"
 
 

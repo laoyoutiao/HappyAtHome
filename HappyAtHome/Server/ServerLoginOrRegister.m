@@ -14,6 +14,7 @@
 {
     NSDictionary *paramdict = @{@"operate":operateLogin, @"phone":username, @"password":password};
     [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id responObject){
+        NSLog(@"%@",responObject);
         block([responObject objectForKey:@"response"]);
     } ErrorBlock:^(NSURLSessionTask *operation, NSError *error){
          
