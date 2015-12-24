@@ -564,8 +564,6 @@
 			children = (
 				5B7B0DD91BFD73C40074FE32 /* button_bj_red.png */,
 				5B7B0DDF1BFD74160074FE32 /* ic_deal_arrow_right.png */,
-				5B7B0DDB1BFD73E60074FE32 /* groupon_detial_down_arrow.png */,
-				5B7B0DDC1BFD73E60074FE32 /* groupon_detial_up_arrow.png */,
 				5B7B0DE11BFD74260074FE32 /* mylocation_time.png */,
 				5B7B0DE31BFD74310074FE32 /* point_unfocused.png */,
 				5B7B0DE51BFD743A0074FE32 /* yigourenshu.png */,
@@ -760,6 +758,8 @@
 				5BB0A5F61BFD9C6100865DD2 /* checkbox_circle_p.png */,
 				5B7B0DF11BFD74710074FE32 /* checkbox_checked.png */,
 				5B7B0DF21BFD74710074FE32 /* checkbox_circle_n.png */,
+				5B7B0DDB1BFD73E60074FE32 /* groupon_detial_down_arrow.png */,
+				5B7B0DDC1BFD73E60074FE32 /* groupon_detial_up_arrow.png */,
 			);
 			name = Publish;
 			sourceTree = "<group>";

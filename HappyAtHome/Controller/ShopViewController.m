@@ -250,6 +250,11 @@
 - (void)pushShopSortView
 {
     ShopSortViewController *shopsortview = [self.storyboard instantiateViewControllerWithIdentifier:@"ShopSortViewController"];
+    NSMutableArray *mutablearray = [[NSMutableArray alloc] init];
+    [mutablearray addObjectsFromArray:_goodsImgArray];
+    [mutablearray addObjectsFromArray:_goodsShowArray];
+    [mutablearray addObjectsFromArray:_goodsOldManArray];
+    [shopsortview getGoodsModel:mutablearray];
     [self.navigationController showViewController:shopsortview sender:nil];
 }
 
@@ -263,11 +268,9 @@
     ShopGoodsViewController *shopgoodsview = [self.storyboard instantiateViewControllerWithIdentifier:@"ShopGoodsViewController"];
     if (btn.tag < TagButton(2000))
     {
-//        NSLog(@"%ld %ld %ld",TagButton(1000) - btn.tag, btn.tag - (TagButton(1000)), btn.tag);
         [shopgoodsview getShopGoodsModel:[_goodsShowArray objectAtIndex:btn.tag - (TagButton(1000))]];
     }else
     {
-        NSLog(@"%ld",btn.tag);
         [shopgoodsview getShopGoodsModel:[_goodsOldManArray objectAtIndex:btn.tag - (TagButton(2000))]];
     }
     [self.navigationController pushViewController:shopgoodsview animated:YES];

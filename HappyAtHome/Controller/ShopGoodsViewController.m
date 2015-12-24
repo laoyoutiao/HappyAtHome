@@ -55,8 +55,6 @@
     _PhoneLbl.text = [NSString stringWithFormat:@"  订购热线"];
     _ContentLbl.text = [NSString stringWithFormat:@"  评论: (共0条)"];
     
-    
-    
 }
 
 - (void)getShopGoodsModel:(ShopModel *)model
