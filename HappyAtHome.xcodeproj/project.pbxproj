@@ -155,6 +155,7 @@
 		5B87EA0B1C1AB403005655E1 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B87EA0A1C1AB403005655E1 /* TabBarController.m */; };
 		5B88F2771BF32DD800005E0E /* PersonIntegrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B88F2761BF32DD800005E0E /* PersonIntegrationViewController.m */; };
 		5B88F27A1BF32E0400005E0E /* ServiceChooseCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B88F2791BF32E0400005E0E /* ServiceChooseCityViewController.m */; };
+		5B8937C91C2D25A200FF26F2 /* ShopCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8937C81C2D25A200FF26F2 /* ShopCarViewController.m */; };
 		5BB0A5F71BFD9C6100865DD2 /* checkbox_circle_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB0A5F61BFD9C6100865DD2 /* checkbox_circle_p.png */; };
 		5BB0A5F91BFD9E0600865DD2 /* home_shopping_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB0A5F81BFD9E0600865DD2 /* home_shopping_icon.png */; };
 		5BB0A5FD1BFDA1F700865DD2 /* ShopSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0A5FC1BFDA1F700865DD2 /* ShopSortViewController.m */; };
@@ -425,6 +426,8 @@
 		5B88F2761BF32DD800005E0E /* PersonIntegrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonIntegrationViewController.m; path = Controller/PersonIntegrationViewController.m; sourceTree = "<group>"; };
 		5B88F2781BF32E0400005E0E /* ServiceChooseCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceChooseCityViewController.h; path = Controller/ServiceChooseCityViewController.h; sourceTree = "<group>"; };
 		5B88F2791BF32E0400005E0E /* ServiceChooseCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceChooseCityViewController.m; path = Controller/ServiceChooseCityViewController.m; sourceTree = "<group>"; };
+		5B8937C71C2D25A200FF26F2 /* ShopCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopCarViewController.h; path = Controller/ShopCarViewController.h; sourceTree = "<group>"; };
+		5B8937C81C2D25A200FF26F2 /* ShopCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopCarViewController.m; path = Controller/ShopCarViewController.m; sourceTree = "<group>"; };
 		5BB0A5F61BFD9C6100865DD2 /* checkbox_circle_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox_circle_p.png; path = HappyAtHome/Resource/checkbox_circle_p.png; sourceTree = SOURCE_ROOT; };
 		5BB0A5F81BFD9E0600865DD2 /* home_shopping_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_shopping_icon.png; path = HappyAtHome/Resource/home_shopping_icon.png; sourceTree = SOURCE_ROOT; };
 		5BB0A5FB1BFDA1F700865DD2 /* ShopSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopSortViewController.h; path = Controller/ShopSortViewController.h; sourceTree = "<group>"; };
@@ -772,6 +775,7 @@
 				5B6D6EE41C28DA660012EF25 /* ShopGoodsViewController.h */,
 				5B6D6EE51C28DA660012EF25 /* ShopGoodsViewController.m */,
 				5BB0A5FA1BFDA1BD00865DD2 /* ShopSort */,
+				5B8937C61C2D254300FF26F2 /* ShopCar */,
 			);
 			name = Shopping;
 			sourceTree = "<group>";
@@ -1045,6 +1049,15 @@
 				5B88F2761BF32DD800005E0E /* PersonIntegrationViewController.m */,
 			);
 			name = Integration;
+			sourceTree = "<group>";
+		};
+		5B8937C61C2D254300FF26F2 /* ShopCar */ = {
+			isa = PBXGroup;
+			children = (
+				5B8937C71C2D25A200FF26F2 /* ShopCarViewController.h */,
+				5B8937C81C2D25A200FF26F2 /* ShopCarViewController.m */,
+			);
+			name = ShopCar;
 			sourceTree = "<group>";
 		};
 		5B8DBA371BE84D0400641E86 /* PersonOrder */ = {
@@ -1330,6 +1343,7 @@
 				5B4C334F1C11264100F50173 /* UIImageView+HighlightedWebCache.m in Sources */,
 				5B651AD71C0939D1003DD84D /* UIView+MJExtension.m in Sources */,
 				5B6FAC441C00024000EF72CD /* AFURLResponseSerialization.m in Sources */,
+				5B8937C91C2D25A200FF26F2 /* ShopCarViewController.m in Sources */,
 				5B4C33551C11374200F50173 /* ServiceDetailValueViewController.m in Sources */,
 				5B651AC51C0939D1003DD84D /* MJRefreshAutoFooter.m in Sources */,
 				5B4E1E141BDB6C9B00D54B88 /* main.m in Sources */,

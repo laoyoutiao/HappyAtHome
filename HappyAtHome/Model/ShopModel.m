@@ -24,13 +24,14 @@
         _discount       = [dict safeIntegerForKey:@"discount"];
         _price          = [dict safeFloatForKey:@"price"];
         _salesvolume    = [dict safeIntegerForKey:@"salesvolume"];
+        _type           = [dict safeIntegerForKey:@"title"];
     }
     return self;
 }
 
 + (NSArray *)instanceArrayDictFromArray:(NSArray *)array
 {
-//    NSLog(@"%@",array);
+    NSLog(@"%@",array);
     NSMutableArray *instanceArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < [array count]; i ++){
         [instanceArray  addObject:[[self alloc] initWithDictionary:[array objectAtIndex:i]]];

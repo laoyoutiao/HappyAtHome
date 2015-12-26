@@ -15,6 +15,7 @@
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
 #import "ShopGoodsViewController.h"
+#import "ShopCarViewController.h"
 
 @interface ShopViewController () <UITableViewDataSource,UITableViewDelegate,scrollDelegate,UIGestureRecognizerDelegate>
 {
@@ -242,6 +243,10 @@
             [self pushShopSortView];
             break;
             
+        case TagButton(1):
+            [self pushShopCarView];
+            break;
+            
         default:
             break;
     }
@@ -256,6 +261,12 @@
     [mutablearray addObjectsFromArray:_goodsOldManArray];
     [shopsortview getGoodsModel:mutablearray];
     [self.navigationController showViewController:shopsortview sender:nil];
+}
+
+- (void)pushShopCarView
+{
+    ShopCarViewController *shopcarview = [self.storyboard instantiateViewControllerWithIdentifier:@"ShopCarViewController"];
+    [self.navigationController showViewController:shopcarview sender:nil];
 }
 
 - (void)clickAdvertisement:(NSInteger)index

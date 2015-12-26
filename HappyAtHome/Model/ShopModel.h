@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *parentname;
 @property (strong, nonatomic) NSString *shopaddress;
 
+@property (assign, nonatomic) NSInteger type;
 @property (assign, nonatomic) NSInteger discount;
 @property (assign, nonatomic) NSInteger salesvolume;
 @property (assign, nonatomic) CGFloat   price;

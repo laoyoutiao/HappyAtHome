@@ -214,6 +214,18 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     return view;
 }
 
+- (void)goodstype
+{
+    NSMutableArray *mutablearray = [[NSMutableArray alloc] initWithArray:_goodsArray];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [mutablearray count]; i ++) {
+        ShopModel *model = [mutablearray objectAtIndex:i];
+        [array insertObject:model atIndex:model.goodsid.integerValue - 1];
+    }
+    _goodsArray = array;
+    [_TableView reloadData];
+}
+
 #pragma mark ClickResponse
 
 - (void)clickCell:(UIGestureRecognizer *)gesturerecognizer
@@ -231,7 +243,8 @@ typedef NS_ENUM(NSInteger, TypeBtn)
     switch (btn.tag) {
         case TagButton(0):
             //商品分类
-            
+            //排序
+            [self goodstype];
             break;
             
         case TagButton(1):
