@@ -18,8 +18,8 @@ typedef void(^NSStringBlock)        (NSString *stringblock);
 #define ServerHeader_h
 
 
-#define ServerURL                   @"http://61.142.211.110:92/EnjoyLiveHome/MainRequest"
-#define ServerImgURL                @"http://192.168.1.146:8080/EnjoyLiveHome/"
+#define ServerURL                   @"http://113.92.176.186:92/EnjoyLiveHome/MainRequest"
+#define ServerImgURL                @"http://113.92.176.186:92/EnjoyLiveHome/"
 
 #define operateLogin                @"001"
 #define operateRegister             @"002"

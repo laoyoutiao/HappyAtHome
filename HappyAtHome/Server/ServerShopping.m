@@ -65,5 +65,75 @@
     }];
 }
 
++ (void)goodsCollectPostUserId:(NSString *)userid Block:(NSArrayBlock)block
+{
+    NSDictionary *paramdict = @{@"operate":operateCollectGet,@"userid":userid};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        block([resopnObject objectForKey:@"response"]);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
++ (void)goodsCollectAddPostGoodsId:(NSString *)goodsid UserId:(NSString *)userid
+{
+    NSDictionary *paramdict = @{@"operate":operateCollectAdd,@"userid":userid,@"goods_id":goodsid};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        NSLog(@"%@",resopnObject);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
++ (void)goodsCollectDeletePostCollectId:(NSString *)collectid
+{
+    NSDictionary *paramdict = @{@"operate":operateCollectDelete,@"collect_id":collectid};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        NSLog(@"%@",resopnObject);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
++ (void)goodsCarPostUserId:(NSString *)userid Block:(NSArrayBlock)block
+{
+    NSDictionary *paramdict = @{@"operate":operateShoppingCartGet,@"userid":userid};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        block([resopnObject objectForKey:@"response"]);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
++ (void)goodsCarAddPostUserId:(NSString *)userid GoodsId:(NSString *)goodsid GetCount:(NSInteger)count GetType:(NSInteger)type GetColor:(NSInteger)color
+{
+    NSDictionary *paramdict = @{@"operate":operateShoppingCartAdd,@"userid":userid,@"goods_id":goodsid,@"getcount":[NSString stringWithFormat:@"%ld",count],@"gettype":[NSString stringWithFormat:@"%ld",type],@"getcolor":[NSString stringWithFormat:@"%ld",color]};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        NSLog(@"%@",resopnObject);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
++ (void)goodsCarDeletePostGoodsName:(NSString *)goodsname
+{
+    NSDictionary *paramdict = @{@"operate":operateShoppingCartDelete,@"goodsname":goodsname};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        NSLog(@"%@",resopnObject);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
++ (void)goodsCarChangePostGoodsShopCarId:(NSString *)shoppingcartid GetCount:(NSInteger)count GetType:(NSInteger)type GetColor:(NSInteger)color
+{
+    NSDictionary *paramdict = @{@"operate":operateShoppingCartChange,@"shoppingcart_id":shoppingcartid,@"getcount":[NSString stringWithFormat:@"%ld",count],@"gettype":[NSString stringWithFormat:@"%ld",type],@"getcolor":[NSString stringWithFormat:@"%ld",color]};
+    [ServerAFNetworking serverAFNetworking:paramdict SuccessBlock:^(NSURLSessionTask *operation, id resopnObject) {
+        NSLog(@"%@",resopnObject);
+    } ErrorBlock:^(NSURLSessionTask *operation, NSError *error) {
+        
+    }];
+}
+
 
 @end

@@ -115,14 +115,17 @@
     textLabel.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:textLabel];
 }
+
 - (void)showPassWord
 {
     
 }
+
 - (void)registerBtnAction
 {
     [ServerLoginOrRegister registerPostPhone:@"13425889426" Pass:@"123456" Id:@"440682199308164731"];
 }
+
 - (void)agreeProtocol
 {
     

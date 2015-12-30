@@ -48,7 +48,7 @@
     _phoneNumTf = [[UITextField alloc]initWithFrame:CGRectMake(phoneImg.right + 3, 0, phoneNumView.width - phoneImg.width - 10, 40)];
     _phoneNumTf.font = [UIFont systemFontOfSize:16.0];
     _phoneNumTf.placeholder = @"请输入手机号码";
-    _phoneNumTf.text = @"13425889425";
+//    _phoneNumTf.text = @"13425889425";
     _phoneNumTf.textAlignment = NSTextAlignmentLeft;
     [phoneNumView addSubview:_phoneNumTf];
     
@@ -66,7 +66,7 @@
     _passWordTf = [[UITextField alloc]initWithFrame:CGRectMake(passWordImg.right + 3, 0, passWordView.width - passWordImg.width - 10, 40)];
     _passWordTf.font = [UIFont systemFontOfSize:16.0];
     _passWordTf.placeholder = @"请输入密码";
-    _passWordTf.text = @"123456";
+//    _passWordTf.text = @"123456";
     _passWordTf.secureTextEntry = YES;
     _passWordTf.textAlignment = NSTextAlignmentLeft;
     [passWordView addSubview:_passWordTf];
@@ -97,8 +97,19 @@
     forgetBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
     [forgetBtn addTarget:self action:@selector(forgetWord) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forgetBtn];
+    
+    UIButton *regitstBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    regitstBtn.frame = CGRectMake(loginBtn.left, loginBtn.bottom + 10, 70, 30);
+    regitstBtn.backgroundColor = [UIColor clearColor];
+    [regitstBtn setTitle:@"注册" forState:UIControlStateNormal];
+    [regitstBtn setTitleColor:[UIColor colorWithHex:0x1F9CA6] forState:UIControlStateNormal];
+    regitstBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [regitstBtn addTarget:self action:@selector(registBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:regitstBtn];
 }
+
 #pragma mark BtnAction
+
 - (void)showPassWord:(UIButton *)btn
 {
     _passWordTf.secureTextEntry = !_passWordTf.secureTextEntry;
@@ -109,6 +120,7 @@
         [btn setTitle:@"显示密码" forState:UIControlStateNormal];
     }
 }
+
 - (void)login
 {
     if (_passWordTf != nil && _phoneNumTf != nil) {
@@ -131,8 +143,16 @@
         }];
     }
 }
+
 - (void)forgetWord
 {
     
 }
+
+- (void)registBtn
+{
+    RegisterViewController *registview = [self.storyboard instantiateViewControllerWithIdentifier:@"RegisterViewController"];
+    [self.navigationController showViewController:registview sender:nil];
+}
+
 @end

@@ -98,7 +98,7 @@
         switch (indexPath.row) {
             case 0:
                 headimageview = ImageViewSetFrame(ScreenSize.width - 60, 5, 30, 30);
-                [headimageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",userinfomodel.headimage]]];
+                [headimageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ServerImgURL,userinfomodel.headimage]]];
                 [cell addSubview:headimageview];
                 break;
                 

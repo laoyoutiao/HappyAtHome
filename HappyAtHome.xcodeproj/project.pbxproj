@@ -140,6 +140,7 @@
 		5B7B0E101BFD74BE0074FE32 /* icon_mine_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7B0E0F1BFD74BE0074FE32 /* icon_mine_nor.png */; };
 		5B7B0E121BFD74C50074FE32 /* icon_poket_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7B0E111BFD74C50074FE32 /* icon_poket_nor.png */; };
 		5B7B0E141BFD74CC0074FE32 /* icon_shopcar_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7B0E131BFD74CC0074FE32 /* icon_shopcar_nor.png */; };
+		5B7C5EDB1C30DB3200DE17DE /* icon_phone_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7C5EDA1C30DB3200DE17DE /* icon_phone_login.png */; };
 		5B87E9F11C1A74E8005655E1 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B87E9F01C1A74E8005655E1 /* UserInfoModel.m */; };
 		5B87E9F41C1AA991005655E1 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B87E9F31C1AA991005655E1 /* libiconv.tbd */; };
 		5B87E9F61C1AA9B3005655E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B87E9F51C1AA9B3005655E1 /* CoreGraphics.framework */; };
@@ -407,6 +408,7 @@
 		5B7B0E111BFD74C50074FE32 /* icon_poket_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_poket_nor.png; path = HappyAtHome/Resource/icon_poket_nor.png; sourceTree = SOURCE_ROOT; };
 		5B7B0E131BFD74CC0074FE32 /* icon_shopcar_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_shopcar_nor.png; path = HappyAtHome/Resource/icon_shopcar_nor.png; sourceTree = SOURCE_ROOT; };
 		5B7B0E151BFD75E10074FE32 /* MyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHeader.h; path = Category/MyHeader.h; sourceTree = "<group>"; };
+		5B7C5EDA1C30DB3200DE17DE /* icon_phone_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_phone_login.png; path = HappyAtHome/Resource/icon_phone_login.png; sourceTree = SOURCE_ROOT; };
 		5B87E9EF1C1A74E8005655E1 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserInfoModel.h; path = Model/UserInfoModel.h; sourceTree = "<group>"; };
 		5B87E9F01C1A74E8005655E1 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserInfoModel.m; path = Model/UserInfoModel.m; sourceTree = "<group>"; };
 		5B87E9F31C1AA991005655E1 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
@@ -758,6 +760,7 @@
 		5B554FCF1C191A300032B99A /* Publish */ = {
 			isa = PBXGroup;
 			children = (
+				5B7C5EDA1C30DB3200DE17DE /* icon_phone_login.png */,
 				5BB0A5F61BFD9C6100865DD2 /* checkbox_circle_p.png */,
 				5B7B0DF11BFD74710074FE32 /* checkbox_checked.png */,
 				5B7B0DF21BFD74710074FE32 /* checkbox_circle_n.png */,
@@ -1193,6 +1196,7 @@
 				5B7B0E031BFD74830074FE32 /* home_icon_cg_piaowu.png in Resources */,
 				5B7B0DDA1BFD73C40074FE32 /* button_bj_red.png in Resources */,
 				5B4C0BD01BFD694700F0DF6A /* local_navi_tuan.png in Resources */,
+				5B7C5EDB1C30DB3200DE17DE /* icon_phone_login.png in Resources */,
 				5B7B0E051BFD74830074FE32 /* home_icon_cg_restaurants.png in Resources */,
 				5B7B0E021BFD74830074FE32 /* home_icon_cg_kuaidi100.png in Resources */,
 				5BB0A5F91BFD9E0600865DD2 /* home_shopping_icon.png in Resources */,

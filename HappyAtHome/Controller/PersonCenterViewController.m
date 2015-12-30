@@ -106,7 +106,7 @@
 
         UserInfoModel *userinfomodel = [UserInfoModel sharedInstance];
         UIImageView *headimageview = ImageViewSetFrame(10, 30, 60, 60);
-        [headimageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://192.168.1.146:8080//EnjoyLiveHome/%@",userinfomodel.headimage]]];
+        [headimageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ServerImgURL,userinfomodel.headimage]]];
         headimageview.layer.masksToBounds = YES;
         headimageview.layer.cornerRadius = headimageview.frame.size.width / 2;
         [cell addSubview:headimageview];

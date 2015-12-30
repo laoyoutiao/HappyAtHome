@@ -9,6 +9,7 @@
 #import "ScrollImageCube.h"
 #import "ModelHeader.h"
 #import "UIImageView+WebCache.h"
+#import "ServerHeader.h"
 
 @interface ScrollImageCube ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 {
@@ -38,7 +39,7 @@
     imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - 5)];
     [self addSubview:imageview];
     ShopModel *model = [imageArray objectAtIndex:0];
-    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
+    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ServerImgURL,model.image]]];
     index = 0;
     
     scrollview = [[UIScrollView alloc] initWithFrame:self.frame];
@@ -90,7 +91,7 @@
         }
         [self changelinecolor:index];
         ShopModel *model = [imageArray objectAtIndex:index];
-        [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
+        [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ServerImgURL,model.image]]];
         ca.subtype = kCATransitionFromLeft;
     }else
     {
@@ -100,7 +101,7 @@
         }
         [self changelinecolor:index];
         ShopModel *model = [imageArray objectAtIndex:index];
-        [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
+        [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ServerImgURL,model.image]]];
         ca.subtype = kCATransitionFromRight;
     }
     ca.duration = 1.5;
@@ -123,7 +124,7 @@
     [self changelinecolor:index];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(movenext) object:nil];
     ShopModel *model = [imageArray objectAtIndex:index];
-    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://61.142.211.110:92//EnjoyLiveHome/%@",model.image]]];
+    [imageview sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ServerImgURL,model.image]]];
     CATransition *ca = [CATransition animation];
     ca.type = @"cube";
     ca.subtype = kCATransitionFromRight;
@@ -136,7 +137,6 @@
 {
     UIView *view = [self viewWithTag:tag + 100];
     view.backgroundColor = [UIColor redColor];
-    
     for (NSInteger i = 0; i < [imageArray count]; i ++) {
         if (i != tag) {
             UIView *view = [self viewWithTag:i + 100];
